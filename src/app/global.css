@@ -1,0 +1,33 @@
+*{
+    color:#000000;
+    font-family: roboto mono, monospace, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.content{
+    flex:1;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer{
+    background-color: #222222;
+    display: flex;
+    position: fixed;
+    align-items: flex-start;
+    justify-content: space-between;
+    bottom: 0;
+    width: 100%;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+footer, a{
+    color:white;
+    text-decoration: none;
+}
