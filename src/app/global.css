@@ -115,5 +115,6 @@ header > h1 {
   padding: 1.6em;
   text-decoration: none;
   color: black;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  font-weight: bold;
 }
