@@ -2,6 +2,7 @@ html {
   font-size: 16px;
   color: #000000;
   font-family: "roboto mono", monospace, sans-serif;
+  background-color: #F8F9FA;
 
   @media (min-width: 640px) {
     font-size: 20px;
@@ -54,6 +55,7 @@ header {
   justify-content: space-between;
   padding: 1vh 3em;
   border-bottom: rgb(0, 0, 0, 0.3) solid 1px;
+  background-color: white;
 }
 
 header>img {
