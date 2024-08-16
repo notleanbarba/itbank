@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "start": "live-server --port=3000 --mount=/:src/app/"
+    "start": "sass -w src/app/global.scss:src/app/public/sass/global.css & live-server --port=3000 --mount=/:src/app/"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "sass": "^1.77.8"
   }
 }
