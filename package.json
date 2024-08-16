@@ -1,8 +1,8 @@
 {
-  "dependencies": {
-    "serve": "^14.2.3"
-  },
   "scripts": {
-    "start": "npx serve"
+    "start": "live-server --port=3000 --mount=/:src/app/"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
   }
 }
