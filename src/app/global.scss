@@ -3,23 +3,23 @@ html {
   color: #000000;
   font-family: "roboto mono", monospace, sans-serif;
 
-  @screen sm {
+  @media (min-width: 640px) {
     font-size: 20px;
   }
 
-  @screen md {
+  @media (min-width: 768px) {
     font-size: 14px;
   }
 
-  @screen lg {
+  @media (min-width: 1024px) {
     font-size: 16px;
   }
 
-  @screen xl {
+  @media (min-width: 1280px) {
     font-size: 18px;
   }
 
-  @screen 2xl {
+  @media (min-width: 1536px) {
     font-size: 20px;
   }
 }
@@ -52,20 +52,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8em 3em;
+  padding: 1vh 3em;
   border-bottom: rgb(0, 0, 0, 0.3) solid 1px;
 }
 
-header > img {
+header>img {
   width: auto;
   height: 100%;
 }
 
-header > h1 {
+header>h1 {
   font-size: 1.5em;
 }
 
-#menu-open {
+.menu-open {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -74,11 +74,7 @@ header > h1 {
   height: 90%;
   padding: 0 0.5em;
   column-gap: 0.5em;
-  font-size: 1.3em;
-}
-
-#content {
-  flex: 1;
+  font-size: 1.1em;
 }
 
 .menu {
@@ -106,15 +102,15 @@ header > h1 {
   cursor: pointer;
 }
 
-.menu-close > * {
+.menu-close>* {
   width: 100%;
   height: 100%;
 }
 
-.menu > a {
+.menu>a {
   padding: 1.6em;
   text-decoration: none;
   color: black;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
 }
