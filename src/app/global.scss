@@ -116,3 +116,70 @@ header>h1 {
   font-size: 1em;
   font-weight: bold;
 }
+
+.content {
+  margin: 0 20%;
+}
+
+.content.main {
+  .welcome-message {
+    margin-top: 5em;
+    font-size: 1.5em;
+  }
+
+  .main-section {
+    h2 {
+      margin: 2em 0 1em;
+      font-size: 1.2em;
+    }
+  }
+
+  .account-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 20em;
+    height: min-content;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .account-number {
+      margin: 0.1em 0;
+      font-size: 0.9em;
+      color: lighten($color: #000000, $amount: 50%);
+    }
+
+    .account-balance {
+      margin: 0.7em 0;
+      font-size: 1.2em;
+      font-weight: 450;
+
+      .balance-symbol {
+        font-size: 1.12em;
+        margin-right: 0.05em;
+      }
+
+    }
+
+    button {
+      width: min-content;
+      text-align: left;
+      cursor: pointer;
+      text-wrap: nowrap;
+    }
+
+  }
+
+  .quick-access {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+
+    button {
+      width: 100px;
+      height: 100px;
+      background: #D9D9D9;
+    }
+  }
+}
