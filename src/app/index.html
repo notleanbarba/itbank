@@ -6,27 +6,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
     />
     <script defer src="/public/fontawesome/js/fontawesome.js"></script>
     <script defer src="/public/fontawesome/js/solid.js"></script>
   </head>
   <body>
-    <header class="encabezado">
-      <div id="menu">
-        <i class="fas fa-bars"></i>
-        <p>MENU</p>
-      </div>
+    <header>
+      <button
+        id="menu-open"
+        onclick="document.getElementById('navbar').classList.add('open')"
+      >
+        <i class="fa-solid fa-bars"></i>MENU
+      </button>
       <h1>ITBank</h1>
       <img src="/public/logoITBA.png" alt="" />
     </header>
 
-    <nav class="menu">
+    <nav class="menu" id="navbar">
+      <button
+        type="button"
+        class="menu-close"
+        onclick="document.getElementById('navbar').classList.remove('open')"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <a href="/">Inicio</a>
       <a href="/cuentas">Cuentas</a>
-      <a href="/pagos">Pagos</a>
       <a href="/transferencias">Transferencias</a>
+      <a href="/pagos">Pagos</a>
+      <a href="/inversiones">Inversiones</a>
     </nav>
 
     <section id="content"></section>

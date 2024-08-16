@@ -1,60 +1,119 @@
-*{
-    color:#000000;
-    font-family: "roboto mono", monospace, sans-serif;
-    margin:0;
-    padding:0;
+html {
+  font-size: 16px;
+  color: #000000;
+  font-family: "roboto mono", monospace, sans-serif;
+
+  @screen sm {
+    font-size: 20px;
+  }
+
+  @screen md {
+    font-size: 14px;
+  }
+
+  @screen lg {
+    font-size: 16px;
+  }
+
+  @screen xl {
+    font-size: 18px;
+  }
+
+  @screen 2xl {
+    font-size: 20px;
+  }
 }
 
-#encabezado{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:0.5rem;
-    border-bottom: rgb(0, 0, 0, 0.3) solid 1px;
+body {
+  display: grid;
+  grid: 7% auto 7% / 1fr;
+  min-height: 100vh;
 }
 
-#menu{
-    cursor: pointer;
-    display:flex;
-    align-items: center;
-    padding: 0.3rem;
-    border: rgb(0, 0, 0, 0.3) solid 1px;
-    border-radius: 10px;
+footer {
+  grid-column: span 2;
+  background-color: #222222;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em 4em 0;
+  box-sizing: border-box;
 }
 
-#menu, i{
-    padding:5px;
+footer,
+footer a {
+  color: white;
+  text-decoration: none;
 }
 
-#logo{
-    flex:1;
-    text-align: center;
+header {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8em 3em;
+  border-bottom: rgb(0, 0, 0, 0.3) solid 1px;
 }
 
-#content{
-    flex:1;
+header > img {
+  width: auto;
+  height: 100%;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+header > h1 {
+  font-size: 1.5em;
 }
 
-footer{
-    background-color: #222222;
-    display: flex;
-    position: fixed;
-    align-items: flex-start;
-    justify-content: space-between;
-    bottom: 0;
-    width: 100%;
-    padding: 4rem;
-    padding-top: 1rem;
-    box-sizing: border-box;
+#menu-open {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: rgb(0, 0, 0, 0.3) solid 1px;
+  border-radius: 30px;
+  height: 90%;
+  padding: 0 0.5em;
+  column-gap: 0.5em;
+  font-size: 1.3em;
 }
 
-footer, footer a{
-    color:white;
-    text-decoration: none;
+#content {
+  flex: 1;
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 0;
+  background-color: white;
+  overflow: hidden;
+  transition: max-width 0.2s ease-out;
+}
+
+.menu.open {
+  max-width: 25vw;
+  transition: max-width 0.2s ease-in;
+}
+
+.menu .menu-close {
+  border: none;
+  margin: 1em;
+  width: 2.5em;
+  height: 2.5em;
+  cursor: pointer;
+}
+
+.menu-close > * {
+  width: 100%;
+  height: 100%;
+}
+
+.menu > a {
+  padding: 1.6em;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
 }
