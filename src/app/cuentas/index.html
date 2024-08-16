@@ -15,7 +15,7 @@
   <body>
     <header>
       <button
-        class="menu-open"
+        class="navbar-open"
         onclick="document.getElementById('navbar').classList.add('open')"
       >
         <i class="fa-solid fa-bars"></i>MENU
@@ -23,10 +23,10 @@
       <h1>ITBank</h1>
       <img src="/public/logoITBA.png" alt="" />
     </header>
-    <nav class="menu" id="navbar">
+    <nav class="navbar" id="navbar">
       <button
         type="button"
-        class="menu-close"
+        class="navbar-close"
         onclick="document.getElementById('navbar').classList.remove('open')"
       >
         <i class="fa-solid fa-xmark"></i>
@@ -37,7 +37,47 @@
       <a href="/pagos">Pagos</a>
       <a href="/inversiones">Inversiones</a>
     </nav>
-    <section class="content main"></section>
+    <section class="content secondary">
+      <div class="summary-menu">
+        <div class="menu">
+          <div class="content-title"></div>
+          <div class="menu-selector"></div>
+        </div>
+        <div class="summary">
+          <div class="balance-with-header">
+            Saldo en pesos
+            <div class="balance">
+              <span class="balance-symbol">$</span
+              ><span id="balanceARS">1000000</span>
+            </div>
+          </div>
+          <div class="balance-with-header">
+            Saldo en pesos
+            <div class="balance">
+              <span class="balance-symbol">$</span
+              ><span id="balanceARS">1000000</span>
+            </div>
+          </div>
+          <div class="account-info">
+            <div class="account-param">
+              CBU:
+              <span id="account-cbu">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+            </div>
+            <div class="account-param">
+              ALIAS:
+              <span id="account-alias"
+                >XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag">Movimientos en pesos</div>
+          <div class="tag">Movimientos en dólares</div>
+        </div>
+      </div>
+      <div class="page-data"></div>
+    </section>
     <footer>
       <div class="contFooter"><a href="#">Ultimo acceso</a></div>
       <div class="contFooterC"><a href="#">Contactanos</a></div>
