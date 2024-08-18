@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "start": "sass -w src/app/global.scss:src/app/public/sass/global.css & live-server --port=3000 --mount=/:src/app/"
+    "sass": "sass -w src/app/global.scss:src/app/public/sass/global.css",
+    "live-server": "live-server --port=3000 --mount=/:src/app/",
+    "start": "npm run sass & npm run live-server",
+    "start-windows": "START /B npm run sass & npm run live-server"
   },
   "devDependencies": {
     "live-server": "^1.2.2",
