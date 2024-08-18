@@ -23,18 +23,36 @@ concurrency:
 
 jobs:
   # Build job
-  build:
+  build_css:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Compile SASS
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/assets/css
+      - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.6.0
         with:
-          source: /src/app/global.scss
-          destination: ./_site/public/sass/global/css
+          source: ./src/app/global.scss
+          destination: /tmp/assets/css/global.css
+      - name: Upload Complied CSS
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Compiled-CSS
+          path: /tmp/assets/css
+  build_page:
+    runs-on: ubuntu-latest
+    needs: [build_css]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download Compiled CSS
+        uses: actions/download-artifact@v1.0.0
+        with:
+          name: Compiled-CSS
+          path: src/app/public/sass
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
@@ -49,7 +67,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
+    needs: build_page
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
