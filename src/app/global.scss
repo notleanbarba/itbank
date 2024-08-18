@@ -190,6 +190,7 @@ header>h1 {
     display: grid;
     grid: 1fr / 20% 1fr 20%;
     grid-column: span 3;
+    row-gap: 1em;
 
     >* {
       grid-column-start: 2;
@@ -198,7 +199,6 @@ header>h1 {
   }
 
   .summary-menu {
-    grid-template-rows: 1fr 1fr;
     grid-column: span 3;
     grid-auto-flow: column;
     background: #C2CDD0;
@@ -209,17 +209,21 @@ header>h1 {
       flex-direction: row;
       gap: 2%;
       align-items: center;
-      height: 12vh;
+      height: 10vh;
 
-      * {
+      >* {
         background: white;
-        height: 50%;
+        height: 60%;
         border-radius: 7px;
         border: black 1.3px solid;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
       }
 
       .content-title {
+        font-size: 1.3em;
         flex: 1;
       }
 
@@ -232,15 +236,18 @@ header>h1 {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      font-size: 0.95em;
       height: min-content;
 
-      .balance-with-header {
+      .data-with-header {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        font-size: 1.1em;
+        gap: 0.6em;
+        font-size: 0.8em;
         margin: 0.4em 0;
+
+        .data {
+          font-size: 1.7em;
+        }
       }
 
       .account-info {
@@ -285,6 +292,74 @@ header>h1 {
 
     p {
       margin-bottom: 0.5em;
+    }
+
+    .assets-summary {
+      .header {
+        background-color: #D9D9D999;
+        border-radius: 10px 10px 0 0;
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        h2 {
+          width: 100%;
+          font-size: 1.5em;
+          font-weight: 500;
+        }
+
+        div {
+          margin-top: 0.7em;
+          margin-right: 1em;
+          font-size: 0.8em;
+
+          span {
+            margin-top: 0.3em;
+            display: block;
+            font-size: 1.3em;
+          }
+        }
+      }
+
+      .chart {
+        margin: 1em 0;
+        height: 20vh;
+        text-align: center;
+        align-content: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    }
+
+    table {
+      text-align: left;
+      font-size: 0.9em;
+      width: 100%;
+      margin-bottom: 2em;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+      th,
+      td {
+        height: auto;
+        padding: 1em 1em;
+        vertical-align: middle;
+      }
+
+      thead {
+        background-color: #D9D9D999;
+      }
+
+      tbody {
+        tr {
+          border-top: 1px solid lighten($color: black, $amount: 80%);
+        }
+      }
+
+      tfoot {
+        border-top: 1px solid lighten($color: black, $amount: 80%);
+        background-color: #D9D9D999;
+      }
     }
   }
 }
