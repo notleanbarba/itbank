@@ -12,59 +12,30 @@
     <script defer src="./public/fontawesome/js/fontawesome.js"></script>
     <script defer src="./public/fontawesome/js/solid.js"></script>
   </head>
-  <body>
-    <header>
-      <button
-        class="navbar-open"
-        onclick="document.getElementById('navbar').classList.add('open')"
-      >
-        <i class="fa-solid fa-bars"></i>MENU
-      </button>
-      <h1>ITBank</h1>
+  <body class="login">
+    <main>
       <img src="./public/logoITBA.png" alt="" />
-    </header>
-    <nav class="navbar" id="navbar">
-      <button
-        type="button"
-        class="navbar-close"
-        onclick="document.getElementById('navbar').classList.remove('open')"
-      >
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <a href="./">Inicio</a>
-      <a href="../cuentas">Cuentas</a>
-      <a href="../transferencias">Transferencias</a>
-      <a href="/pagos">Pagos</a>
-      <a href="/inversiones">Inversiones</a>
-    </nav>
-    <section class="content main">
-      <div class="welcome-message">Hola <span id="username">XXXX</span></div>
-      <section class="main-section">
-        <h2>Estado de tus cuentas</h2>
-        <div class="account-card">
-          <span class="account-type" id="accountType">Cuenta única</span>
-          <span class="account-number" id="accountNumber">123-45678/1</span>
-          <div class="account-balance">
-            <span class="balance-symbol">$</span
-            ><span id="balanceARS">1000000</span>
-          </div>
-          <div class="account-balance">
-            <span class="balance-symbol">U$D</span
-            ><span id="balanceUSD">10000</span>
-          </div>
-          <button type="button">Ver movimientos</button>
+      <h1>Inicia sesión en tu cuenta</h1>
+      <form action="./home">
+        <label for="username">Usuario</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Ingrese su usuario"
+        />
+        <div class="password-label">
+          <label for="password">Contraseña</label>
+          <a href="#">Olvidaste tu contraseña?</a>
         </div>
-      </section>
-      <section class="main-section">
-        <h2>Acceso rápido</h2>
-        <div class="quick-access">
-          <button></button><button></button><button></button><button></button>
-        </div>
-      </section>
-    </section>
-    <footer>
-      <div class="contFooter"><a href="#">Ultimo acceso</a></div>
-      <div class="contFooterC"><a href="#">Contactanos</a></div>
-    </footer>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Ingrese su contraseña"
+        />
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </main>
   </body>
 </html>

@@ -37,51 +37,30 @@
       <a href="../pagos">Pagos</a>
       <a href="../inversiones">Inversiones</a>
     </nav>
-    <section class="content secondary">
-      <div class="summary-menu">
-        <div class="menu">
-          <div class="content-title">Cuenta 123-45678/1</div>
-          <button type="button" class="menu-selector">
-            Consultas y Operaciones <i class="fa-solid fa-chevron-down"></i>
-          </button>
-        </div>
-        <div class="summary">
-          <div class="data-with-header">
-            Saldo en pesos
-            <div class="data">
-              <span class="balance-symbol">$</span
-              ><span id="balanceARS">1000000</span>
-            </div>
+    <section class="content main">
+      <div class="welcome-message">Hola <span id="username">XXXX</span></div>
+      <section class="main-section">
+        <h2>Estado de tus cuentas</h2>
+        <div class="account-card">
+          <span class="account-type" id="accountType">Cuenta única</span>
+          <span class="account-number" id="accountNumber">123-45678/1</span>
+          <div class="account-balance">
+            <span class="balance-symbol">$</span
+            ><span id="balanceARS">1000000</span>
           </div>
-          <div class="data-with-header">
-            Saldo en dólares
-            <div class="data">
-              <span class="balance-symbol">U$D</span
-              ><span id="balanceARS">1000000</span>
-            </div>
+          <div class="account-balance">
+            <span class="balance-symbol">U$D</span
+            ><span id="balanceUSD">10000</span>
           </div>
-          <div class="account-info">
-            <div class="account-param">
-              CBU:
-              <span id="account-cbu">0000000000000000000000</span>
-            </div>
-            <div class="account-param">
-              ALIAS:
-              <span id="account-alias">itbank.account</span>
-            </div>
-          </div>
+          <button type="button">Ver movimientos</button>
         </div>
-        <div class="tag-group">
-          <div class="tag active">Movimientos en pesos</div>
-          <div class="tag">Movimientos en dólares</div>
+      </section>
+      <section class="main-section">
+        <h2>Acceso rápido</h2>
+        <div class="quick-access">
+          <button></button><button></button><button></button><button></button>
         </div>
-      </div>
-      <div class="page-data">
-        <main>
-          <p>No tenés movimientos en los últimos 7 días.</p>
-          <p>Podés consultar los movimientos de los últimos 60 días.</p>
-        </main>
-      </div>
+      </section>
     </section>
     <footer>
       <div class="contFooter"><a href="#">Ultimo acceso</a></div>
