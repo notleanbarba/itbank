@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <title>ITBank homebanking</title>
+    <link rel="stylesheet" href="../public/css/reset.css" />
+    <link rel="stylesheet" href="../public/sass/global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    />
+    <script defer src="../public/fontawesome/js/fontawesome.js"></script>
+    <script defer src="../public/fontawesome/js/solid.js"></script>
+    <script type="module">
+      const calculateLoan = () => {
+        const loanAmount = +document.getElementById("loan-amount").value;
+        const loanTerm = +document.getElementById("loan-term").value;
+        const loanInterest =
+          +document.getElementById("loan-interest").value / 100;
+        const loanAmortization =
+          document.getElementById("loan-amortization").value;
+
+        if (!(loanTerm > 0) || !(loanAmount > 0)) {
+          document.getElementById("loan-payment").innerHTML = null;
+          document.getElementById("loan-table").innerHTML = null;
+          return;
+        }
+
+        let remainingLoan = loanAmount;
+        let amortizationTable = "";
+        let average_pmt = 0;
+
+        if (loanAmortization === "Francés") {
+          const pmt =
+            (loanAmount *
+              (loanInterest / 12) *
+              (1 + loanInterest / 12) ** (12 * loanTerm)) /
+            ((1 + loanInterest / 12) ** (12 * loanTerm) - 1);
+          average_pmt = pmt;
+
+          for (let i = 1; i <= loanTerm * 12; i++) {
+            const interesti = (remainingLoan * loanInterest) / 12;
+            remainingLoan -= pmt - interesti;
+            if (i === loanTerm * 12) remainingLoan = 0;
+            amortizationTable = amortizationTable.concat(`
+			<tr>
+			<td>
+			${i}
+			</td>
+			<td>
+			${pmt.toFixed(2)}
+			</td>
+			<td>
+			${(pmt - interesti).toFixed(2)}
+			</td>
+			<td>
+			${interesti.toFixed(2)}
+			</td>
+			<td>
+			${remainingLoan.toFixed(2)}
+			</td>
+			</tr>`);
+          }
+        }
+
+        if (loanAmortization === "Alemán") {
+          const pmtPrincipal = loanAmount / (loanTerm * 12);
+          let tmp = 0;
+          for (let i = 1; i <= loanTerm * 12; i++) {
+            const interesti = (remainingLoan * loanInterest) / 12;
+            remainingLoan -= pmtPrincipal;
+            if (i === loanTerm * 12) remainingLoan = 0;
+            const pmt = pmtPrincipal + interesti;
+            tmp += pmt;
+            amortizationTable = amortizationTable.concat(`
+			<tr>
+			<td>
+			${i}
+			</td>
+			<td>
+			${pmt.toFixed(2)}
+			</td>
+			<td>
+			${pmtPrincipal.toFixed(2)}
+			</td>
+			<td>
+			${interesti.toFixed(2)}
+			</td>
+			<td>
+			${remainingLoan.toFixed(2)}
+			</td>
+			</tr>`);
+          }
+          average_pmt = tmp / (loanTerm * 12);
+        }
+
+        if (loanAmortization === "Bullet") {
+          let tmp = 0;
+          for (let i = 1; i <= loanTerm * 12; i++) {
+            const interesti = (loanAmount * loanInterest) / 12;
+            let pmt = interesti;
+            tmp += pmt;
+            if (i === loanTerm * 12) {
+              amortizationTable = amortizationTable.concat(`
+			<tr>
+			<td>
+			${i}
+			</td>
+			<td>
+			${(pmt + loanAmount).toFixed(2)}
+			</td>
+			<td>
+			${loanAmount.toFixed(2)}
+			</td>
+			<td>
+			${interesti.toFixed(2)}
+			</td>
+			<td>
+			0
+			</td>
+			</tr>`);
+              break;
+            }
+            amortizationTable = amortizationTable.concat(`
+			<tr>
+			<td>
+			${i}
+			</td>
+			<td>
+			${pmt.toFixed(2)}
+			</td>
+			<td>
+			0
+			</td>
+			<td>
+			${interesti.toFixed(2)}
+			</td>
+			<td>
+			${loanAmount}
+			</td>
+			</tr>`);
+          }
+          average_pmt = (tmp + loanAmount) / (loanTerm * 12);
+        }
+
+        document.getElementById("loan-payment").innerHTML =
+          average_pmt.toFixed(2);
+        document.getElementById("loan-table").innerHTML = `
+		<thead>
+		<tr>
+			<th>Mes</th>
+			<th>Cuota</th>
+			<th>Principal</th>
+			<th>Interés</th>
+			<th>Balance</th>
+		</tr>
+		</thead>
+		<tbody >
+		${amortizationTable}
+		</tbody>
+		`;
+      };
+      const loanSimulatorDOM = document.getElementById("loan-simulator");
+
+      loanSimulatorDOM.addEventListener("input", calculateLoan);
+    </script>
+  </head>
+  <body>
+    <header>
+      <button
+        class="navbar-open"
+        onclick="document.getElementById('navbar').classList.add('open')"
+      >
+        <i class="fa-solid fa-bars"></i>MENU
+      </button>
+      <h1>ITBank</h1>
+      <img src="../public/logoITBA.png" alt="" />
+    </header>
+    <nav class="navbar" id="navbar">
+      <button
+        type="button"
+        class="navbar-close"
+        onclick="document.getElementById('navbar').classList.remove('open')"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <a href="../home">Inicio</a>
+      <a href="../cuentas">Cuentas</a>
+      <a href="../transferencias">Transferencias</a>
+      <a href="../pagos">Pagos</a>
+      <a href="../inversiones">Inversiones</a>
+      <a href="../prestamos">Préstamos</a>
+    </nav>
+    <section class="content secondary">
+      <div class="summary-menu">
+        <div class="menu">
+          <div class="content-title">Préstamos</div>
+          <button
+            type="button"
+            class="menu-selector"
+            onclick="if (document.getElementById('menu-list').style.display === 'none') return document.getElementById('menu-list').style.display = 'block'; return document.getElementById('menu-list').style.display = 'none'"
+          >
+            Consultas y Operaciones <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <nav class="menu-list" id="menu-list">
+            <button
+              onclick="document.getElementById('loan-modal').classList.add('open')"
+            >
+              Simular préstamo
+            </button>
+          </nav>
+        </div>
+        <div class="summary"></div>
+        <div class="tag-group">
+          <div class="tag active">Tus préstamos activos</div>
+        </div>
+      </div>
+      <div class="page-data">
+        <main></main>
+      </div>
+    </section>
+    <footer>
+      <div class="contFooter"><a href="#">Ultimo acceso</a></div>
+      <div class="contFooterC"><a href="#">Contactanos</a></div>
+    </footer>
+    <div class="modal" id="loan-modal">
+      <div class="modal-dialog" role="dialog">
+        <button
+          type="button"
+          class="modal-close"
+          onclick="document.getElementById('loan-modal').classList.remove('open')"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h1>Simular un préstamo</h1>
+        <form id="loan-simulator">
+          <label>Importe</label
+          ><input id="loan-amount" type="number" min="0" required />
+          <label>Plazo</label
+          ><input id="loan-term" type="number" min="0" required />
+          <label>Tasa de interés</label
+          ><input
+            id="loan-interest"
+            type="number"
+            value="8"
+            disabled
+            min="0"
+            required
+          />
+          <label>Sistema de amortización</label>
+          <select id="loan-amortization">
+            <option>Francés</option>
+            <option>Alemán</option>
+            <option>Bullet</option>
+          </select>
+          <label for="">Cuota mensual promedio</label
+          ><span id="loan-payment"></span>
+        </form>
+        <table id="loan-table"></table>
+      </div>
+    </div>
+  </body>
+</html>
