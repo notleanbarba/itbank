@@ -1,15 +1,16 @@
+// SEBA.21/8/2024
 document.getElementById("loginForm").onsubmit = function(event) {
     event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
-    // Obtén los valores de los campos de entrada
+    // Toma la entrada de email y password FE
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
-    // Credenciales correctas
+    // Valores hardcodeados
     var validEmail = "devfive@itbank.com";
     var validPassword = "devfive";
 
-    // Verifica si los campos están vacíos
+    // Valida si campos vacios
     if (email === "" || password === "") {
         alert("Por favor, complete todos los campos.");
     }
@@ -18,7 +19,7 @@ document.getElementById("loginForm").onsubmit = function(event) {
         alert("Inicio de sesión exitoso.");
         window.location.href = "/home"; // Redirige a la página de inicio
     }
-    // Si las credenciales no son correctas
+    // Si los datos que carga formulario no son correctos
     else {
         alert("Usuario o contraseña incorrectos.");
     }

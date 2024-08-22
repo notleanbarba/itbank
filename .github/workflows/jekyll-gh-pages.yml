@@ -33,8 +33,12 @@ jobs:
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.6.0
         with:
-          source: ./src/app/global.scss
-          destination: /tmp/assets/css/global.css
+          source: |
+            ./src/app/public/sass/global.scss
+            ./src/app/public/sass/responsive.scss
+          destination: |
+            /tmp/assets/css/global.css
+            /tmp/assets/css/responsive.css
       - name: Upload Complied CSS
         uses: actions/upload-artifact@v1.0.0
         with:

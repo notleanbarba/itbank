@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "sass": "sass -w src/app/global.scss:src/app/public/sass/global.css",
+    "sass": "sass -w src/app/public/sass/:src/app/public/sass/",
     "live-server": "live-server --port=3010 --mount=/:src/app/",
     "start": "npm run sass & npm run live-server",
     "start-windows": "START /B npm run sass & npm run live-server"
