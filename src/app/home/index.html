@@ -3,7 +3,7 @@
     <title>ITBank homebanking</title>
     <link rel="stylesheet" href="../public/css/reset.css" />
     <link rel="stylesheet" href="../public/sass/global.css" />
-    <link rel="stylesheet" href="../public/css/responsive.css" />
+    <link rel="stylesheet" href="../public/sass/responsive.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,27 +45,27 @@
         Hola <span id="username">XXXX</span>
         <h2>Estado de tus cuentas</h2>
       </div>
-      <section class="main-section1">
-        <div class="account-card">
-          <span class="account-type" id="accountType">Cuenta única</span>
-          <span class="account-number" id="accountNumber">123-45678/1</span>
-          <div class="account-balance">
-            <span class="balance-symbol">$</span
-            ><span id="balanceARS">1000000</span>
-          </div>
-          <div class="account-balance">
-            <span class="balance-symbol">U$D</span>
-            <span id="balanceUSD">10000</span>
-          </div>
-          <button type="button">Ver movimientos</button>
-        </div>
-        <div class="debit-card">
-          <span id="cardtype">Tarjeta de débito</span>
-          <span id="idCard">5412 7512 3416 7890</span>
-          <span id="debitCvv">CVV: ***</span>
-        </div>
-      </section>
       <section class="main-section">
+        <div class="cards-group">
+          <div class="card">
+            <span class="account-type" id="accountType">Cuenta única</span>
+            <span class="account-number" id="accountNumber">123-45678/1</span>
+            <div class="account-balance">
+              <span class="balance-symbol">$</span
+              ><span id="balanceARS">1000000</span>
+            </div>
+            <div class="account-balance">
+              <span class="balance-symbol">U$D</span>
+              <span id="balanceUSD">10000</span>
+            </div>
+            <button type="button">Ver movimientos</button>
+          </div>
+          <div class="card debit">
+            <span id="cardtype">Tarjeta de débito</span>
+            <span id="idCard">5412 7512 3416 7890</span>
+            <span id="debitCvv">CVV: ***</span>
+          </div>
+        </div>
         <h2>Acceso rápido</h2>
         <div class="quick-access">
           <button></button><button></button><button></button><button></button>

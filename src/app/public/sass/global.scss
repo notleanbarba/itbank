@@ -3,26 +3,6 @@ html {
   color: #000000;
   font-family: "roboto mono", monospace, sans-serif;
   background-color: #f8f9fa;
-
-  @media (min-width: 640px) {
-    font-size: 20px;
-  }
-
-  @media (min-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 16px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1536px) {
-    font-size: 20px;
-  }
 }
 
 body {
@@ -135,42 +115,67 @@ header > h1 {
     }
   }
 
-  .account-card {
+  .cards-group {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    width: 20em;
-    height: min-content;
-    padding: 1em;
-    border-radius: 15px;
-    box-shadow:
-      0 4px 8px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    gap: 1em;
 
-    .account-number {
-      margin: 0.1em 0;
-      font-size: 0.9em;
-      color: lighten($color: #000000, $amount: 50%);
-    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      width: 20em;
+      height: min-content;
+      padding: 1em;
+      border-radius: 15px;
+      box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    .account-balance {
-      margin: 0.7em 0;
-      font-size: 1.2em;
-      font-weight: 450;
+      .account-number {
+        margin: 0.1em 0;
+        font-size: 0.9em;
+        color: lighten($color: #000000, $amount: 50%);
+      }
 
-      .balance-symbol {
-        font-size: 1.12em;
-        margin-right: 0.05em;
+      .account-balance {
+        margin: 0.7em 0;
+        font-size: 1.2em;
+        font-weight: 450;
+
+        .balance-symbol {
+          font-size: 1.12em;
+          margin-right: 0.05em;
+        }
+      }
+
+      button {
+        width: min-content;
+        text-align: left;
+        cursor: pointer;
+        text-wrap: nowrap;
       }
     }
 
-    button {
-      width: min-content;
-      text-align: left;
-      cursor: pointer;
-      text-wrap: nowrap;
+    .card.debit {
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(32, 32, 32);
+      width: 20em;
+      height: min-content;
+      padding: 1em;
+      margin-top: 1em;
+      border-radius: 15px;
+      box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: white;
+
+      span {
+        padding-bottom: 1em;
+      }
     }
-}
+  }
 
   .quick-access {
     display: flex;
@@ -198,13 +203,12 @@ header > h1 {
     > * {
       grid-column-start: 2;
     }
-
   }
 
   .summary-menu {
     grid-column: span 3;
     grid-auto-flow: column;
-    background: #C2CDD0;
+    background: #c2cdd0;
     height: min-content;
 
     .menu {
@@ -219,7 +223,8 @@ header > h1 {
         height: 60%;
         border-radius: 7px;
         border: black 1.3px solid;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        box-shadow:
+          0 4px 8px 0 rgba(0, 0, 0, 0.2),
           0 6px 20px 0 rgba(0, 0, 0, 0.19);
         display: flex;
         align-items: center;
@@ -322,7 +327,8 @@ header > h1 {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        box-shadow:
+          0 4px 8px 0 rgba(0, 0, 0, 0.2),
           0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
         h2 {
@@ -349,7 +355,8 @@ header > h1 {
         height: 20vh;
         text-align: center;
         align-content: center;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        box-shadow:
+          0 4px 8px 0 rgba(0, 0, 0, 0.2),
           0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
     }
@@ -359,7 +366,8 @@ header > h1 {
       font-size: 0.9em;
       width: 100%;
       margin-bottom: 2em;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+      box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
       th,

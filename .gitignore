@@ -1,4 +1,4 @@
 package-lock.json
 node_modules
-src/app/public/sass/*
+src/app/public/sass/*.css*
 .env
