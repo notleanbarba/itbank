@@ -1,4 +1,4 @@
-@media(max-width:640px){  
+@media(min-width:300px){  
   .cards-group .card{
     width: 6em;
   }
@@ -28,8 +28,34 @@
     display: flex;
   }
   .welcome-message {
-    font-size: 2em;
+    font-size: 3em;
     margin-top: 1em;
+  }
+  main {
+    margin-top: 50px;
+  }
+
+  .caja__trasera {
+    max-width: 350px;
+    height: 300px;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .caja__trasera div {
+    margin: 0px;
+    position: absolute;
+  }
+
+  /*form responsive*/
+  .contenedor__login-register {
+    top: -10px;
+    left: -5px;
+    margin: auto;
+  }
+
+  .contenedor__login-register form {
+    position: relative;
   }
 }
 
@@ -37,7 +63,10 @@
   html {
     font-size: 16px;
   }
-
+  .welcome-message {
+    font-size: 2em;
+    margin-top: 1em;
+  }
   .content.main .cards-group {
     flex-direction: row;
   }

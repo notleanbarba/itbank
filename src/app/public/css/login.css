@@ -33,7 +33,7 @@ header {
 }
 
 header > img {
-  width: 90px;
+  width: 50px;
   height: 100%;
 }
 
@@ -243,40 +243,3 @@ footer {
 }
 
 /* Hasta acá va el footer (Pie de pag) */
-
-/*responsive design*/
-
-@media screen and (max-width: 850px) {
-  main {
-    margin-top: 50px;
-  }
-
-  .caja__trasera {
-    max-width: 350px;
-    height: 300px;
-    flex-direction: column;
-    margin: auto;
-  }
-
-  .caja__trasera div {
-    margin: 0px;
-    position: absolute;
-  }
-
-  /*form responsive*/
-  .contenedor__login-register {
-    top: -10px;
-    left: -5px;
-    margin: auto;
-  }
-
-  .contenedor__login-register form {
-    position: relative;
-  }
-}
-
-@media (max-width:360px) {
-  .footer-content{
-    display: block;
-  }
-}
