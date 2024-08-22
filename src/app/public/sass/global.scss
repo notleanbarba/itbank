@@ -11,22 +11,90 @@ body {
   min-height: 100vh;
 }
 
+/*Pie de pagina que va para todos los index*/
 footer {
+  color: white;
+  text-decoration: none;
   grid-column: span 2;
   background-color: #222222;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  padding: 1em 4em 0;
+  margin: auto;
+  padding: 1em 4em 1em;
   box-sizing: border-box;
 }
 
-footer,
-footer a {
-  color: white;
-  text-decoration: none;
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5em;
 }
+
+.footer-content .company,
+.footer-content .contact-info,
+.footer-content .newsletter {
+  width: 30%;
+}
+
+.company h1 {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  font-weight: bold;
+  gap: 2;
+}
+
+.contact-info h1 {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.newsletter h1 {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+  font-weight: bold;
+}
+
+.footer-content ul,
+.footer-content p {
+  font-size: 1em;
+  margin: 0.5em 0;
+}
+
+.newsletter-input {
+  margin-top: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-input input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 5px;
+  margin-right: 0.5em;
+}
+
+.submit-button {
+  width: 50px;
+  height: 50px;
+  background-color: #7c3aed; /* Color del botón */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 1em;
+  text-align: center;
+  font-size: 0.875em;
+}
+
+/* Hasta acá va el footer (Pie de pag) */
 
 header {
   grid-column: span 2;
