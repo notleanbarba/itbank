@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Argentarius</title>
-    <link rel="stylesheet" href="./public/css/login.css" />
-    <link rel="stylesheet" href="./public/sass/responsive.css"/>
-    <link rel="icon" type="image/x-icon" href="./public/logoArgentarius.png">
+    <link rel="stylesheet" href="./public/css/reset.css" />
+    <link rel="stylesheet" href="./public/sass/login.css" />
+    <link rel="stylesheet" href="./public/sass/responsive.css" />
+    <link rel="icon" type="image/x-icon" href="./public/logoArgentarius.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +18,12 @@
   <body>
     <header>
       <img src="./public/logoArgentarius.png" alt="Logo de Argentarius" />
-      <img src="./public/logoITBA.png" alt="Logo de ITBA" width="90px" height="50" />
+      <img
+        src="./public/logoITBA.png"
+        alt="Logo de ITBA"
+        width="90px"
+        height="50"
+      />
     </header>
     <main>
       <div class="contendor__todo">
@@ -36,10 +42,13 @@
         <!--Formulario de login y registro-->
         <div class="contenedor__login-register">
           <!--Login-->
-          <form id="loginForm" class="formulario__login" action="./home"> <!--SEBA.21/8/2024 le quite el /home y le defino un id para luego tomarlo de JS y realizar acciones-->
+          <form id="loginForm" class="formulario__login" action="./home">
+            <!--SEBA.21/8/2024 le quite el /home y le defino un id para luego tomarlo de JS y realizar acciones-->
             <h2>Iniciar sesión</h2>
-            <input type="text" id="email" placeholder="Correo electronico" /> <!--SEBA.21/8/2024 agregue Id a email-->
-            <input type="password" id="password" placeholder="Contraseña" /> <!--SEBA.21/8/2024 agregue id a password-->
+            <input type="text" id="email" placeholder="Correo electronico" />
+            <!--SEBA.21/8/2024 agregue Id a email-->
+            <input type="password" id="password" placeholder="Contraseña" />
+            <!--SEBA.21/8/2024 agregue id a password-->
             <button type="submit">Entrar</button>
           </form>
           <!--Registro-->
@@ -56,34 +65,60 @@
     </main>
     <footer class="footer">
       <div class="footer-content">
-        <div class="company">
-        <h1>Nosotros</h1>
-        <ul>
-          <li>¿Quienes somos?</li>
-          <li>FAQ</li>
-          <li>Contacto</li>
-        </ul>
-      </div>
-      <div class="contact-info">
-        <h1>Información de contacto</h1>
-        <ul>
-          <li>Dirección:</li>
-          <p>Calle falsa 1234</p>
-          <li>Email:</li>
-          <p>itbank@corpo.com</p>
-          <li>Número:</li>
-          <p>+54 9 123456789</p>
-        </ul>
-      </div>
-      <div class="newsletter">
-        <h1>Newsletter</h1>
-        <p>Suscribite a nuestro Newsletter para recibir ofertas especiales</p>
-        <div class="newsletter-input">
-          <input tipe="text" placeholder="Tu email" />
-          <div class="submit-button"></div>
+        <div>
+          <h3>Nosotros</h3>
+          <a href="../about-us">Sobre nosotros</a>
+          <a href="../faq">FAQ</a>
+          <button
+            type="button"
+            onclick="document.getElementById('contact-modal').classList.add('open')"
+          >
+            Contacto
+          </button>
+          <div class="modal" id="contact-modal">
+            <div class="modal-dialog" role="dialog">
+              <button
+                type="button"
+                class="modal-close"
+                onclick="document.getElementById('contact-modal').classList.remove('open')"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <h3>Información de contacto</h3>
+              <ul>
+                <li>Dirección:<span>Calle falsa 1234</span></li>
+                <li>Email:<span>itbank@corpo.com</span></li>
+                <li>Número:<span>+54 9 123456789</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="footer-contact">
+          <h3>Contacto</h3>
+          <address>
+            <ul>
+              <li>Dirección: <span>Calle falsa 1234</span></li>
+              <li>Email: <span>itbank@corpo.com</span></li>
+              <li>Número: <span>+54 9 123456789</span></li>
+            </ul>
+          </address>
+        </div>
+        <div class="newsletter">
+          <h3>Newsletter</h3>
+          <p>Suscribite a nuestro Newsletter para recibir ofertas especiales</p>
+          <form class="newsletter-input">
+            <input
+              type="email"
+              name="newsletter_email"
+              placeholder="Tu email"
+              required
+            />
+            <button type="submit" class="submit-button">
+              <i class="fa-solid fa-newspaper"></i>
+            </button>
+          </form>
         </div>
       </div>
-    </div>
     </footer>
   </body>
   <script src="./public/js/script.js"></script>
