@@ -36,9 +36,11 @@ jobs:
           source: |
             ./src/app/public/sass/global.scss
             ./src/app/public/sass/responsive.scss
+            ./src/app/public/sass/login.scss
           destination: |
             /tmp/assets/css/global.css
             /tmp/assets/css/responsive.css
+            /tmp/assets/css/login.css
       - name: Upload Complied CSS
         uses: actions/upload-artifact@v1.0.0
         with:
