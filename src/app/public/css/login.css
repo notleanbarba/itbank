@@ -5,7 +5,10 @@
   text-decoration: none;
   font-family: "roboto mono", "Helvetica Neue", sans-serif;
 }
-
+body , html{
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   margin: 0;
   height: 100%;
@@ -269,5 +272,11 @@ footer {
 
   .contenedor__login-register form {
     position: relative;
+  }
+}
+
+@media (max-width:360px) {
+  .footer-content{
+    display: block;
   }
 }
