@@ -15,7 +15,7 @@ document.getElementById("loginForm").onsubmit = function(event) {
     }
     // Verifica si el email y la contraseña son correctos
     else if (email === validEmail && password === validPassword) {
-        window.location.href = "/home"; // Redirige a la página de inicio
+        window.location.href = "./home"; // Redirige a la página de inicio
     }
     // Si los datos que carga formulario no son correctos
     else {
