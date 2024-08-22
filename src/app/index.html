@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login y register</title>
     <link rel="stylesheet" href="./public/css/login.css" />
-    <link rel="stylesheet" href="./public/sass/responsive.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,6 +13,10 @@
     />
   </head>
   <body>
+    <header>
+      <img src="../public/logoArgentarius.png" alt="Logo de Argentarius" />
+      <img src="../public/logoITBA.png" alt="Logo de ITBA" />
+    </header>
     <main>
       <div class="contendor__todo">
         <div class="caja__trasera">
@@ -49,8 +52,38 @@
         </div>
       </div>
     </main>
-    <script src="./public/js/script.js"></script>
-
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="company">
+        <h1>Nosotros</h1>
+        <ul>
+          <li>¿Quienes somos?</li>
+          <li>FAQ</li>
+          <li>Contacto</li>
+        </ul>
+      </div>
+      <div class="contact-info">
+        <h1>Información de contacto</h1>
+        <ul>
+          <li>Dirección:</li>
+          <p>Calle falsa 1234</p>
+          <li>Email:</li>
+          <p>itbank@corpo.com</p>
+          <li>Número:</li>
+          <p>+54 9 123456789</p>
+        </ul>
+      </div>
+      <div class="newsletter">
+        <h1>Newsletter</h1>
+        <p>Suscribite a nuestro Newsletter para recibir ofertas especiales</p>
+        <div class="newsletter-input">
+          <input tipe="text" placeholder="Tu email" />
+          <div class="submit-button"></div>
+        </div>
+      </div>
+    </div>
+    </footer>
   </body>
-  <script src="./loginvalidation.js"></script> <!--SEBA.21/8/2024 agregue conexion con js-->
+  <script src="./public/js/script.js"></script>
+  <script src="./public/js/loginvalidation.js"></script>
 </html>

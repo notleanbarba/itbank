@@ -1,6 +1,4 @@
-document
-  .getElementById("btn__iniciar-sesion")
-  .addEventListener("click", iniciarSesion);
+document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
 window.addEventListener("resize", anchoPage);
 
@@ -11,6 +9,15 @@ var contenedor_login_register = document.querySelector(
 );
 var caja__trasera_login = document.querySelector(".caja__trasera_login");
 var caja__trasera_register = document.querySelector(".caja__trasera_register");
+
+//Background
+const images = [
+  './public/login1.jpg',
+  './public/login2.jpg',
+  './public/login3.jpeg'
+];
+
+let currentIndex = 0;
 
 //Las funciones cambian la opacidad del texto de registro y de login
 
@@ -62,3 +69,12 @@ function register() {
     caja__trasera_login.style.opacity = "1";
   }
 }
+
+//Background
+function changeBackground() {
+  document.body.style.backgroundImage = `url(${images[currentIndex]})`;
+  currentIndex = (currentIndex + 1) % images.length;
+}
+setInterval(changeBackground, 10000);
+
+changeBackground();
