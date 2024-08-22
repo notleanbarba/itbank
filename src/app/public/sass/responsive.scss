@@ -14,6 +14,16 @@
   footer {
     font-size: 0.8rem;
   }
+
+  .content.secondary {
+    .page-data {
+      .assets-summary {
+        table {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) {
@@ -116,10 +126,6 @@
 }
 
 @media screen and (max-width: 850px) {
-  main {
-    margin-top: 50px;
-  }
-
   .caja__trasera {
     max-width: 350px;
     height: 300px;
