@@ -2,13 +2,18 @@ html {
   font-size: 16px;
   color: #000000;
   font-family: "roboto mono", monospace, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #F8F9FA;
 }
 
 body {
   display: grid;
   grid: 7% auto 7% / 1fr;
   min-height: 100vh;
+}
+
+body , html{
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /*Pie de pagina que va para todos los index*/
@@ -171,11 +176,11 @@ header > h1 {
 
   .welcome-message span {
     margin-top: 5em;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   .welcome-message h2 {
-    font-size: 1em;
-    margin-bottom: 1em;
+    font-size: 0.5em;
+    margin-bottom: 0.5em;
   }
   .main-section {
     h2 {
@@ -277,7 +282,7 @@ header > h1 {
   .summary-menu {
     grid-column: span 3;
     grid-auto-flow: column;
-    background: #c2cdd0;
+    background: #9AA7BF;
     height: min-content;
 
     .menu {
@@ -365,7 +370,7 @@ header > h1 {
 
       .tag {
         padding: 1.6em 2em;
-        background-color: #4f5457;
+        background-color: #4F5457;
         font-size: 0.7em;
         font-weight: 600;
         border-radius: 10px 10px 0 0;
@@ -373,7 +378,7 @@ header > h1 {
         text-wrap: nowrap;
 
         &.active {
-          background-color: white;
+          background-color: #FFFFFF;
           color: black;
         }
       }

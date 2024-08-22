@@ -1,8 +1,18 @@
+@media(max-width:640px){  
+  .cards-group .card{
+    width: 6em;
+  }
+  .footer-content{
+    flex-direction: column;
+    display: block;
+  }  
+}
+
 @media (min-width: 640px) {
   html {
     font-size: 21px;
   }
-
+  
   .welcome-message {
     font-size: 2em;
     margin-top: 1em;
@@ -12,6 +22,14 @@
 @media (min-width: 768px) {
   html {
     font-size: 14px;
+  }
+  .footer-content{
+    flex-direction: row;
+    display: flex;
+  }
+  .welcome-message {
+    font-size: 2em;
+    margin-top: 1em;
   }
 }
 

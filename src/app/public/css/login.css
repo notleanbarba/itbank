@@ -33,7 +33,7 @@ header {
 }
 
 header > img {
-  width: 95px;
+  width: 90px;
   height: 100%;
 }
 
@@ -187,27 +187,27 @@ footer {
 }
 
 .company h1 {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 1em;
   font-weight: bold;
   gap: 2;
 }
 
 .contact-info h1 {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 1em;
   font-weight: bold;
 }
 
 .newsletter h1 {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 1em;
   font-weight: bold;
 }
 
 .footer-content ul,
 .footer-content p {
-  font-size: 1em;
+  font-size: 0.8em;
   margin: 0.5em 0;
 }
 

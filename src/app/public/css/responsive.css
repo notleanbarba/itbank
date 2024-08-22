@@ -1,17 +1,19 @@
 @media (min-width: 640px) {
     html {
-      font-size: 15px;
+      font-size: 13px;
     }
-  
-    .welcome-message {
-      font-size: 2em;
-      margin-top: 1em;
+    .footer-content{
+      display: block;
     }
   }
   
   @media (min-width: 768px) {
     html {
-      font-size: 14px;
+      font-size: 16px;
+    }
+    .welcome-message {
+      font-size: 2em;
+      margin-top: 1em;
     }
   }
   
@@ -27,7 +29,7 @@
   
   @media (min-width: 1280px) {
     html {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
   
