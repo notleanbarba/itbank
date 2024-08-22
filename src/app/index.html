@@ -30,10 +30,10 @@
         <!--Formulario de login y registro-->
         <div class="contenedor__login-register">
           <!--Login-->
-          <form action="./home" class="formulario__login">
+          <form id="loginForm" class="formulario__login"> <!--SEBA.21/8/2024 le quite el /home y le defino un id para luego tomarlo de JS y realizar acciones-->
             <h2>Iniciar sesión</h2>
-            <input type="text" placeholder="Correo electronico" />
-            <input type="password" placeholder="Contraseña" />
+            <input type="text" id="email" placeholder="Correo electronico" /> <!--SEBA.21/8/2024 agregue Id a email-->
+            <input type="password" id="password" placeholder="Contraseña" /> <!--SEBA.21/8/2024 agregue id a password-->
             <button type="submit">Entrar</button>
           </form>
           <!--Registro-->
@@ -49,5 +49,7 @@
       </div>
     </main>
     <script src="./public/js/script.js"></script>
+
   </body>
+  <script src="./loginvalidation.js"></script> <!--SEBA.21/8/2024 agregue conexion con js-->
 </html>
