@@ -9,16 +9,33 @@ document.getElementById("loginForm").onsubmit = function(event) {
     var validEmail = "devfive@itbank.com";
     var validPassword = "devfive";
 
-    // Valida si campos vacios
+    // Función para mostrar el toast
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type} show`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            document.body.removeChild(toast);
+        }, 3000);
+    }
+
+    // Valida si campos vacíos
     if (email === "" || password === "") {
-        alert("Por favor, complete todos los campos.");
+        showToast("Por favor, completa todos los campos.", "warning");
     }
     // Verifica si el email y la contraseña son correctos
     else if (email === validEmail && password === validPassword) {
-        window.location.href = "./home"; // Redirige a la página de inicio
+        showToast("Inicio de sesión exitoso.", "success");
+        setTimeout(() => {
+            window.location.href = "./home"; // Redirige a la página de inicio
+        }, 1000);
     }
     // Si los datos que carga formulario no son correctos
     else {
-        alert("Usuario o contraseña incorrectos.");
+        showToast("Usuario o contraseña incorrectos.", "error");
     }
 };
+
