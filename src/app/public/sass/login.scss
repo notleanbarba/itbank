@@ -369,3 +369,43 @@ footer {
 .modal.open {
   display: block;
 }
+
+/* styles para los mensajes toast  */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 250px;
+  padding: 15px 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background-color: #4CAF50;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+.toast.warning {
+  background-color: #ff9800;
+}
+
+.toast.info {
+  background-color: #2196F3;
+}
