@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("loginForm");
     const toast = document.getElementById("toast");
+    const emailElement = document.getElementById("email");
+    const passwordElement = document.getElementById("password");
 
     // Función para mostrar el toast con un mensaje específico y tipo (success, error, warning)
     function showToast(message, type = 'warning') {
@@ -31,14 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         // Verifica si el email y la contraseña son correctos
         else if (email === validEmail && password === validPassword) {
-            showToast("Inicio de sesión exitoso.", "success");
             setTimeout(function() {
                 window.location.href = "./home"; // Redirige a la página de inicio
-            }, 1000);
+            }, 500);
+            emailElement.style.border ="1px solid #4CAF50"
+            passwordElement.style.border ="1px solid #4CAF50"
         }
         // Si los datos son incorrectos
         else {
             showToast("Usuario o contraseña incorrectos.", "error");
+            emailElement.style.border ="1px solid #f44336"
+            passwordElement.style.border ="1px solid #f44336"
         }
     };
 });
