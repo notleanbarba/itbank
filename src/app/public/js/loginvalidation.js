@@ -1,24 +1,44 @@
-document.getElementById("loginForm").onsubmit = function(event) {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente
+document.addEventListener("DOMContentLoaded", function() {
+    const loginForm = document.getElementById("loginForm");
+    const toast = document.getElementById("toast");
 
-    // Toma la entrada de email y password FE
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    // Función para mostrar el toast con un mensaje específico y tipo (success, error, warning)
+    function showToast(message, type = 'warning') {
+        toast.textContent = message; // Establece el mensaje del toast
+        toast.className = `toast show ${type}`; // Añade las clases necesarias para mostrar el toast
 
-    // Valores hardcodeados
-    var validEmail = "devfive@itbank.com";
-    var validPassword = "devfive";
+        // Después de 3 segundos, oculta el toast
+        setTimeout(function() {
+            toast.className = 'toast'; // Elimina las clases para ocultar el toast
+        }, 3000);
+    }
 
-    // Valida si campos vacios
-    if (email === "" || password === "") {
-        alert("Por favor, complete todos los campos.");
-    }
-    // Verifica si el email y la contraseña son correctos
-    else if (email === validEmail && password === validPassword) {
-        window.location.href = "./home"; // Redirige a la página de inicio
-    }
-    // Si los datos que carga formulario no son correctos
-    else {
-        alert("Usuario o contraseña incorrectos.");
-    }
-};
+    // Maneja el evento de envío del formulario
+    loginForm.onsubmit = function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+        // Toma la entrada de email y password
+        var email = document.getElementById("email").value.trim();
+        var password = document.getElementById("password").value.trim();
+
+        // Valores hardcodeados para la validación
+        var validEmail = "devfive@itbank.com";
+        var validPassword = "devfive";
+
+        // Valida si campos vacíos
+        if (email === "" || password === "") {
+            showToast("Por favor, completa todos los campos.", "warning");
+        }
+        // Verifica si el email y la contraseña son correctos
+        else if (email === validEmail && password === validPassword) {
+            showToast("Inicio de sesión exitoso.", "success");
+            setTimeout(function() {
+                window.location.href = "./home"; // Redirige a la página de inicio
+            }, 1000);
+        }
+        // Si los datos son incorrectos
+        else {
+            showToast("Usuario o contraseña incorrectos.", "error");
+        }
+    };
+});
