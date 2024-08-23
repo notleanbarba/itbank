@@ -21,15 +21,23 @@
   <body>
     <header>
       <button
-        class="navbar-open" aria-label="menú"
+        class="navbar-open"
+        aria-label="menú"
         onclick="document.getElementById('navbar').classList.add('open')"
       >
         <i class="fa-solid fa-bars"></i>MENU
       </button>
       <div class="logoCompleto">
-        <img src="../public/logoCompleto.png" alt="Logo de Argentarius" width="90px" height="50px"/>
+        <img
+          src="../public/logoCompleto.png"
+          alt="Logo de Argentarius"
+          width="90px"
+          height="50px"
+        />
       </div>
-      <img src="../public/logoITBA.png" alt="Logo de ITBA" />
+      <button type="button" class="user-open" aria-label="Usuario">
+        <i class="fa-solid fa-user fa-2xl"></i>
+      </button>
     </header>
     <nav class="navbar" id="navbar">
       <button
