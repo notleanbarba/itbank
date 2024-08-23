@@ -1,4 +1,4 @@
-<html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,7 @@
   <body>
     <header>
       <button
-        class="navbar-open"
+        class="navbar-open" aria-label="menú"
         onclick="document.getElementById('navbar').classList.add('open')"
       >
         <i class="fa-solid fa-bars"></i>MENU
@@ -35,6 +35,7 @@
       <button
         type="button"
         class="navbar-close"
+        aria-label="menú"
         onclick="document.getElementById('navbar').classList.remove('open')"
       >
         <i class="fa-solid fa-xmark"></i>
@@ -53,6 +54,7 @@
           <button
             type="button"
             class="menu-selector"
+            aria-label="Operaciones"
             onclick="if (document.getElementById('menu-list').style.display === 'none') return document.getElementById('menu-list').style.display = 'block'; return document.getElementById('menu-list').style.display = 'none'"
           >
             <span>Consultas y Operaciones </span
@@ -125,7 +127,7 @@
               placeholder="Tu email"
               required
             />
-            <button type="submit" class="submit-button">
+            <button type="submit" class="submit-button" aria-label="enviar">
               <i class="fa-solid fa-newspaper"></i>
             </button>
           </form>

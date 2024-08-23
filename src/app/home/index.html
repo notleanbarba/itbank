@@ -1,4 +1,4 @@
-<html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +33,7 @@
           height="50px"
         />
       </div>
-      <button type="button" class="user-open">
+      <button type="button" class="user-open" aria-label="Usuario">
         <i class="fa-solid fa-user fa-2xl"></i>
       </button>
     </header>
@@ -41,6 +41,7 @@
       <button
         type="button"
         class="navbar-close"
+        aria-label="menú"
         onclick="document.getElementById('navbar').classList.remove('open')"
       >
         <i class="fa-solid fa-xmark"></i>
@@ -82,7 +83,7 @@
         </div>
         <h2>Acceso rápido</h2>
         <div class="quick-access">
-          <button></button><button></button><button></button><button></button>
+          <button aria-label="enviar"></button><button aria-label="enviar"></button><button aria-label="enviar"></button><button aria-label="enviar"></button>
         </div>
       </section>
     </section>
@@ -136,7 +137,7 @@
               placeholder="Tu email"
               required
             />
-            <button type="submit" class="submit-button">
+            <button type="submit" class="submit-button" aria-label="enviar">
               <i class="fa-solid fa-newspaper"></i>
             </button>
           </form>
