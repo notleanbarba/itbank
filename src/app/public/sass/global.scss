@@ -18,6 +18,17 @@ html {
   overflow-x: hidden;
 }
 
+.fade {
+  opacity: 1;
+  transform: translateX(0); 
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
 /*Pie de pagina que va para todos los index*/
 footer {
   color: white;
@@ -218,7 +229,7 @@ header {
           margin-top: 0.2rem;
           display: block;
           font-size: 0.9em;
-          color: lighten($color: #000000, $amount: 20%);
+          color: lighten($color: #000000, $amount: 40%);
         }
 
         .account-balance {
