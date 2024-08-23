@@ -1,23 +1,28 @@
 const currenciesList = ["ARS", "USD", "CLP", "BRL", "UYU"];
 
 const createCurrenciesList = (defaultCurrency = "ARS") => {
-  let tmp = "";
+  const options = document.createDocumentFragment();
 
   currenciesList.forEach((currency) => {
-    if (currency === defaultCurrency)
-      return (tmp = tmp.concat(
-        `<option selected value="${currency}">${currency}</option>`,
-      ));
-    return (tmp = tmp.concat(
-      `<option value="${currency}">${currency}</option>`,
-    ));
+    const option = document.createElement("option");
+    option.value = currency;
+    option.textContent = currency;
+    if (currency === defaultCurrency) {
+      option.selected = true;
+      return options.appendChild(option);
+    }
+    return options.appendChild(option);
   });
 
-  return tmp;
+  return options;
 };
 
-document.getElementById("from_currency").innerHTML = createCurrenciesList();
-document.getElementById("to_currency").innerHTML = createCurrenciesList("USD");
+document
+  .getElementById("from_currency")
+  .replaceChildren(createCurrenciesList("ARS"));
+document
+  .getElementById("to_currency")
+  .replaceChildren(createCurrenciesList("USD"));
 
 const getCurrencies = async () => {
   const tmp = await Promise.all(
