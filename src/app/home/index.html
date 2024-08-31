@@ -17,13 +17,12 @@
     <script defer src="../public/fontawesome/js/fontawesome.js"></script>
     <script defer src="../public/fontawesome/js/solid.js"></script>
     <script type="module" src="../public/js/fade.js"></script>
+    <script type="module" src="../public/js/navbar.js"></script>
+    <script type="module" src="../public/js/modal.js"></script>
   </head>
   <body class="fade">
     <header>
-      <button
-        class="navbar-open"
-        onclick="document.getElementById('navbar').classList.add('open')"
-      >
+      <button class="navbar-open" id="open-menu">
         <i class="fa-solid fa-bars"></i>MENU
       </button>
       <div class="logoCompleto">
@@ -40,19 +39,20 @@
     </header>
     <nav class="navbar" id="navbar">
       <button
+        id="close-menu"
         type="button"
         class="navbar-close"
         aria-label="menú"
-        onclick="document.getElementById('navbar').classList.remove('open')"
+        tabindex="-1"
       >
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <a href="../home">Inicio</a>
-      <a href="../cuentas">Cuentas</a>
-      <a href="../transferencias">Transferencias</a>
-      <a href="../pagos">Pagos</a>
-      <a href="../inversiones">Inversiones</a>
-      <a href="../prestamos">Préstamos</a>
+      <a href="../home" tabindex="-1">Inicio</a>
+      <a href="../cuentas" tabindex="-1">Cuentas</a>
+      <a href="../transferencias" tabindex="-1">Transferencias</a>
+      <a href="../pagos" tabindex="-1">Pagos</a>
+      <a href="../inversiones" tabindex="-1">Inversiones</a>
+      <a href="../prestamos" tabindex="-1">Préstamos</a>
     </nav>
     <section class="content main">
       <div class="welcome-message">
@@ -84,7 +84,10 @@
         </div>
         <h2>Acceso rápido</h2>
         <div class="quick-access">
-          <button aria-label="enviar"></button><button aria-label="enviar"></button><button aria-label="enviar"></button><button aria-label="enviar"></button>
+          <button aria-label="enviar"></button
+          ><button aria-label="enviar"></button
+          ><button aria-label="enviar"></button
+          ><button aria-label="enviar"></button>
         </div>
       </section>
     </section>
@@ -94,19 +97,12 @@
           <h3>Nosotros</h3>
           <a href="../about-us">Sobre nosotros</a>
           <a href="../faq">FAQ</a>
-          <button
-            type="button"
-            onclick="document.getElementById('contact-modal').classList.add('open')"
-          >
+          <button type="button" class="modal-open" name="contact-modal">
             Contacto
           </button>
-          <div class="modal" id="contact-modal">
+          <dialog class="modal" id="contact-modal">
             <div class="modal-dialog" role="dialog">
-              <button
-                type="button"
-                class="modal-close"
-                onclick="document.getElementById('contact-modal').classList.remove('open')"
-              >
+              <button type="button" class="modal-close" tabindex="-1">
                 <i class="fa-solid fa-xmark"></i>
               </button>
               <h3>Información de contacto</h3>
@@ -116,7 +112,7 @@
                 <li>Número:<span>+54 9 123456789</span></li>
               </ul>
             </div>
-          </div>
+          </dialog>
         </div>
         <div id="footer-contact">
           <h3>Contacto</h3>
@@ -136,6 +132,7 @@
               type="email"
               name="newsletter_email"
               placeholder="Tu email"
+              aria-label="Email"
               required
             />
             <button type="submit" class="submit-button" aria-label="enviar">
