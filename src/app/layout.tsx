@@ -1,14 +1,25 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { createBrowserRouter, Route, RouterProvider } from "react-router-dom";
+
 import "./global.scss";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Homebankinglayout from "./homebanking/layout";
 
-createRoot(document.getElementById("root")!).render(<StrictMode>
-    <Router>
-    <Routes>
-    <Route path='/homebanking/*' element={<Homebankinglayout />}/>
-    </Routes>
-  </Router></StrictMode>);
+import HomebankingLayout from "./homebanking/layout.tsx";
+import Login from "./page.tsx";
 
-    
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "homebanking/*",
+    element: <HomebankingLayout />,
+  },
+]);
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
+);
