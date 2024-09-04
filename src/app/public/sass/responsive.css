@@ -1,0 +1,111 @@
+@media (min-width: 640px) {
+  html {
+    font-size: 21px;
+  }
+  .content.main .main-section .cards-group {
+    flex-direction: row;
+  }
+  footer {
+    font-size: 0.8rem;
+  }
+  .content.secondary .page-data .assets-summary table {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  .content.main {
+    padding: 4rem 10rem;
+  }
+  .content.main .welcome-message {
+    margin-bottom: 2rem;
+  }
+  .content.secondary > * {
+    display: grid;
+    grid: 1fr/20% 1fr 20%;
+    grid-column: span 3;
+    row-gap: 1em;
+  }
+  .content.secondary > * > * {
+    grid-column-start: 2;
+  }
+  .content.secondary .summary-menu .menu {
+    margin: 0;
+  }
+  .content.secondary .summary-menu .menu .menu-selector {
+    width: 30%;
+    padding: revert;
+  }
+  .content.secondary .summary-menu .menu .menu-selector span {
+    display: block;
+  }
+  .content.secondary .summary-menu .summary {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    font-size: revert;
+    margin: 0;
+  }
+  .content.secondary .summary-menu .summary .account-info {
+    width: 30%;
+  }
+  .content.secondary .summary-menu .tag-group {
+    padding: revert;
+  }
+  .content.secondary .summary-menu .tag-group .tag {
+    padding: 1.2rem 1.6rem;
+    width: revert;
+    text-wrap: nowrap;
+  }
+  .content.secondary .page-data {
+    margin: 2rem 0;
+  }
+  footer {
+    font-size: 1rem;
+  }
+  footer .footer-content #footer-contact {
+    display: block;
+  }
+  footer .footer-content button {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1280px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1536px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .caja__trasera {
+    max-width: 350px;
+    height: 300px;
+    flex-direction: column;
+    margin: auto;
+  }
+  .caja__trasera div {
+    margin: 0px;
+    position: absolute;
+  }
+  /*form responsive*/
+  .contenedor__login-register {
+    top: -10px;
+    left: -5px;
+    margin: auto;
+  }
+  .contenedor__login-register form {
+    position: relative;
+  }
+}
+
+/*# sourceMappingURL=responsive.css.map */
