@@ -9,7 +9,7 @@ import Transferencias from "./transferencias/page.tsx";
 export default function HomebankingLayout() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home/>} />
       <Route path="cuentas" element={<Cuentas />} />
       <Route path="inversiones" element={<Inversiones />} />
       <Route path="pagos" element={<Pagos />} />

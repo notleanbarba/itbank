@@ -2,22 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500;700&display=swap');
+
 html {
   font-size: 16px;
   color: #000000;
-  font-family: "roboto mono", monospace, sans-serif;
   background-color: #f8f9fa;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 body,
 html {
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -135,10 +136,9 @@ header {
   cursor: pointer;
   display: flex;
   align-items: center;
-  border: black solid 1.2px;
+  border: black solid 1px;
   border-radius: 10rem;
   height: 90%;
-  padding: 0 0.5em;
   column-gap: 0.5em;
   font-size: 1.1em;
 }
