@@ -47,7 +47,7 @@ const Login: React.FC = () => {
       setEmailBorder('1px solid #4CAF50');
       setPasswordBorder('1px solid #4CAF50');
       setTimeout(() => {
-        navigate('/home'); // Redirigirte al home
+        navigate('/homebanking'); // Redirigirte al home
       }, 500);
     } else {
       showToast('Usuario o contraseña incorrectos.', 'error');
