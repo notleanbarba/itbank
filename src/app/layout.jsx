@@ -13,42 +13,48 @@ import Pagos from "./homebanking/pagos/page.tsx";
 import Prestamos from "./homebanking/prestamos/page.tsx";
 import Transferencias from "./homebanking/transferencias/page.tsx";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      index: true,
+      element: <Login />,
+    },
+    {
+      path: "homebanking",
+      element: <HomebankingLayout />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "cuentas",
+          element: <Cuentas />,
+        },
+        {
+          path: "inversiones",
+          element: <Inversiones />,
+        },
+        {
+          path: "pagos",
+          element: <Pagos />,
+        },
+        {
+          path: "prestamos",
+          element: <Prestamos />,
+        },
+        {
+          path: "transferencias",
+          element: <Transferencias />,
+        },
+      ],
+    },
+  ],
   {
     path: "/",
     element: <Login/>,
   },
-  {
-    path: "homebanking",
-    element: <HomebankingLayout />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "cuentas",
-        element: <Cuentas />,
-      },
-      {
-        path: "inversiones",
-        element: <Inversiones />,
-      },
-      {
-        path: "pagos",
-        element: <Pagos />,
-      },
-      {
-        path: "prestamos",
-        element: <Prestamos />,
-      },
-      {
-        path: "transferencias",
-        element: <Transferencias />,
-      },
-    ],
-  },
-]);
+);
 
 createRoot(
   document.getElementById("root") ??
