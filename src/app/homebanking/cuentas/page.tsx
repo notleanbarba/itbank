@@ -9,14 +9,14 @@ export default function Cuentas() {
           Cuenta 123-45678/1
         </div>
         <button
-          aria-label="operaciones"
+          aria-label= "operaciones"
           className="menu-selector"
           id="menu-selector"
           type="button"
         >
-          <span>
+
             Consultas y Operaciones{' '}
-          </span>
+
           <i className="fa-solid fa-chevron-down" />
         </button>
         <nav
@@ -89,119 +89,7 @@ export default function Cuentas() {
       </main>
     </div>
   </section>
-  <footer className="footer">
-    <div className="footer-content">
-      <div>
-        <h3>
-          Nosotros
-        </h3>
-        <a href="../about-us">
-          Sobre nosotros
-        </a>
-        <a href="../faq">
-          FAQ
-        </a>
-        <button
-          className="modal-open"
-          name="contact-modal"
-          type="button"
-        >
-          Contacto
-        </button>
-        <dialog
-          className="modal"
-          id="contact-modal"
-        >
-          <div
-            className="modal-dialog"
-            role="dialog"
-          >
-            <button
-              className="modal-close"
-              tabIndex={-1}
-              type="button"
-            >
-              <i className="fa-solid fa-xmark" />
-            </button>
-            <h3>
-              Información de contacto
-            </h3>
-            <ul>
-              <li>
-                Dirección:
-                <span>
-                  Calle falsa 1234
-                </span>
-              </li>
-              <li>
-                Email:
-                <span>
-                  itbank@corpo.com
-                </span>
-              </li>
-              <li>
-                Número:
-                <span>
-                  +54 9 123456789
-                </span>
-              </li>
-            </ul>
-          </div>
-        </dialog>
-      </div>
-      <div id="footer-contact">
-        <h3>
-          Contacto
-        </h3>
-        <address>
-          <ul>
-            <li>
-              Dirección:{' '}
-              <span>
-                Calle falsa 1234
-              </span>
-            </li>
-            <li>
-              Email:{' '}
-              <span>
-                itbank@corpo.com
-              </span>
-            </li>
-            <li>
-              Número:{' '}
-              <span>
-                +54 9 123456789
-              </span>
-            </li>
-          </ul>
-        </address>
-      </div>
-      <div className="newsletter">
-        <h3>
-          Newsletter
-        </h3>
-        <p>
-          Suscribite a nuestro Newsletter para recibir ofertas especiales
-        </p>
-        <form className="newsletter-input">
-          <input
-            aria-label="Email"
-            name="newsletter_email"
-            placeholder="Tu email"
-            required
-            type="email"
-          />
-          <button
-            aria-label="enviar"
-            className="submit-button"
-            type="submit"
-          >
-            <i className="fa-solid fa-newspaper" />
-          </button>
-        </form>
-      </div>
-    </div>
-  </footer>
+  
   <dialog
     className="modal"
     id="exchange-modal"
