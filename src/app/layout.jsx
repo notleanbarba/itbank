@@ -10,7 +10,7 @@ import Login from "./page.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <Login/>,
   },
   {
     path: "homebanking/*",

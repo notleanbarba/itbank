@@ -1,3 +1,4 @@
-export default function Login() {
-  return <>Login</>;
+export function Login() {
+  return
+  <Login/>;
 }
