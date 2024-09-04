@@ -4,7 +4,7 @@ import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "itbank",
+  base: "https://notleanbarba.github.io/itbank",
   plugins: [react()],
   css: {
     postcss: {
