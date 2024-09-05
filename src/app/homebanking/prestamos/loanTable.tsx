@@ -1,5 +1,4 @@
 import React from 'react';
-import './LoanTable.scss'; // Asegúrate de tener esta hoja de estilos
 
 const LoanTable: React.FC = () => {
   return (

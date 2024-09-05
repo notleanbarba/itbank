@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./global.scss";
+import "./assets/styles/sass/loanTable.scss"
 
 import Login from "./page.tsx";
 import HomebankingLayout from "./homebanking/layout.tsx";
