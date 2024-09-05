@@ -50,7 +50,7 @@ const Prestamos: React.FC = () => {
         throw new Error('Function not implemented.');
       } } />
       
-      <section className="content secondary p-6">
+      <section className="content secondary p-6 bg-white">
         <div className="summary-menu">
           <div className="menu">
             <div className="content-title">Préstamos</div>

@@ -8,7 +8,7 @@ export default function Cuentas() {
        <Encabezado toggleNavbar={() => { } } toggleModal={function (): void {
         throw new Error('Function not implemented.');
       } } />
-  <section className="content secondary">
+  <section className="content secondary bg-white">
     <div className="summary-menu">
       <div className="menu">
         <div className="content-title">

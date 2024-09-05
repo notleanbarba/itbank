@@ -51,9 +51,8 @@ const router = createBrowserRouter(
     },
   ],
   {
-    path: "/",
-    element: <Login/>,
-  },
+    basename: import.meta.env.BASE_URL,
+    },
 );
 
 createRoot(
