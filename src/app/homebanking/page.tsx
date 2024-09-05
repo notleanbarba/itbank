@@ -6,8 +6,9 @@ import '../assets/fontawesome/js/fontawesome'
 import '../assets/fontawesome/js/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash} from '@fortawesome/free-regular-svg-icons';
-import Encabezado from './header'
-import Footer from './footer'
+import Encabezado from './header.tsx'
+import Footer from './footer.tsx'
+
 
 import '../global.scss'
 

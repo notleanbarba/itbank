@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect} from "react";
 import {NavLink} from "react-router-dom";
-
-import DropdownMenu from "./menu";
+import DropdownMenu from "./menu.tsx";
 import { HeaderProps } from "./page";
 import logoCompleto from '../assets/images/logoCompleto.png'
 

@@ -26,7 +26,7 @@ const DropdownMenu: React.FC = () => {
     },[]);
 
     return(
-        <div className='text-black p-2 border border-black rounded-full' ref={dropdownRef}>
+        <div className='text-black p-1 border border-black rounded-full' ref={dropdownRef}>
             <i className="fa-solid fa-bars"></i>
             <button onClick={toggleMenu} 
             className='bg-white px-1 py-1 rounded-md focus:outline-none'
@@ -36,9 +36,9 @@ const DropdownMenu: React.FC = () => {
             {isOpen&& (
                 <div className="absolute left-0 top-0 h-screen bg-white border border-gray-300 rounded-md shadow-lg z-10">
                     <button onClick={toggleMenu}>
-                        <FontAwesomeIcon icon={faXmarkCircle} className='w-5 h-5 m-5'/>
+                        <FontAwesomeIcon icon={faXmarkCircle} className='w-5 h-5 m-4'/>
                     </button>
-                    <NavLink to="/" className="block px-4 py-4 text-black hover:bg-gray-100">
+                    <NavLink to="/homebanking" className="block px-4 py-4 text-black hover:bg-gray-100">
                     Inicio
                     </NavLink>
                     <NavLink to="/cuentas" className="block px-4 py-4 hover:bg-gray-100">
