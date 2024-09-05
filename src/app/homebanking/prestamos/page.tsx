@@ -17,18 +17,23 @@ const Prestamos: React.FC = () => {
   // Simulación del préstamo
   const simulateLoan = () => {
     const monthlyInterest = interestRate / 100 / 12;
-    let payment;
-  
+    let payment = 0;  // Inicializa con un valor por defecto
+
     if (amortizationSystem === "Francés") {
       payment = loanAmount * (monthlyInterest / (1 - Math.pow(1 + monthlyInterest, -loanTerm)));
     } else if (amortizationSystem === "Alemán") {
       const capitalPayment = loanAmount / loanTerm;
-      payment = capitalPayment + (loanAmount * monthlyInterest); 
+      payment = capitalPayment + (loanAmount * monthlyInterest);
     } else if (amortizationSystem === "Bullet") {
-      payment = loanAmount * monthlyInterest; 
+      payment = loanAmount * monthlyInterest;
     }
-  
-    setLoanPayment(payment.toFixed(2));
+
+    // Verifica si payment es un número válido antes de llamarlo con toFixed
+    if (!isNaN(payment)) {
+      setLoanPayment(parseFloat(payment.toFixed(2)));
+    } else {
+      setLoanPayment(0);  // Si hay algún error, asigna 0 como valor predeterminado
+    }
   };
 
   const toggleNavbar = () => {
@@ -41,30 +46,33 @@ const Prestamos: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Encabezado toggleNavbar={toggleNavbar} />
+      <Encabezado toggleNavbar={toggleNavbar} toggleModal={function (): void {
+        throw new Error('Function not implemented.');
+      } } />
       
       <section className="content secondary p-6">
         <div className="summary-menu">
           <div className="menu">
             <div className="content-title">Préstamos</div>
             <button
-            type="button"
-            id="menu-selector"
-            className="bg-blue-600 text-black py-2 px-4 rounded-lg hover:bg-blue-500 transition-colors"
-            onClick={toggleLoanModal}
->
-  Simular Préstamo
-</button>
+              type="button"
+              id="menu-selector"
+              className="bg-blue-600 text-black py-2 px-4 rounded-lg hover:bg-blue-500 transition-colors"
+              onClick={toggleLoanModal}
+            >
+              Simular Préstamo
+            </button>
           </div>
           <div className="summary">
             <h2 className="text-lg font-bold"></h2>
           </div>
         </div>
 
-  <div className="summary">
-  <h2 className="text-lg font-bold">Tus préstamos activos</h2>
-  <LoanTable />
-</div>
+        <div className="summary">
+          <h2 className="text-lg font-bold">Tus préstamos activos</h2>
+          <LoanTable />
+        </div>
+
         {/* Simulador de préstamo - Modal */}
         {isLoanModalOpen && (
           <div className="modal-overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
