@@ -44,16 +44,16 @@ const DropdownMenu: React.FC = () => {
                     <NavLink to="/homebanking/cuentas" className="block px-4 py-4 hover:bg-gray-100">
                     Cuentas
                     </NavLink>
-                    <NavLink to="/transferencias" className="block px-4 py-4 hover:bg-gray-100">
+                    <NavLink to="/homebanking/transferencias" className="block px-4 py-4 hover:bg-gray-100">
                     Transferencias
                     </NavLink>
-                    <NavLink to="/pagos" className="block px-4 py-4 hover:bg-gray-100">
+                    <NavLink to="/homebanking/pagos" className="block px-4 py-4 hover:bg-gray-100">
                     Pagos
                     </NavLink>
                     <NavLink to="/homebanking/inversiones" className="block px-4 py-4 hover:bg-gray-100">
                     Inversiones
                     </NavLink>
-                    <NavLink to="/prestamos" className="block px-4 py-4 hover:bg-gray-100">
+                    <NavLink to="/homebanking/prestamos" className="block px-4 py-4 hover:bg-gray-100">
                     Préstamos
                     </NavLink>
               </div>
