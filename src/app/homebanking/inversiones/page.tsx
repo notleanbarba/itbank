@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import "../../assets/styles/sass/responsive.scss";
 import "../../global.scss";
 import Footer from "../footer.tsx"; 
