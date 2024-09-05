@@ -11,4 +11,12 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+        error: "././404.html",
+      },
+    },
+  },
 });

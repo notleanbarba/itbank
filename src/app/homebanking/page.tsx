@@ -9,7 +9,6 @@ import { faEye, faEyeSlash} from '@fortawesome/free-regular-svg-icons';
 import Encabezado from './header.tsx'
 import Footer from './footer.tsx'
 
-
 import '../global.scss'
 
 export interface HeaderProps {

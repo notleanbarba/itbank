@@ -41,7 +41,7 @@ const DropdownMenu: React.FC = () => {
                     <NavLink to="/homebanking" className="block px-4 py-4 text-black hover:bg-gray-100">
                     Inicio
                     </NavLink>
-                    <NavLink to="/cuentas" className="block px-4 py-4 hover:bg-gray-100">
+                    <NavLink to="/homebanking/cuentas" className="block px-4 py-4 hover:bg-gray-100">
                     Cuentas
                     </NavLink>
                     <NavLink to="/transferencias" className="block px-4 py-4 hover:bg-gray-100">
@@ -50,7 +50,7 @@ const DropdownMenu: React.FC = () => {
                     <NavLink to="/pagos" className="block px-4 py-4 hover:bg-gray-100">
                     Pagos
                     </NavLink>
-                    <NavLink to="/inversiones" className="block px-4 py-4 hover:bg-gray-100">
+                    <NavLink to="/homebanking/inversiones" className="block px-4 py-4 hover:bg-gray-100">
                     Inversiones
                     </NavLink>
                     <NavLink to="/prestamos" className="block px-4 py-4 hover:bg-gray-100">
