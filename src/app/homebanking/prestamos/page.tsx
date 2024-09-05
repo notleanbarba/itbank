@@ -3,7 +3,6 @@ import "../../global.scss";
 import Footer from "../footer.tsx"; 
 import Encabezado from '../header.tsx';
 import LoanTable from './loanTable.tsx';
-import "./loanTable.scss"
 
 const Prestamos: React.FC = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
