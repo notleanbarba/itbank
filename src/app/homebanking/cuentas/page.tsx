@@ -1,7 +1,13 @@
+import Footer from '../footer';
+import Encabezado from '../header';
+
+
 export default function Cuentas() {
   return (
     <div>
-
+       <Encabezado toggleNavbar={() => { } } toggleModal={function (): void {
+        throw new Error('Function not implemented.');
+      } } />
   <section className="content secondary">
     <div className="summary-menu">
       <div className="menu">
@@ -134,6 +140,7 @@ export default function Cuentas() {
       </form>
     </div>
   </dialog>
+  <Footer />
 </div>
   );
 }
