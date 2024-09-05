@@ -3,7 +3,8 @@ import Encabezado from '../header';
 
 export default function Transferencias() {
   return (
-    <><Encabezado toggleNavbar={() => { } } toggleModal={function (): void {
+    <div>
+    <Encabezado toggleNavbar={() => { } } toggleModal={function (): void {
       throw new Error('Function not implemented.');
     } } /><section className="content secondary">
         <div className="summary-menu">
@@ -112,6 +113,8 @@ export default function Transferencias() {
             </table>
           </main>
         </div>
-      </section><Footer /></>
+      </section>
+      <Footer />
+      </div>
   );
 }
