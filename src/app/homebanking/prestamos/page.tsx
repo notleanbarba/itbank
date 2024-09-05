@@ -1,21 +1,25 @@
+import React, { useState } from 'react';
 import "../../assets/styles/sass/responsive.scss";
 import "../../global.scss";
-import logoCompleto from '../../assets/images/logoCompleto.png';
-import logoITBA from '../../assets/images/logoITBA.png';
-
+import Footer from "../footer.tsx"; 
+import Encabezado from '../header.tsx';
 
 export default function Pagos() {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen(!isNavbarOpen);
+  };
+
   return (
-    <>
-  <header>
-      <div className="logoCompleto">
-        <img src={logoCompleto} alt="Logo de Argentarius" width="90px" height="50px" />
-      </div>
-      <img src={logoITBA} alt="Logo de ITBA" width="90px" height="50px" />
-    </header>
+    <div className="min-h-screen flex flex-col justify-between">
+      <Encabezado toggleNavbar={toggleNavbar} toggleModal={() => {}} /> 
+      
+      
+      
 
-
-
-    </>
+      
+      <Footer />
+    </div>
   );
 };
