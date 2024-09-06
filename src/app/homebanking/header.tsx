@@ -5,6 +5,7 @@ import logoCompleto from "../assets/images/logoCompleto.webp";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
+import { faBars, faChartLine, faExchangeAlt, faHandHoldingUsd, faHome, faMoneyCheck, faWallet } from "@fortawesome/free-solid-svg-icons";
 
 function DropdownMenu() {
   const [open, setOpen] = useState(false);
@@ -24,64 +25,68 @@ function DropdownMenu() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const toggleNavbar = () => {
+    setOpen(!open);
+  };
 
   return (
-    <div
-      className="text-black p-1 border border-black rounded-full"
-      ref={dropdownRef}
-    >
-      <i className="fa-solid fa-bars" />
+    <div className="relative" ref={dropdownRef}>
       <button
         type="button"
-        onClick={() => {
-          setOpen(true);
-        }}
-        className="bg-white px-1 py-1 rounded-md focus:outline-none"
+        onClick={toggleNavbar}
+        className="text-black text-xl p-4 focus:outline-none"
       >
-        Menu
+        <FontAwesomeIcon icon={faBars} />
       </button>
+
       {open && (
-        <div className="absolute left-0 top-0 h-screen bg-white border border-gray-300 rounded-md shadow-lg z-10">
-          <button type="button" onClick={() => setOpen(false)}>
-            <FontAwesomeIcon icon={faXmarkCircle} className="w-5 h-5 m-4" />
-          </button>
-          <NavLink
-            to="/homebanking"
-            className="block px-4 py-4 text-black hover:bg-gray-100"
-          >
-            Inicio
-          </NavLink>
-          <NavLink
-            to="/homebanking/cuentas"
-            className="block px-4 py-4 hover:bg-gray-100"
-          >
-            Cuentas
-          </NavLink>
-          <NavLink
-            to="/homebanking/transferencias"
-            className="block px-4 py-4 hover:bg-gray-100"
-          >
-            Transferencias
-          </NavLink>
-          <NavLink
-            to="/homebanking/pagos"
-            className="block px-4 py-4 hover:bg-gray-100"
-          >
-            Pagos
-          </NavLink>
-          <NavLink
-            to="/homebanking/inversiones"
-            className="block px-4 py-4 hover:bg-gray-100"
-          >
-            Inversiones
-          </NavLink>
-          <NavLink
-            to="/homebanking/prestamos"
-            className="block px-4 py-4 hover:bg-gray-100"
-          >
-            Préstamos
-          </NavLink>
-        </div>
+        <>
+          <div className="fixed inset-0 bg-black opacity-50 z-10" onClick={toggleNavbar}></div>
+          <div className={`fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-20 transform ${open ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}>
+            <button className="text-black text-xl p-4 focus:outline-none" onClick={toggleNavbar}>
+              <FontAwesomeIcon icon={faXmarkCircle} />
+            </button>
+
+            <ul className="mt-8 space-y-4">
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking">
+                  <FontAwesomeIcon icon={faHome} className="mr-3" />
+                  Inicio
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking/cuentas">
+                  <FontAwesomeIcon icon={faWallet} className="mr-3" />
+                  Cuentas
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking/transferencias">
+                  <FontAwesomeIcon icon={faExchangeAlt} className="mr-3" />
+                  Transferencias
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking/pagos">
+                  <FontAwesomeIcon icon={faMoneyCheck} className="mr-3" />
+                  Pagos
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking/inversiones">
+                  <FontAwesomeIcon icon={faChartLine} className="mr-3" />
+                  Inversiones
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="flex items-center px-6 py-3 text-lg font-semibold hover:bg-gray-200 transition-colors" to="/homebanking/prestamos">
+                  <FontAwesomeIcon icon={faHandHoldingUsd} className="mr-3" />
+                  Préstamos
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import {NavLink} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../global.scss'
-import { faXmarkCircle } from '@fortawesome/free-regular-svg-icons';
+import { faXmarkCircle, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const DropdownMenu: React.FC = () => {
     const [isOpen , setIsOpen] = useState(false);
@@ -27,11 +27,11 @@ const DropdownMenu: React.FC = () => {
 
     return(
         <div className='text-black p-1 border border-black rounded-full' ref={dropdownRef}>
-            <i className="fa-solid fa-bars"></i>
+            
             <button onClick={toggleMenu} 
             className='bg-white px-1 py-1 rounded-md focus:outline-none'
             >
-            Menu
+                <FontAwesomeIcon icon={faBars} className='w-5 h-5 m-4'/>
             </button>
             {isOpen&& (
                 <div className="absolute left-0 top-0 h-screen bg-white border border-gray-300 rounded-md shadow-lg z-10">
