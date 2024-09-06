@@ -1,21 +1,4 @@
-:root {
-  --font-size-base: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-xxl: 20px;
-  --font-size-small: 0.8rem;
-  --background-modal: rgba(0, 0, 0, 0.4);
-}
-
-html {
-  font-size: var(--font-size-base);
-}
-
 @media (min-width: 640px) {
-  html {
-    font-size: 21px;
-  }
-
   .content.main .main-section .cards-group {
     flex-direction: row;
   }
@@ -30,10 +13,6 @@ html {
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: var(--font-size-base);
-  }
-
   .content.main {
     padding: 4rem 10rem;
   }
@@ -108,55 +87,38 @@ html {
 }
 
 @media (min-width: 1024px) {
-  html {
-    font-size: var(--font-size-lg);
-  }
-
   header .logoCompleto img {
     width: 100px;
   }
 }
 
-@media (min-width: 1280px) {
-  html {
-    font-size: var(--font-size-xl);
-  }
-}
-
-@media (min-width: 1536px) {
-  html {
-    font-size: var(--font-size-xxl);
-  }
-}
-
-@media screen and (max-width: 850px){
-
-  main{
-      margin-top: 50px;
+@media screen and (max-width: 850px) {
+  main {
+    margin-top: 50px;
   }
 
-  .caja__trasera{
-      max-width: 350px;
-      height: 300px;
-      flex-direction: column;
-      margin: auto;
+  .caja__trasera {
+    max-width: 350px;
+    height: 300px;
+    flex-direction: column;
+    margin: auto;
   }
 
-  .caja__trasera div{
-      margin: 0px;
-      position: absolute;
+  .caja__trasera div {
+    margin: 0px;
+    position: absolute;
   }
-
 
   /*Formularios*/
 
-  .contenedor__login-register{
-      top: -10px;
-      left: -5px;
-      margin: auto;
+  .contenedor__login-register {
+    top: -10px;
+    left: -5px;
+    margin: auto;
   }
 
-  .contenedor__login-register form{
-      position: relative;
+  .contenedor__login-register form {
+    position: relative;
   }
 }
+
