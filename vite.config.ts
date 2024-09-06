@@ -4,7 +4,7 @@ import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "itbank",
+  base: "/itbank",
   plugins: [react()],
   css: {
     postcss: {
@@ -15,7 +15,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "./index.html",
-        error: "././404.html",
+        error: "./404.html",
       },
     },
   },
