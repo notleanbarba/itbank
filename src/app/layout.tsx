@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./assets/styles/css/reset.css";
 import "./global.scss";
 import "./assets/styles/sass/loanTable.scss";
+import "./assets/styles/sass/cambioDivisas.scss";
 import "./assets/styles/sass/responsive.scss";
 
 import Login from "./page.tsx";
