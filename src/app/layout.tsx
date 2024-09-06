@@ -2,8 +2,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "./assets/styles/css/reset.css";
 import "./global.scss";
-import "./assets/styles/sass/loanTable.scss"
+import "./assets/styles/sass/loanTable.scss";
+import "./assets/styles/sass/responsive.scss";
 
 import Login from "./page.tsx";
 import HomebankingLayout from "./homebanking/layout.tsx";
@@ -53,7 +55,7 @@ const router = createBrowserRouter(
   ],
   {
     basename: import.meta.env.BASE_URL,
-    },
+  },
 );
 
 createRoot(
