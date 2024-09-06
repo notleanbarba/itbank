@@ -7,7 +7,6 @@ type Image = {
   sources: {
     avif: string;
     webp: string;
-
     png: string;
   };
   img: {
@@ -32,7 +31,7 @@ type RegisterForm = {
 };
 
 const backgrounds = Object.values(
-  import.meta.glob<Image>("./assets/images/login/*.{png,jpg}", {
+  import.meta.glob<Image>("./assets/images/login/*.webp", {
     query: { enhanced: true },
     import: "default",
     eager: true,

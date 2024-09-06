@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import logoCompleto from "../assets/images/logoCompleto.png";
+import logoCompleto from "../assets/images/logoCompleto.webp";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";

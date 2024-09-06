@@ -1,8 +1,9 @@
 import { useState } from "react";
 import LoanTable from "../../components/LoanTable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Prestamos() {
-  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isLoanModalOpen, setIsLoanModalOpen] = useState(false);
   const [loanAmount, setLoanAmount] = useState<number>(0);
   const [loanTerm, setLoanTerm] = useState<number>(0);
@@ -36,10 +37,6 @@ export default function Prestamos() {
     }
   };
 
-  const toggleNavbar = () => {
-    setIsNavbarOpen(!isNavbarOpen);
-  };
-
   const toggleLoanModal = () => {
     setIsLoanModalOpen(!isLoanModalOpen);
   };
@@ -60,7 +57,7 @@ export default function Prestamos() {
             </button>
           </div>
           <div className="summary">
-            <h2 className="text-lg font-bold"></h2>
+            <h2 className="text-lg font-bold" />
           </div>
         </div>
         <div className="summary">
@@ -75,7 +72,7 @@ export default function Prestamos() {
                 className="modal-close absolute top-2 right-2 text-xl"
                 onClick={toggleLoanModal}
               >
-                <i className="fa-solid fa-xmark"></i>
+                <FontAwesomeIcon icon={faXmark} />
               </button>
               <h1 className="text-xl font-bold text-gray-800 mb-4">
                 Simular un Préstamo
@@ -151,4 +148,3 @@ export default function Prestamos() {
     </div>
   );
 }
-
