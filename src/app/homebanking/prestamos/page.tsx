@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import "../../global.scss";
-import Footer from "../footer.tsx"; 
-import Encabezado from '../header.tsx';
-import LoanTable from './loanTable.tsx';
+import { useState } from "react";
+import LoanTable from "../../components/LoanTable";
 
-const Prestamos: React.FC = () => {
+export default function Prestamos() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isLoanModalOpen, setIsLoanModalOpen] = useState(false);
   const [loanAmount, setLoanAmount] = useState<number>(0);
   const [loanTerm, setLoanTerm] = useState<number>(0);
   const [loanPayment, setLoanPayment] = useState<number>(0);
-  const [amortizationSystem, setAmortizationSystem] = useState<string>('Francés');
+  const [amortizationSystem, setAmortizationSystem] =
+    useState<string>("Francés");
 
   const interestRate = 8; // Tasa de interés fija
 
   // Simulación del préstamo
   const simulateLoan = () => {
     const monthlyInterest = interestRate / 100 / 12;
-    let payment = 0;  // Inicializa con un valor por defecto
+    let payment = 0; // Inicializa con un valor por defecto
 
     if (amortizationSystem === "Francés") {
-      payment = loanAmount * (monthlyInterest / (1 - Math.pow(1 + monthlyInterest, -loanTerm)));
+      payment =
+        loanAmount *
+        (monthlyInterest / (1 - Math.pow(1 + monthlyInterest, -loanTerm)));
     } else if (amortizationSystem === "Alemán") {
       const capitalPayment = loanAmount / loanTerm;
-      payment = capitalPayment + (loanAmount * monthlyInterest);
+      payment = capitalPayment + loanAmount * monthlyInterest;
     } else if (amortizationSystem === "Bullet") {
       payment = loanAmount * monthlyInterest;
     }
@@ -32,7 +32,7 @@ const Prestamos: React.FC = () => {
     if (!isNaN(payment)) {
       setLoanPayment(parseFloat(payment.toFixed(2)));
     } else {
-      setLoanPayment(0);  // Si hay algún error, asigna 0 como valor predeterminado
+      setLoanPayment(0); // Si hay algún error, asigna 0 como valor predeterminado
     }
   };
 
@@ -46,10 +46,6 @@ const Prestamos: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <Encabezado toggleNavbar={toggleNavbar} toggleModal={function (): void {
-        throw new Error('Function not implemented.');
-      } } />
-      
       <section className="content secondary p-6 bg-white">
         <div className="summary-menu">
           <div className="menu">
@@ -67,13 +63,10 @@ const Prestamos: React.FC = () => {
             <h2 className="text-lg font-bold"></h2>
           </div>
         </div>
-
         <div className="summary">
           <h2 className="text-lg font-bold">Tus préstamos activos</h2>
           <LoanTable />
         </div>
-
-        {/* Simulador de préstamo - Modal */}
         {isLoanModalOpen && (
           <div className="modal-overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
             <div className="modal-dialog bg-white p-6 rounded-lg shadow-xl max-w-md w-full relative">
@@ -84,9 +77,13 @@ const Prestamos: React.FC = () => {
               >
                 <i className="fa-solid fa-xmark"></i>
               </button>
-              <h1 className="text-xl font-bold text-gray-800 mb-4">Simular un Préstamo</h1>
+              <h1 className="text-xl font-bold text-gray-800 mb-4">
+                Simular un Préstamo
+              </h1>
               <form className="flex flex-col gap-4">
-                <label htmlFor="loan-amount" className="text-gray-700">Importe</label>
+                <label htmlFor="loan-amount" className="text-gray-700">
+                  Importe
+                </label>
                 <input
                   id="loan-amount"
                   type="number"
@@ -96,8 +93,9 @@ const Prestamos: React.FC = () => {
                   min="0"
                   required
                 />
-
-                <label htmlFor="loan-term" className="text-gray-700">Plazo en meses</label>
+                <label htmlFor="loan-term" className="text-gray-700">
+                  Plazo en meses
+                </label>
                 <input
                   id="loan-term"
                   type="number"
@@ -107,8 +105,9 @@ const Prestamos: React.FC = () => {
                   min="0"
                   required
                 />
-
-                <label htmlFor="loan-interest" className="text-gray-700">Tasa de interés (%)</label>
+                <label htmlFor="loan-interest" className="text-gray-700">
+                  Tasa de interés (%)
+                </label>
                 <input
                   id="loan-interest"
                   type="number"
@@ -116,8 +115,9 @@ const Prestamos: React.FC = () => {
                   value={interestRate}
                   disabled
                 />
-
-                <label htmlFor="loan-amortization" className="text-gray-700">Sistema de amortización</label>
+                <label htmlFor="loan-amortization" className="text-gray-700">
+                  Sistema de amortización
+                </label>
                 <select
                   id="loan-amortization"
                   className="p-2 border border-gray-300 rounded"
@@ -137,20 +137,18 @@ const Prestamos: React.FC = () => {
                   Calcular Cuota
                 </button>
               </form>
-
               {loanPayment > 0 && (
                 <div className="mt-4">
-                  <p className="text-lg font-bold">Cuota mensual: ${loanPayment}</p>
+                  <p className="text-lg font-bold">
+                    Cuota mensual: ${loanPayment}
+                  </p>
                 </div>
               )}
             </div>
           </div>
         )}
       </section>
-
-      <Footer />
     </div>
   );
-};
+}
 
-export default Prestamos;

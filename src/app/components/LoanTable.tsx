@@ -1,6 +1,4 @@
-import React from 'react';
-
-const LoanTable: React.FC = () => {
+export default function LoanTable() {
   return (
     <div className="loan-table-container">
       <h2 className="loan-table-title">Historial de Préstamos</h2>
@@ -44,6 +42,5 @@ const LoanTable: React.FC = () => {
       </table>
     </div>
   );
-};
+}
 
-export default LoanTable
