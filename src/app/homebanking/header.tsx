@@ -30,7 +30,7 @@ function DropdownMenu() {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef} aria-label="Menu">
       <button
         type="button"
         onClick={toggleNavbar}

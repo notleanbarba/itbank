@@ -36,7 +36,7 @@ export default function Home() {
                 <span className="balance-symbol">U$D</span>
                 <span id="balanceUSD">10000</span>
               </div>
-              <NavLink to="./transferencia">Ver movimientos</NavLink>
+              <NavLink to="./homebanking/transferencia">Ver movimientos</NavLink>
             </div>
             <div className="card debit">
               <span id="cardtype">Tarjeta de débito</span>
