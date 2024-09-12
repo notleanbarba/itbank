@@ -16,7 +16,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@app/*": ["./src/app/*"],
+      "@types*": ["./src/types.d.ts"]
+    }
   },
   "include": ["src"]
 }

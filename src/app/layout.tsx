@@ -2,20 +2,16 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import "./assets/styles/css/reset.css";
-import "./global.scss";
-import "./assets/styles/sass/loanTable.scss";
-import "./assets/styles/sass/cambioDivisas.scss";
-import "./assets/styles/sass/responsive.scss";
+import "@app/global.scss";
 
-import Login from "./page.tsx";
-import HomebankingLayout from "./homebanking/layout.tsx";
-import Home from "./homebanking/page.tsx";
-import Cuentas from "./homebanking/cuentas/page.tsx";
-import Inversiones from "./homebanking/inversiones/page.tsx";
-import Pagos from "./homebanking/pagos/page.tsx";
-import Prestamos from "./homebanking/prestamos/page.tsx";
-import Transferencias from "./homebanking/transferencias/page.tsx";
+import Login from "@app/page.tsx";
+import HomebankingLayout from "@app/homebanking/layout.tsx";
+import Home from "@app/homebanking/page.tsx";
+import Cuentas from "@app/homebanking/cuentas/page.tsx";
+import Inversiones from "@app/homebanking/inversiones/page.tsx";
+import Pagos from "@app/homebanking/pagos/page.tsx";
+import Prestamos from "@app/homebanking/prestamos/page.tsx";
+import Transferencias from "@app/homebanking/transferencias/page.tsx";
 
 const router = createBrowserRouter(
   [

@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faNewspaper,
   faXmarkCircle,
@@ -7,21 +8,21 @@ import {
 export default function Footer() {
   return (
     <>
-      <footer className="footer">
-        <div className="footer-content">
-          <div>
-            <h3>Nosotros</h3>
-            <a href="../about-us">Sobre nosotros</a>
-            <a href="../faq">FAQ</a>
-            <button type="button" className="modal-open" name="contact-modal">
+      <footer className="text-white bg-[#222222] py-2 px-8 h-min no-underline sm:text-sm md:text-base">
+        <div className="flex flex-row flex-wrap justify-around [&_li]:my-1 [&_li]:text-nowrap">
+          <div className="flex flex-col gap-1 w-min">
+            <h3 className="text-lg font-bold">Nosotros</h3>
+            <Link to="/about-us">Sobre nosotros</Link>
+            <Link to="/faq">FAQ</Link>
+            <button type="button" className="block md:hidden">
               Contacto
             </button>
-            <dialog className="modal" id="contact-modal">
+            <dialog className="modal">
               <div className="modal-dialog" role="dialog">
                 <button type="button" className="modal-close" tabIndex={-1}>
                   <FontAwesomeIcon icon={faXmarkCircle} />
                 </button>
-                <h3>Información de contacto</h3>
+                <h3 className="text-lg font-bold">Información de contacto</h3>
                 <ul>
                   <li>
                     Dirección:<span>Calle falsa 1234</span>
@@ -36,8 +37,8 @@ export default function Footer() {
               </div>
             </dialog>
           </div>
-          <div id="footer-contact">
-            <h3>Contacto</h3>
+          <div className="hidden md:flex flex-col gap-1 w-min">
+            <h3 className="text-lg font-bold">Contacto</h3>
             <address>
               <ul>
                 <li>
@@ -52,14 +53,15 @@ export default function Footer() {
               </ul>
             </address>
           </div>
-          <div className="newsletter">
-            <h3>Newsletter</h3>
+          <div className="flex flex-col gap-1 w-min">
+            <h3 className="text-lg font-bold">Newsletter</h3>
             <p>
               Suscribite a nuestro Newsletter para recibir ofertas especiales
             </p>
-            <form className="newsletter-input">
+            <form className="flex items-center">
               <input
                 type="email"
+                className="p-1 border-none rounded-md mr-2"
                 name="newsletter_email"
                 placeholder="Tu email"
                 aria-label="Email"
@@ -67,7 +69,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="submit-button"
+                className="w-12 aspect-square bg-[#9aa7bf] rounded-full flex justify-center items-center cursor-pointer"
                 aria-label="enviar"
               >
                 <FontAwesomeIcon icon={faNewspaper} />

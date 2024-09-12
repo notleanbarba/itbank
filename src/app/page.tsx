@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import type { ToastType } from "./types";
-import Toast from "./components/Toast.tsx";
+import type { ToastType } from "@types";
+import Toast from "@components/Toast.tsx";
 
 type Image = {
   sources: {
