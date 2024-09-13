@@ -3,6 +3,7 @@ name: Static checks
 on:
   pull_request:
     branches: ["develop"]
+    types: [syncronize]
 
 permissions:
   contents: write
