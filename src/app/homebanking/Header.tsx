@@ -27,7 +27,13 @@ function DropdownMenu() {
   }, []);
 
   return (
-    <>
+    <div
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          setOpen(false);
+        }
+      }}
+    >
       <button
         type="button"
         aria-label="Navigation Bar"
@@ -47,6 +53,7 @@ function DropdownMenu() {
           type="button"
           tabIndex={-1}
           className="size-7 m-4"
+          aria-label="Close navigation bar"
           onClick={() => setOpen(false)}
         >
           <FontAwesomeIcon icon={faXmarkCircle} className="size-full" />
@@ -94,7 +101,7 @@ function DropdownMenu() {
           Préstamos
         </NavLink>
       </nav>
-    </>
+    </div>
   );
 }
 

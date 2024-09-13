@@ -195,6 +195,17 @@ export default function Login() {
             </>
           ) : (
             <>
+              <div className="min-w-40 w-full bg-black/50 backdrop-blur rounded-xl flex flex-col gap-4 text-white p-10">
+                <h3 className="font-bold text-2xl">¿Ya tienes una cuenta?</h3>
+                <p>Inicia sesión para entrar en la página</p>
+                <button
+                  type="button"
+                  className="px-2 py-4 mt-2 border-2 border-white border-solid w-min text-white outline-none cursor-pointer text-nowrap bg-transparent text-lg font-bold hover:bg-[#333] focus:bg-[#333] "
+                  onClick={toggleForms}
+                >
+                  Iniciar sesión
+                </button>
+              </div>
               <div className="min-w-40 w-full bg-white rounded-xl z-10 order-2">
                 <form
                   className={`flex flex-col justify-center px-12 py-8 [&>input]:border ${
@@ -282,18 +293,6 @@ export default function Login() {
                     Registrarse
                   </button>
                 </form>
-              </div>
-
-              <div className="min-w-40 w-full bg-black/50 backdrop-blur rounded-xl flex flex-col gap-4 text-white p-10">
-                <h3 className="font-bold text-2xl">¿Ya tienes una cuenta?</h3>
-                <p>Inicia sesión para entrar en la página</p>
-                <button
-                  type="button"
-                  className="px-2 py-4 mt-2 border-2 border-white border-solid w-min text-white outline-none cursor-pointer text-nowrap bg-transparent text-lg font-bold hover:bg-[#333] focus:bg-[#333] "
-                  onClick={toggleForms}
-                >
-                  Iniciar sesión
-                </button>
               </div>
             </>
           )}

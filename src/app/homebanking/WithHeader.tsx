@@ -53,7 +53,7 @@ export default function WithHeader({
               left: "anchor(center, 0)",
             }}
           >
-            {submenuOptions.map((operation) => {
+            {submenuOptions.map((operation, index) => {
               return (
                 <button
                   key={`operation_${operation.id}`}
@@ -61,6 +61,14 @@ export default function WithHeader({
                   className="py-2"
                   onClick={() => {
                     operation.callback();
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === "Tab" &&
+                      index + 1 === submenuOptions.length
+                    ) {
+                      setOpenMenu(false);
+                    }
                   }}
                 >
                   {operation.text}
@@ -73,8 +81,10 @@ export default function WithHeader({
         <div className="flex flex-row px-16 lg:col-start-2">
           {tags?.map((tag, index) => {
             return (
-              <div
+              <button
                 key={`header_tag_${index}`}
+                type="button"
+                aria-label={`Ir a pestaña ${tag.text}`}
                 className={`py-3 px-4 md:py-5 md:px-7 text-sm font-bold rounded-t-xl text-wrap w-min cursor-pointer lg:text-nowrap ${index === activeTag ? "bg-white text-black" : "bg-[#4f5457] text-white"}`}
                 onClick={() => {
                   setActiveTag(index);
@@ -86,7 +96,7 @@ export default function WithHeader({
                 }}
               >
                 {tag.text}
-              </div>
+              </button>
             );
           })}
         </div>
