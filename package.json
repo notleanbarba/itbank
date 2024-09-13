@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test_build": "next build -d",
     "lint": "next lint",
     "start": "next start",
-    "types": "tsc"
+    "types": "tsc",
+    "check_format": "prettier . --check",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
