@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: ["develop"]
     types: [opened, syncronize]
+  push:
+    branches-ignore:
+      - "master"
+      - "develop"
 
 permissions:
   contents: write
