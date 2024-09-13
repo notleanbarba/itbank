@@ -1,0 +1,44 @@
+name: Static checks
+
+on:
+  pull_request:
+    branches: ["develop"]
+
+permissions:
+  contents: write
+
+jobs:
+  static_checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Checking linting
+        run: npm run lint
+      - name: Checking TypeScript types
+        run: npm run types
+      - name: Checking if buildable
+        run: npm run test_build
+      - name: Checking formatting
+        id: check_format
+        continue-on-error: true
+        run: npm run check_format
+      - name: Format PR
+        id: format
+        if: steps.check_format.outcome == 'failure'
+        run: npm run format
+      - name: Commit format
+        if: steps.check_format.outcome == 'failure' && steps.format.outcome == 'success'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Auto formatting codebase
+          branch: ${{ github.head_ref }}
