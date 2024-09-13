@@ -1,5 +1,5 @@
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import {
   faNewspaper,
   faXmarkCircle,
@@ -12,8 +12,8 @@ export default function Footer() {
         <div className="flex flex-row flex-wrap justify-around [&_li]:my-1 [&_li]:text-nowrap">
           <div className="flex flex-col gap-1 w-min">
             <h3 className="text-lg font-bold">Nosotros</h3>
-            <Link to="/about-us">Sobre nosotros</Link>
-            <Link to="/faq">FAQ</Link>
+            <Link href="/about-us">Sobre nosotros</Link>
+            <Link href="/faq">FAQ</Link>
             <button type="button" className="block md:hidden">
               Contacto
             </button>

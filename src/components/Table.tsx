@@ -8,7 +8,7 @@ export default function Table({
   id?: string;
   hidden?: boolean;
   thead: string[];
-  tbody: string[][];
+  tbody: (string | number)[][];
   tfoot?: string[];
 }) {
   return (
@@ -51,7 +51,14 @@ export default function Table({
           <tr>
             {tfoot.map((col, index) => {
               if (index === 0)
-                return <th className="h-auto p-4 align-middle">{col}</th>;
+                return (
+                  <th
+                    key={`footer_${index}`}
+                    className="h-auto p-4 align-middle"
+                  >
+                    {col}
+                  </th>
+                );
               return (
                 <td key={`footer_${index}`} className="h-auto p-4 align-middle">
                   {col}

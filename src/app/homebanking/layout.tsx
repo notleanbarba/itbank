@@ -1,12 +1,17 @@
-import { Outlet } from "react-router-dom";
 import Header from "@app/homebanking/Header.tsx";
 import Footer from "@app/homebanking/Footer.tsx";
 
-export default function HomebankingLayout() {
+import type { ReactNode } from "react";
+
+export default function HomebankingLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <>
       <Header />
-      <Outlet />
+      {children}
       <Footer />
     </>
   );

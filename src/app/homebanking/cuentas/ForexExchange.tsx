@@ -146,7 +146,7 @@ export default function ForexExchange({
               ...exchange,
               from: {
                 currency: exchange.from.currency,
-                amount: +e.target.value,
+                amount: e.target.value === "" ? null : +e.target.value,
               },
               calculate: true,
             });

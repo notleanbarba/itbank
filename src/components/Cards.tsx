@@ -1,7 +1,10 @@
+"use client";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import Link from "next/link";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+
 import type { CardDefinitions } from "@types";
 
 function Card({ card }: { card: CardDefinitions }) {
@@ -48,12 +51,12 @@ function Card({ card }: { card: CardDefinitions }) {
             </div>
           );
         })}
-        <NavLink
+        <Link
           className={"w-min text-left cursor-pointer text-nowrap"}
-          to={card.card.button.url}
+          href={card.card.button.url}
         >
           {card.card.button.text}
-        </NavLink>
+        </Link>
       </div>
     );
   }

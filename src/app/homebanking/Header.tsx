@@ -1,11 +1,13 @@
+"use client";
 import { useState, useRef, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import Link from "next/link";
 
 import logoCompleto from "@app/assets/images/logoCompleto.webp";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 function DropdownMenu() {
   const [open, setOpen] = useState(false);
@@ -58,48 +60,48 @@ function DropdownMenu() {
         >
           <FontAwesomeIcon icon={faXmarkCircle} className="size-full" />
         </button>
-        <NavLink
-          to="/homebanking"
+        <Link
+          href="/homebanking"
           className="px-4 py-4 text-black hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Inicio
-        </NavLink>
-        <NavLink
-          to="/homebanking/cuentas"
+        </Link>
+        <Link
+          href="/homebanking/cuentas"
           className="px-4 py-4 hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Cuentas
-        </NavLink>
-        <NavLink
-          to="/homebanking/transferencias"
+        </Link>
+        <Link
+          href="/homebanking/transferencias"
           className="px-4 py-4 hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Transferencias
-        </NavLink>
-        <NavLink
-          to="/homebanking/pagos"
+        </Link>
+        <Link
+          href="/homebanking/pagos"
           className="px-4 py-4 hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Pagos
-        </NavLink>
-        <NavLink
-          to="/homebanking/inversiones"
+        </Link>
+        <Link
+          href="/homebanking/inversiones"
           className="px-4 py-4 hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Inversiones
-        </NavLink>
-        <NavLink
-          to="/homebanking/prestamos"
+        </Link>
+        <Link
+          href="/homebanking/prestamos"
           className="px-4 py-4 hover:bg-gray-100"
           onClick={() => setOpen(false)}
         >
           Préstamos
-        </NavLink>
+        </Link>
       </nav>
     </div>
   );
@@ -141,7 +143,7 @@ function Usuario() {
         className={`absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg z-10 ${openUsermenu ? "visible" : "invisible"}`}
       >
         <Link
-          to="/"
+          href="/"
           replace={true}
           className="block px-4 py-2 text-black text-lg hover:bg-gray-100 w-full text-left"
         >
@@ -156,7 +158,7 @@ export default function Header() {
   return (
     <div className="flex justify-between border-b border-b-[rgba(0,0,0,0.3)] items-center bg-white h-[7vh] py-[1vh] px-[1.5rem]">
       <DropdownMenu />
-      <img
+      <Image
         src={logoCompleto}
         alt="Logo de Argentarius"
         className="w-auto h-full"
