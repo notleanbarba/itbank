@@ -1,20 +1,8 @@
+"use client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import type { ToastType } from "@types";
 import Toast from "@components/Toast.tsx";
-
-type Image = {
-  sources: {
-    avif: string;
-    webp: string;
-    png: string;
-  };
-  img: {
-    src: string;
-    w: number;
-    h: number;
-  };
-};
+import { useRouter } from "next/navigation";
 
 type LoginForm = {
   email: string | null;
@@ -29,14 +17,6 @@ type RegisterForm = {
   dni: number | null;
   success: boolean | null;
 };
-
-const backgrounds = Object.values(
-  import.meta.glob<Image>("./assets/images/login/*.webp", {
-    query: { enhanced: true },
-    import: "default",
-    eager: true,
-  }),
-);
 
 const validEmail = "devfive@itbank.com";
 const validPassword = "devfive";
@@ -64,7 +44,7 @@ export default function Login() {
 
   const [isLoginVisible, setIsLoginVisible] = useState<boolean>(true);
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const showToast = (
     type: "success" | "error" | "warning" | "info",
@@ -85,7 +65,7 @@ export default function Login() {
       setLoginState({ ...loginState, success: true });
       showToast("success", " Inicio de sesión exitoso.");
       return setTimeout(() => {
-        navigate("/homebanking");
+        router.push("/homebanking");
       }, 1000);
     }
 
@@ -98,7 +78,7 @@ export default function Login() {
     setRegisterState({ ...registerState, success: true });
     showToast("success", "Usuario creado exitosamente.");
     return setTimeout(() => {
-      navigate("/homebanking");
+      router.push("/homebanking");
     }, 1000);
   };
 
@@ -108,18 +88,13 @@ export default function Login() {
 
   useEffect(() => {
     setTimeout(() => {
-      setCurrentBg((currentBg + 1) % backgrounds.length);
+      setCurrentBg((currentBg + 1) % 3); // Cambiar '3' por cantidad de imagenes a usar
     }, 10000);
   }, [currentBg]);
 
   return (
     <>
-      <div
-        className="h-screen w-screen flex items-center justify-center bg-cover transition-[background]"
-        style={{
-          backgroundImage: `url(${backgrounds[currentBg]})`,
-        }}
-      >
+      <div className="h-screen w-screen flex items-center justify-center bg-cover transition-[background]">
         <main className="h-min grid grid-cols-2 w-1/2">
           {isLoginVisible ? (
             <>

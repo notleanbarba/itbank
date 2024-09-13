@@ -9,7 +9,7 @@ type LoanSimulationDefinition = {
   term: number | null;
   payment: number | null;
   amortizationSystem: "french" | "german" | "bullet";
-  schedule: string[][];
+  schedule: number[][];
   calculate: boolean;
 };
 
@@ -36,7 +36,7 @@ export default function LoanSimulator({
     let remainingLoan = loan.amount;
     let average_pmt = 0;
     let tmp = 0;
-    const amortizationSchedule: string[][] = [];
+    const amortizationSchedule: number[][] = [];
 
     switch (loan.amortizationSystem) {
       case "french": {
@@ -51,11 +51,11 @@ export default function LoanSimulator({
           remainingLoan -= pmt - interesti;
           if (i === loan.term * 12) remainingLoan = 0;
           amortizationSchedule.push([
-            i.toString(),
-            pmt.toFixed(2),
-            (pmt - interesti).toFixed(2),
-            interesti.toFixed(2),
-            remainingLoan.toFixed(2),
+            i,
+            +pmt.toFixed(2),
+            +(pmt - interesti).toFixed(2),
+            +interesti.toFixed(2),
+            +remainingLoan.toFixed(2),
           ]);
         }
         average_pmt = pmt;
@@ -71,11 +71,11 @@ export default function LoanSimulator({
           const pmt = pmtPrincipal + interesti;
           tmp += pmt;
           amortizationSchedule.push([
-            i.toString(),
-            pmt.toFixed(2),
-            (pmt - interesti).toFixed(2),
-            interesti.toFixed(2),
-            remainingLoan.toFixed(2),
+            i,
+            +pmt.toFixed(2),
+            +(pmt - interesti).toFixed(2),
+            +interesti.toFixed(2),
+            +remainingLoan.toFixed(2),
           ]);
         }
         average_pmt = tmp / (loan.term * 12);
@@ -92,11 +92,11 @@ export default function LoanSimulator({
           }
           tmp += pmt;
           amortizationSchedule.push([
-            i.toString(),
-            pmt.toFixed(2),
-            (pmt - interesti).toFixed(2),
-            interesti.toFixed(2),
-            remainingLoan.toFixed(2),
+            i,
+            +pmt.toFixed(2),
+            +(pmt - interesti).toFixed(2),
+            +interesti.toFixed(2),
+            +remainingLoan.toFixed(2),
           ]);
         }
         average_pmt = (tmp + loan.amount) / (loan.term * 12);
@@ -105,7 +105,7 @@ export default function LoanSimulator({
     }
     setLoan({
       ...loan,
-      payment: average_pmt,
+      payment: +average_pmt.toFixed(2),
       schedule: amortizationSchedule,
       calculate: false,
     });
@@ -135,11 +135,15 @@ export default function LoanSimulator({
           id="loan-amount"
           className="input-default"
           type="number"
-          min="0"
+          min={0}
           required
           value={loan.amount ?? ""}
           onChange={(e) => {
-            setLoan({ ...loan, amount: +e.target.value, calculate: true });
+            setLoan({
+              ...loan,
+              amount: e.target.value === "" ? null : +e.target.value,
+              calculate: true,
+            });
           }}
         />
         <label className="text-base font-medium" htmlFor="loan-term">
@@ -149,11 +153,15 @@ export default function LoanSimulator({
           id="loan-term"
           className="input-default"
           type="number"
-          min="0"
+          min={0}
           required
           value={loan.term ?? ""}
           onChange={(e) => {
-            setLoan({ ...loan, term: +e.target.value, calculate: true });
+            setLoan({
+              ...loan,
+              term: e.target.value === "" ? null : +e.target.value,
+              calculate: true,
+            });
           }}
         />
         <label className="text-base font-medium" htmlFor="loan-interest">
@@ -165,7 +173,7 @@ export default function LoanSimulator({
           type="number"
           value={interestRate}
           disabled
-          min="0"
+          min={0}
           required
         />
         <label className="text-base font-medium" htmlFor="loan-amortization">
@@ -198,7 +206,10 @@ export default function LoanSimulator({
           hidden={!loan.payment}
           className="input-default"
         >
-          {loan.payment}
+          {loan.payment?.toLocaleString("es-ar", {
+            style: "currency",
+            currency: "ARS",
+          })}
         </output>
         <label className="text-base font-medium" htmlFor="loan-table">
           Tabla de amortización
@@ -207,7 +218,17 @@ export default function LoanSimulator({
           id="loan-table"
           hidden={loan.schedule.length === 0}
           thead={["Mes", "Cuota", "Principal", "Interés", "Balance"]}
-          tbody={loan.schedule}
+          tbody={loan.schedule.map((row) => {
+            return [
+              row[0].toString(),
+              ...row.slice(1).map((value) => {
+                return value.toLocaleString("es-ar", {
+                  style: "currency",
+                  currency: "ARS",
+                });
+              }),
+            ];
+          })}
         />
       </form>
     </Modal>
