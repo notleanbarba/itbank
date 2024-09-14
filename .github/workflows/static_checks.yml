@@ -3,7 +3,10 @@ name: Static checks
 on:
   pull_request:
     branches: ["develop"]
-    types: [opened, synchronize, labeled]
+  push:
+    branches-ignore:
+      - master
+      - develop
 
 permissions:
   contents: write
@@ -12,7 +15,7 @@ permissions:
 jobs:
   static_checks:
     runs-on: ubuntu-latest
-    if: ${{ github.event.label.name == 'reformated' }} || ${{ github.event_name == 'pull-request' }}
+    if: ${{ github.event_name != 'push' }} || ${{ github.push.head_commit.message != 'Auto formatting codebase' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
