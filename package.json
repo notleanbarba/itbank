@@ -11,7 +11,8 @@
     "start": "next start",
     "types": "tsc",
     "check_format": "prettier . --check",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "prepare_commit": "npm run lint && npm run types && npm run test_build && npm run format"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
