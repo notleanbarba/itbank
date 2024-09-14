@@ -3,18 +3,16 @@ name: Static checks
 on:
   pull_request:
     branches: ["develop"]
-    types: [opened, syncronize]
-  push:
-    branches-ignore:
-      - "master"
-      - "develop"
+    types: [opened, synchronize, labeled]
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   static_checks:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'reformated' || github.event.label.name == null }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,8 +40,12 @@ jobs:
         if: steps.check_format.outcome == 'failure'
         run: npm run format
       - name: Commit format
-        if: steps.check_format.outcome == 'failure' && steps.format.outcome == 'success'
+        id: commit
+        if: steps.format.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Auto formatting codebase
           branch: ${{ github.head_ref }}
+      - if: steps.commit.outcome == 'success' 
+        uses: actions/labeler@v5
+
