@@ -4,10 +4,6 @@ on:
   pull_request:
     branches: ["develop"]
     types: [opened, synchronize, reopened, ready_for_review]
-  push:
-    branches-ignore:
-      - master
-      - develop
 
 permissions:
   contents: write
@@ -16,7 +12,6 @@ permissions:
 jobs:
   static_checks:
     runs-on: ubuntu-latest
-    if: ${{ (github.event_name == 'push' && github.push.head_commit.message == 'Auto formatting codebase' )|| github.event_name == 'pull_request' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,3 +47,8 @@ jobs:
           branch: ${{ github.head_ref }}
       - if: steps.commit.outcome == 'success'
         uses: actions/labeler@v5
+      - name: Mark as draft
+        if: steps.commit.outcome == 'success'
+        uses: voiceflow/draft-pr@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
