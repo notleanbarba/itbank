@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     if: (${{ github.event_name == 'push' }} && ${{ github.push.head_commit.message == 'Auto formatting codebase' }}) || ${{ github.event_name == 'pull_request' }}
     steps:
+      - name: Test
+        run: echo github.event_name && echo github.push.head_commit.message
       - name: Checkout
         uses: actions/checkout@v4
         with:
