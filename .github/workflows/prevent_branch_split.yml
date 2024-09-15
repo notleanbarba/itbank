@@ -19,5 +19,9 @@ jobs:
         run: git checkout develop
       - name: Checkout master
         run: git checkout master
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
       - name: Develop mergeable to master
-        run: git merge-base --is-ancestor HEAD develop
+        run: git merge --no-commit --no-ff develop
