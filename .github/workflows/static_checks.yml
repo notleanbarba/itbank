@@ -7,7 +7,6 @@ on:
   workflow_run:
     workflows: [Auto labeler]
     types: [completed]
-    branches: ["master", "develop"]
 
 permissions:
   contents: write
