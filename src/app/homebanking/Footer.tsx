@@ -9,7 +9,6 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function Footer() {
-
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   function toggleContactModal() {
@@ -62,10 +61,13 @@ export default function Footer() {
                 </li>
               </ul>
             </address>
-            <Link href="#" onClick={(e) => {
-              e.preventDefault();
-              toggleContactModal();
-            }}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                toggleContactModal();
+              }}
+            >
               <span className="text-blue-500 hover:text-blue-300 cursor-pointer">
                 Formulario Contacto
               </span>
