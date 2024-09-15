@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNewspaper, faXmarkCircle } from "@fortawesome/free-regular-svg-icons";
+import {
+  faNewspaper,
+  faXmarkCircle,
+} from "@fortawesome/free-regular-svg-icons";
 
 export default function Footer() {
-  
   const [isContactModalOpen, setContactModalOpen] = useState(false);
   function toggleContactModal() {
     setContactModalOpen(!isContactModalOpen);
@@ -99,9 +101,11 @@ export default function Footer() {
             </button>
             <h2 className="text-2xl font-bold mb-4">Formulario de Contacto</h2>
             <form>
-
               <div className="mb-4">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Nombre:
                 </label>
                 <input
@@ -113,9 +117,11 @@ export default function Footer() {
                 />
               </div>
 
-              
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Correo Electrónico:
                 </label>
                 <input
@@ -127,9 +133,11 @@ export default function Footer() {
                 />
               </div>
 
-              
               <div className="mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Asunto:
                 </label>
                 <input
@@ -141,9 +149,11 @@ export default function Footer() {
                 />
               </div>
 
-              
               <div className="mb-4">
-                <label htmlFor="contact-reason" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="contact-reason"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Motivo del Contacto:
                 </label>
                 <select
@@ -161,7 +171,10 @@ export default function Footer() {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Teléfono (opcional):
                 </label>
                 <input
@@ -172,9 +185,12 @@ export default function Footer() {
                   placeholder="(Código de país) Número"
                 />
               </div>
-            
+
               <div className="mb-4">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Mensaje:
                 </label>
                 <textarea
@@ -192,7 +208,9 @@ export default function Footer() {
                     name="newsletter"
                     className="form-checkbox"
                   />
-                  <span className="ml-2 text-sm text-gray-700">Suscribirme al Newsletter</span>
+                  <span className="ml-2 text-sm text-gray-700">
+                    Suscribirme al Newsletter
+                  </span>
                 </label>
               </div>
 
