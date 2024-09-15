@@ -14,7 +14,9 @@ jobs:
       - name: Pull all branches
         uses: actions/checkout@v4
         with:
-          fetch-depth: '0'
+          fetch-depth: "0"
+      - name: Checkout develop
+        run: git checkout develop
       - name: Checkout master
         run: git checkout master
       - name: Develop mergeable to master
