@@ -1,3 +1,8 @@
-reformated:
-  - changed-files:
-      - any-glob-to-any-file: "**"
+hotfix:
+  - all:
+      - base-branch: ["master"]
+      - head-branch: ["[^develop]"]
+release:
+  - all:
+      - base-branch: ["master"]
+      - head-branch: ["develop"]

@@ -20,4 +20,4 @@ jobs:
       - name: Checkout master
         run: git checkout master
       - name: Develop mergeable to master
-        run: git merge-base --is-ancestor HEAD develop
+        run: git merge --no-commit --no-ff develop
