@@ -100,7 +100,7 @@ export default function Footer() {
       </footer>
       <Modal
         open={isContactModalOpen}
-        onClose={() => toggleContactModal()}
+        onClose={() => setIsContactModalOpen(false)}
         title="Formulario de Contacto"
       >
         <form>
