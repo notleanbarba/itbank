@@ -1,0 +1,21 @@
+name: Prevent branch split
+
+on:
+  pull_request:
+    branches: ["develop"]
+
+permissions:
+  contents: read
+
+jobs:
+  prevent_split:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull all branches
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      - name: Checkout master
+        run: git checkout master
+      - name: Develop mergeable to master
+        run: git merge-base --is-ancestor HEAD develop
