@@ -3,11 +3,13 @@ import Link from "next/link";
 import { useState } from "react";
 import Modal from "../../components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faNewspaper,
+  faXmarkCircle,
+} from "@fortawesome/free-regular-svg-icons";
 
 export default function Footer() {
-  
+
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   function toggleContactModal() {
@@ -28,7 +30,7 @@ export default function Footer() {
             <dialog className="modal">
               <div className="modal-dialog" role="dialog">
                 <button type="button" className="modal-close" tabIndex={-1}>
-                  <FontAwesomeIcon icon={faXmark} />
+                  <FontAwesomeIcon icon={faXmarkCircle} />
                 </button>
                 <h3 className="text-lg font-bold">Información de contacto</h3>
                 <ul>
@@ -60,17 +62,14 @@ export default function Footer() {
                 </li>
               </ul>
             </address>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                toggleContactModal();
-              }}
-            >
+            <Link href="#" onClick={(e) => {
+              e.preventDefault();
+              toggleContactModal();
+            }}>
               <span className="text-blue-500 hover:text-blue-300 cursor-pointer">
                 Formulario Contacto
               </span>
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col gap-1 w-min">
             <h3 className="text-lg font-bold">Newsletter</h3>
