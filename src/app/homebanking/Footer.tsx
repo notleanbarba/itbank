@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Modal from "../../components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
@@ -8,9 +9,10 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function Footer() {
-  const [isContactModalOpen, setContactModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   function toggleContactModal() {
-    setContactModalOpen(!isContactModalOpen);
+    setIsContactModalOpen(!isContactModalOpen);
   }
 
   return (
@@ -59,7 +61,13 @@ export default function Footer() {
                 </li>
               </ul>
             </address>
-            <Link href="#" onClick={toggleContactModal}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                toggleContactModal();
+              }}
+            >
               <span className="text-blue-500 hover:text-blue-300 cursor-pointer">
                 Formulario Contacto
               </span>
@@ -90,142 +98,135 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-      {isContactModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-              onClick={toggleContactModal}
+      <Modal
+        open={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        title="Formulario de Contacto"
+      >
+        <form>
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
             >
-              <FontAwesomeIcon icon={faXmarkCircle} />
-            </button>
-            <h2 className="text-2xl font-bold mb-4">Formulario de Contacto</h2>
-            <form>
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Nombre:
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Correo Electrónico:
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Asunto:
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="contact-reason"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Motivo del Contacto:
-                </label>
-                <select
-                  id="contact-reason"
-                  name="contact-reason"
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                >
-                  <option value="">Selecciona una opción</option>
-                  <option value="support">Soporte Técnico</option>
-                  <option value="general">Consultas Generales</option>
-                  <option value="sales">Ventas</option>
-                  <option value="feedback">Comentarios/Sugerencias</option>
-                </select>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Teléfono (opcional):
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full p-2 border border-gray-300 rounded"
-                  placeholder="(Código de país) Número"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Mensaje:
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="w-full p-2 border border-gray-300 rounded"
-                ></textarea>
-              </div>
-
-              <div className="mb-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    name="newsletter"
-                    className="form-checkbox"
-                  />
-                  <span className="ml-2 text-sm text-gray-700">
-                    Suscribirme al Newsletter
-                  </span>
-                </label>
-              </div>
-
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                >
-                  Enviar
-                </button>
-              </div>
-            </form>
+              Nombre:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full p-2 border border-gray-300 rounded"
+            />
           </div>
-        </div>
-      )}
+
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Correo Electrónico:
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="subject"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Asunto:
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="contact-reason"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Motivo del Contacto:
+            </label>
+            <select
+              id="contact-reason"
+              name="contact-reason"
+              required
+              className="w-full p-2 border border-gray-300 rounded"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="support">Soporte Técnico</option>
+              <option value="general">Consultas Generales</option>
+              <option value="sales">Ventas</option>
+              <option value="feedback">Comentarios/Sugerencias</option>
+            </select>
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Teléfono (opcional):
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              className="w-full p-2 border border-gray-300 rounded"
+              placeholder="(Código de país) Número"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Mensaje:
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              className="w-full p-2 border border-gray-300 rounded"
+            ></textarea>
+          </div>
+
+          <div className="mb-4">
+            <label className="inline-flex items-center">
+              <input
+                type="checkbox"
+                name="newsletter"
+                className="form-checkbox"
+              />
+              <span className="ml-2 text-sm text-gray-700">
+                Suscribirme al Newsletter
+              </span>
+            </label>
+          </div>
+
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
+      </Modal>
     </>
   );
 }
