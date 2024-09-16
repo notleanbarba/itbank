@@ -3,11 +3,7 @@ name: Static checks
 on:
   pull_request:
     branches: ["master", "develop"]
-    types: [ready_for_review]
-  workflow_run:
-    workflows: ["labeler"]
-    types:
-      - completed
+    types: [opened, ready_for_review]
 
 permissions:
   contents: write
