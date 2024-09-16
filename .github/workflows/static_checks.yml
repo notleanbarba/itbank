@@ -5,8 +5,9 @@ on:
     branches: ["master", "develop"]
     types: [ready_for_review]
   workflow_run:
-    workflows: [Auto labeler]
-    types: [completed]
+    workflows: ["labeler"]
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -16,7 +17,6 @@ permissions:
 jobs:
   static_checks:
     runs-on: ubuntu-latest
-    if: ( github.base_ref == 'refs/heads/master' && ( contains(github.event.pull_request.pull_request.labels.*.name, 'hotfix') || contains(github.event.pull_request.labels.*.name, 'release') )) || github.base_ref == 'refs/heads/develop'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
