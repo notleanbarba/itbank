@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Factura as FacturaType } from "@types";
+import { FacturaType } from "@types";
 
 interface FacturaProps {
   id: string;
