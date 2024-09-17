@@ -49,6 +49,8 @@ jobs:
           branch: ${{ github.head_ref }}
       - if: steps.commit.outcome == 'success'
         uses: actions/labeler@v5
+        with:
+          configuration-path: ".github/formatter.yml"
       - name: Mark as draft
         if: steps.commit.outcome == 'success'
         uses: voiceflow/draft-pr@latest
