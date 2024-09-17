@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "servicio": "Edenor",
+    "cliente": "Juan Perez",
+    "total": 1000,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "2",
+    "servicio": "Aysa",
+    "cliente": "Juan Perez",
+    "total": 2000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "3",
+    "servicio": "Edenor",
+    "cliente": "Juan Perez",
+    "total": 3000,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "4",
+    "servicio": "Impuesto municipal",
+    "cliente": "Juan Perez",
+    "total": 500,
+    "estado": "Pagado"
+  }
+]
