@@ -60,25 +60,25 @@ export default function StockData() {
     if (stockData.querying) {
       fetchStockData(stockData.ticker)
         .then((results) => {
-          setStockData({
-            ...stockData,
+          setStockData((prevData) => ({
+            ...prevData,
             querying: false,
             history: results,
             error: { state: false },
-          });
+          }));
         })
         .catch((error) => {
-          setStockData({
-            ...stockData,
+          setStockData((prevData) => ({
+            ...prevData,
             querying: false,
             error: {
               state: true,
               message: error,
             },
-          });
+          }));
         });
     }
-  }, [stockData]);
+  }, [stockData.querying, stockData.ticker]);
 
   const handleSearchSelect = (selectedTicker: TickerDefinition) => {
     setStockData({ ...stockData, ...selectedTicker, querying: true });
