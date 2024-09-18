@@ -58,7 +58,7 @@ export type CardDefinitions =
       card: CreditCardDefinition;
     };
 
-export type Factura = {
+export type FacturaType = {
   id: string;
   cliente: string;
   total: number;

@@ -3,27 +3,20 @@
 import { useState, useEffect } from "react";
 import WithHeader from "@app/homebanking/WithHeader";
 import Factura from "./factura.tsx";
-
-export interface FacturaProps {
-  id: string;
-  cliente: string;
-  total: number;
-  servicio: string;
-  estado: string;
-}
+import { FacturaType } from "@types";
 
 export default function Pagos() {
   const [selectedFacturaId, setSelectedFacturaId] = useState<string | null>(
     null,
   );
-  const [facturas, setFacturas] = useState<FacturaProps[]>([]);
+  const [facturas, setFacturas] = useState<FacturaType[]>([]);
 
   useEffect(() => {
     async function fetchFacturas() {
       const res = await fetch("/facturas.json");
 
       if (res.ok) {
-        const data = (await res.json()) as FacturaProps[];
+        const data = (await res.json()) as FacturaType[];
         setFacturas(data);
       } else {
         console.error("no cargo la factura");
