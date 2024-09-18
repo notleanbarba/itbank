@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import WithHeader from "@app/homebanking/WithHeader";
 import Table from "@/components/Table";
 import LoadingAnimation from "@/components/LoadingAnimation.tsx";
 
-const LoanSimulator = dynamic(() => import('./LoanSimulator'), {
-  loading: () => <LoadingAnimation />, 
-  ssr: false, 
+const LoanSimulator = dynamic(() => import("./LoanSimulator"), {
+  loading: () => <LoadingAnimation />,
+  ssr: false,
 });
 
 export default function Prestamos() {
