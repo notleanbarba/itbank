@@ -4,6 +4,12 @@ import type { ToastType } from "@types";
 import Toast from "@components/Toast.tsx";
 import { useRouter } from "next/navigation";
 
+import bg1 from "../app/assets/images/login/1.webp";
+import bg2 from "../app/assets/images/login/2.webp";
+import bg3 from "../app/assets/images/login/3.webp";
+
+const backgrounds = [bg1, bg2, bg3];
+
 type LoginForm = {
   email: string | null;
   password: string | null;
@@ -94,7 +100,12 @@ export default function Login() {
 
   return (
     <>
-      <div className="h-screen w-screen flex items-center justify-center bg-cover transition-[background]">
+      <div
+        className="h-screen w-screen flex items-center justify-center bg-cover transition-[background]"
+        style={{
+          backgroundImage: `url(${backgrounds[currentBg].src})`,
+        }}
+      >
         <main className="h-min grid grid-cols-2 w-1/2">
           {isLoginVisible ? (
             <>
