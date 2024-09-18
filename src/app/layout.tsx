@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 const roboto = Roboto_Mono({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
