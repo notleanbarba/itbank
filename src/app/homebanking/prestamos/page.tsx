@@ -1,11 +1,21 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import WithHeader from "@app/homebanking/WithHeader";
-import Table from "@components/Table";
-import LoanSimulator from "./LoanSimulator";
+import Table from "@/components/Table";
+import LoadingAnimation from "@/components/LoadingAnimation.tsx";
+
+const LoanSimulator = dynamic(() => import("./LoanSimulator"), {
+  loading: () => <LoadingAnimation />,
+  ssr: false,
+});
 
 export default function Prestamos() {
   const [openLoanModal, setOpenLoanModal] = useState(false);
+
+  const handleSimulateLoan = () => {
+    setOpenLoanModal(true);
+  };
 
   return (
     <>
@@ -15,9 +25,7 @@ export default function Prestamos() {
           {
             id: 1,
             text: "Simular préstamo",
-            callback: () => {
-              setOpenLoanModal(true);
-            },
+            callback: handleSimulateLoan,
           },
         ]}
         tags={[
@@ -44,10 +52,12 @@ export default function Prestamos() {
           />
         </main>
       </WithHeader>
-      <LoanSimulator
-        open={openLoanModal}
-        onClose={() => setOpenLoanModal(false)}
-      />
+      {openLoanModal && (
+        <LoanSimulator
+          open={openLoanModal}
+          onClose={() => setOpenLoanModal(false)}
+        />
+      )}
     </>
   );
 }
