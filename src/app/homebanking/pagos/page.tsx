@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+/* import { useState, useEffect } from "react"; */
 import WithHeader from "@app/homebanking/WithHeader";
-import Factura from "./factura.tsx";
-import { FacturaType } from "@types";
+/* import Factura from "./factura.tsx";
+import { FacturaType } from "@types"; */
+import Table from "@components/Table.tsx";
 
-export default function Pagos() {
+/* export default function Pagos() {
   const [selectedFacturaId, setSelectedFacturaId] = useState<string | null>(
     null,
   );
@@ -24,7 +25,8 @@ export default function Pagos() {
     }
     fetchFacturas();
   }, []);
-
+ */
+export default function Pagos() {
   return (
     <>
       <WithHeader
@@ -38,21 +40,20 @@ export default function Pagos() {
       >
         <div>
           <h2>Seleccione una factura:</h2>
-          {facturas.length === 0 ? (
-            <p>Cargando facturas...</p>
-          ) : (
-            <ul>
-              {facturas.map((factura) => (
-                <li key={factura.id} className="m-7 p-5 bg-slate-200 w-2/4 h-3">
-                  <button onClick={() => setSelectedFacturaId(factura.id)}>
-                    Factura {factura.servicio} - {factura.cliente}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
+          <Table
+            thead={["Servicio", "Cliente", "Total", "Estado"]}
+            tbody={[
+              ["Edenor", "Juan Perez", "1000", "Pendiente"],
+              ["Aysa", "Juan Perez", "2000", "Pagado"],
+              ["Edenor", "Juan Perez", "3000", "Pendiente"],
+              ["Impuesto municipal", "Juan Perez", "500", "Pagado"],
+              ["Aysa", "Juan Perez", "5000", "Pagado"],
+              ["Impuesto municipal", "Juan Perez", "1000", "Pagado"],
+              ["Impuesto municipal", "Juan Perez", "500", "Pagado"],
+            ]}
+          />
         </div>
-        {selectedFacturaId && <Factura id={selectedFacturaId} />}
+        {/* {{selectedFacturaId && <Factura id={selectedFacturaId} />}} */}
         <main />
       </WithHeader>
     </>
