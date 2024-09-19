@@ -75,9 +75,7 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-1 w-min">
             <h3 className="text-lg font-bold">Newsletter</h3>
-            <p>
-              Suscribite a nuestro Newsletter para recibir ofertas especiales
-            </p>
+            <p>Suscribite para recibir ofertas especiales</p>
             <form className="flex items-center">
               <input
                 type="email"
