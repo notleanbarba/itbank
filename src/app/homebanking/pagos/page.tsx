@@ -7,7 +7,9 @@ import { FacturaType } from "@types";
 import Table from "@components/Table.tsx";
 
 export default function Pagos() {
-  const [selectedFacturaId, setSelectedFacturaId] = useState<string | null>(null);
+  const [selectedFacturaId, setSelectedFacturaId] = useState<string | null>(
+    null,
+  );
   const [facturas, setFacturas] = useState<FacturaType[]>([]);
   const tableRef = useRef<HTMLDivElement>(null); // Create a ref for the table container
 
@@ -15,7 +17,7 @@ export default function Pagos() {
   useEffect(() => {
     async function fetchFacturas() {
       const res = await fetch("/facturas.json");
-      
+
       if (res.ok) {
         const data = (await res.json()) as FacturaType[];
         setFacturas(data);
@@ -65,9 +67,10 @@ export default function Pagos() {
           },
         ]}
       >
-        <div ref={tableRef}> {/* Attach ref to the table container */}
+        <div ref={tableRef}>
+          {" "}
+          {/* Attach ref to the table container */}
           <h2>Seleccione una factura:</h2>
-
           {/* Dynamically generate the table with essential information */}
           <Table
             thead={["Servicio", "Cliente"]}
@@ -78,7 +81,9 @@ export default function Pagos() {
 
         {/* Conditionally show the Factura component only when a factura is selected */}
         {selectedFacturaId && (
-          <div className="mt-4 mb-10"> {/* Added margin to push the footer down */}
+          <div className="mt-4 mb-10">
+            {" "}
+            {/* Added margin to push the footer down */}
             <Factura id={selectedFacturaId} />
           </div>
         )}
