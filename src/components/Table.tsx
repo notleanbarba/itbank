@@ -1,15 +1,19 @@
+"use client"; // This directive is needed if you haven't added it
+
 export default function Table({
   id,
   hidden,
   thead,
   tbody,
   tfoot,
+  onRowClick,
 }: {
   id?: string;
   hidden?: boolean;
   thead: string[];
   tbody: (string | number)[][];
   tfoot?: string[];
+  onRowClick?: (rowIndex: number) => void;
 }) {
   return (
     <table
@@ -19,52 +23,39 @@ export default function Table({
     >
       <thead className="bg-[#d9d9d999]">
         <tr>
-          {thead.map((col) => {
-            return (
-              <th key={`header_${col}`} className="h-auto p-4 align-middle">
-                {col}
-              </th>
-            );
-          })}
+          {thead.map((col) => (
+            <th key={`header_${col}`} className="h-auto p-4 align-middle">
+              {col}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {tbody.map((row, row_index) => {
-          return (
-            <tr key={`row_${row_index}`} className="border-t-light">
-              {row.map((col, col_index) => {
-                return (
-                  <td
-                    key={`row_${row_index}_col_${col_index}`}
-                    className="h-auto p-4 align-middle"
-                  >
-                    {col}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
+        {tbody.map((row, row_index) => (
+          <tr
+            key={`row_${row_index}`}
+            className="border-t-light cursor-pointer"
+            onClick={() => onRowClick && onRowClick(row_index)} // Handle row click
+          >
+            {row.map((col, col_index) => (
+              <td
+                key={`row_${row_index}_col_${col_index}`}
+                className="h-auto p-4 align-middle"
+              >
+                {col}
+              </td>
+            ))}
+          </tr>
+        ))}
       </tbody>
       {tfoot && (
         <tfoot className="border-t-light bg-[#d9d9d999]">
           <tr>
-            {tfoot.map((col, index) => {
-              if (index === 0)
-                return (
-                  <th
-                    key={`footer_${index}`}
-                    className="h-auto p-4 align-middle"
-                  >
-                    {col}
-                  </th>
-                );
-              return (
-                <td key={`footer_${index}`} className="h-auto p-4 align-middle">
-                  {col}
-                </td>
-              );
-            })}
+            {tfoot.map((col, index) => (
+              <td key={`footer_${index}`} className="h-auto p-4 align-middle">
+                {col}
+              </td>
+            ))}
           </tr>
         </tfoot>
       )}
