@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "ITBANK homebanking",
   description:
     "Banco Argentarius ofrece cuentas flexibles, préstamos accesibles y herramientas de inversión innovadoras. Disfruta de banca en línea segura y atención personalizada para lograr tus objetivos financieros.",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const roboto = Roboto_Mono({
