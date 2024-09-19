@@ -26,8 +26,7 @@ import Table from "@components/Table.tsx";
     fetchFacturas();
   }, []);
  */
-  export default function Pagos() {
-
+export default function Pagos() {
   return (
     <>
       <WithHeader
@@ -44,48 +43,13 @@ import Table from "@components/Table.tsx";
           <Table
             thead={["Servicio", "Cliente", "Total", "Estado"]}
             tbody={[
-              [
-                "Edenor",
-                "Juan Perez",
-                "1000",
-                "Pendiente"
-              ],
-              [
-                "Aysa",
-                "Juan Perez",
-                "2000",
-                "Pagado"
-              ],
-              [
-                "Edenor",
-                "Juan Perez",
-                "3000",
-                "Pendiente"
-              ],
-              [
-                "Impuesto municipal",
-                "Juan Perez",
-                "500",
-                "Pagado"
-              ],
-              [
-                "Aysa",
-                "Juan Perez",
-                "5000",
-                "Pagado"
-              ],
-              [
-                "Impuesto municipal",
-                "Juan Perez",
-                "1000",
-                "Pagado"
-              ],
-              [
-                "Impuesto municipal",
-                "Juan Perez",
-                "500",
-                "Pagado"
-              ],
+              ["Edenor", "Juan Perez", "1000", "Pendiente"],
+              ["Aysa", "Juan Perez", "2000", "Pagado"],
+              ["Edenor", "Juan Perez", "3000", "Pendiente"],
+              ["Impuesto municipal", "Juan Perez", "500", "Pagado"],
+              ["Aysa", "Juan Perez", "5000", "Pagado"],
+              ["Impuesto municipal", "Juan Perez", "1000", "Pagado"],
+              ["Impuesto municipal", "Juan Perez", "500", "Pagado"],
             ]}
           />
         </div>
