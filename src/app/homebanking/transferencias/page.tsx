@@ -9,6 +9,9 @@ export default function Transferencias() {
         submenuOptions={[]}
         tags={[
           {
+            text: "Nueva transferencia",
+          },
+          {
             text: "Transferencias agendadas",
           },
           {

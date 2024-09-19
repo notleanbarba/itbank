@@ -1,3 +1,4 @@
+"use client";
 import WithHeader from "@app/homebanking/WithHeader";
 import { useState } from "react";
 import ForexExchange from "./ForexExchange";

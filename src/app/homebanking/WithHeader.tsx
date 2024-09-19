@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -37,7 +38,7 @@ export default function WithHeader({
           </div>
           <button
             aria-label="operaciones"
-            className="w-[10%] lg:w-[30%] bg-white h-[60%] rounded-lg border-black border-[1.3px] shadow-float flex items-center p-2 [anchor-name:--menu-selector]"
+            className="w-[10%] lg:w-[30%] bg-white h-[60%] rounded-lg border-solid border-black border-[1.3px] shadow-float flex items-center p-2 [anchor-name:--menu-selector]"
             type="button"
             onClick={() => setOpenMenu(!openMenu)}
           >

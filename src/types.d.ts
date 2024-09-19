@@ -57,3 +57,11 @@ export type CardDefinitions =
       type: "creditCard";
       card: CreditCardDefinition;
     };
+
+export type FacturaType = {
+  id: string;
+  cliente: string;
+  total: number;
+  servicio: string;
+  estado: string;
+};
