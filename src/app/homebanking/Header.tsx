@@ -102,6 +102,13 @@ function DropdownMenu() {
         >
           Préstamos
         </Link>
+        <Link
+          href="/homebanking/tarjetas"
+          className="px-4 py-4 hover:bg-gray-100"
+          onClick={() => setOpen(false)}
+        >
+          Tarjetas
+        </Link>
       </nav>
     </div>
   );
