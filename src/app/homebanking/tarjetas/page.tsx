@@ -5,14 +5,17 @@ import { Cliente, datoTarjeta } from "@/types"; // Asegúrate de importar los ti
 import { Cartas } from "@components/credito"; // Importar el componente Cartas
 
 export default function Tarjeta() {
-  const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(null);
+  const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(
+    null,
+  );
 
   useEffect(() => {
     // Obtener el cliente ID de localStorage
     const storedClienteId = localStorage.getItem("clienteId");
 
     if (storedClienteId) {
-      const cliente = Clientes.find((cliente) => cliente.id === storedClienteId) || null;
+      const cliente =
+        Clientes.find((cliente) => cliente.id === storedClienteId) || null;
       setClienteAutenticado(cliente);
     }
   }, []);
