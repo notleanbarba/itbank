@@ -1,22 +1,26 @@
 import { notFound } from "next/navigation";
-import Clientes from "@/app/data/cliente";
+import { obtenerClientes } from "@/app/data/cliente";
 import { Cliente } from "@/types";
 import ClienteCard from "@/components/clienteCard";
 
-const getCliente = (id: string): Cliente | undefined => {
-  return Clientes.find((cliente) => cliente.id === id);
-};
+interface ClientePageProps {
+  params: {
+    id: string;
+  };
+}
 
-const ClientePage = ({ params }: { params: { id: string } }) => {
-  const cliente = getCliente(params.id);
+const ClientePage = async ({ params }: ClientePageProps) => {
+  const clientes: Cliente[] = await obtenerClientes();
+
+  const cliente = clientes.find((cliente) => cliente.id === params.id);
 
   if (!cliente) {
-    return notFound();
+    notFound();
   }
 
   return (
-    <div>
-      <h1>Información del Cliente</h1>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">Información del Cliente</h1>
       <ClienteCard cliente={cliente} />
     </div>
   );
