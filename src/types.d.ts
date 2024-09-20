@@ -85,4 +85,5 @@ export type Cliente = {
   password: string;
   cuentas: Cuenta[];
   tarjeta: datoTarjeta[];
+  facturas: FacturaType[];
 };
