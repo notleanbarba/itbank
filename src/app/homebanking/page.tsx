@@ -1,29 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
 import Cards from "@components/Cards";
+import { useCliente } from "@/app/context/ClienteContext";
 
 export default function Home() {
-  const [clienteId, setClienteId] = useState<string | null>(null);
-  const [clienteNombre, setClienteNombre] = useState<string | null>(null);
+  const { cliente } = useCliente();
 
-  useEffect(() => {
-    const storedClienteId = localStorage.getItem("clienteId");
-    const storedClienteNombre = localStorage.getItem("clienteNombre");
-
-    if (storedClienteId && storedClienteNombre) {
-      setClienteId(storedClienteId);
-      setClienteNombre(storedClienteNombre);
-    }
-  }, []);
-
-  if (!clienteId || !clienteNombre) {
+  if (!cliente) {
     return <div>Cargando...</div>;
   }
 
   return (
     <section className="bg-white flex-grow h-auto py-8 px-6 md:py-16 md:px-40 ">
       <div className="mb-4 text-xl md:mb-8">
-        Hola <span className="font-semibold">{clienteNombre}</span>
+        Hola <span className="font-semibold">{cliente.nombre}</span>
         <h2 className="mt-1">Estado de tus cuentas</h2>
       </div>
       <section className="main-section">
