@@ -65,3 +65,23 @@ export type FacturaType = {
   servicio: string;
   estado: string;
 };
+
+export type Cuenta = {
+  numeroCuenta: string;
+  tipo: string;
+  saldo: number;
+};
+
+export type datoTarjeta = {
+  numeroTarjeta: string;
+  tipo: string;
+};
+
+export type Cliente = {
+  id: string;
+  nombre: string;
+  email: string;
+  password: string;
+  cuentas: Cuenta[];
+  tarjeta: datoTarjeta[];
+};

@@ -1,12 +1,15 @@
 import Cards from "@components/Cards";
+import Clientes from "../data/cliente";
 
 export default function Home() {
   return (
     <section className="bg-white flex-grow h-auto py-8 px-6 md:py-16 md:px-40 ">
-      <div className="mb-4 text-xl md:mb-8">
-        Hola <span className="font-semibold">XXXX</span>
-        <h2 className="mt-1">Estado de tus cuentas</h2>
-      </div>
+      {Clientes.map((cliente) => (
+        <div className="mb-4 text-xl md:mb-8" key={cliente.id}>
+          Hola <span className="font-semibold">{cliente.nombre}</span>
+          <h2 className="mt-1">Estado de tus cuentas</h2>
+        </div>
+      ))}
       <section className="main-section">
         <Cards
           cardsDefinition={[
