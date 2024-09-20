@@ -56,9 +56,11 @@ export default function Login() {
       setLoginState({ ...loginState, success: true });
       showToast("success", "Inicio de sesión exitoso.");
 
-      // Redirigir al cliente a su cuenta personal
+      localStorage.setItem("clienteId", cliente.id);
+      localStorage.setItem("clienteNombre", cliente.nombre);
+
       return setTimeout(() => {
-        router.push(`/homebanking/clientes/${cliente.id}`);
+        router.push(`/homebanking`);
       }, 500);
     }
 

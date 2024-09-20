@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Clientes from "@/app/data/cliente"; // Importa los datos simulados
+import Clientes from "@/app/data/cliente";
 
 const ClientesList = () => {
   return (

@@ -1,15 +1,31 @@
+"use client";
+import { useEffect, useState } from "react";
 import Cards from "@components/Cards";
-import Clientes from "../data/cliente";
 
 export default function Home() {
+  const [clienteId, setClienteId] = useState<string | null>(null);
+  const [clienteNombre, setClienteNombre] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedClienteId = localStorage.getItem("clienteId");
+    const storedClienteNombre = localStorage.getItem("clienteNombre");
+
+    if (storedClienteId && storedClienteNombre) {
+      setClienteId(storedClienteId);
+      setClienteNombre(storedClienteNombre);
+    }
+  }, []);
+
+  if (!clienteId || !clienteNombre) {
+    return <div>Cargando...</div>;
+  }
+
   return (
     <section className="bg-white flex-grow h-auto py-8 px-6 md:py-16 md:px-40 ">
-      {Clientes.map((cliente) => (
-        <div className="mb-4 text-xl md:mb-8" key={cliente.id}>
-          Hola <span className="font-semibold">{cliente.nombre}</span>
-          <h2 className="mt-1">Estado de tus cuentas</h2>
-        </div>
-      ))}
+      <div className="mb-4 text-xl md:mb-8">
+        Hola <span className="font-semibold">{clienteNombre}</span>
+        <h2 className="mt-1">Estado de tus cuentas</h2>
+      </div>
       <section className="main-section">
         <Cards
           cardsDefinition={[
