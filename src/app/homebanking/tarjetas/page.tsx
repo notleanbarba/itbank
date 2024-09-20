@@ -1,28 +1,49 @@
 "use client";
 import { useState, useEffect } from "react";
-import Clientes from "@/app/data/cliente"; // Datos de los clientes
-import { Cliente, datoTarjeta } from "@/types"; // Asegúrate de importar los tipos adecuados
-import { Cartas } from "@components/credito"; // Importar el componente Cartas
+import { obtenerClientes } from "@/app/data/cliente";
+import { Cliente, datoTarjeta } from "@/types";
+import { Cartas } from "@components/credito";
 
 export default function Tarjeta() {
   const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(
     null,
   );
 
+  const [cargando, setCargando] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
-    // Obtener el cliente ID de localStorage
-    const storedClienteId = localStorage.getItem("clienteId");
+    const fetchClienteAutenticado = async () => {
+      try {
+        const storedClienteId = localStorage.getItem("clienteId");
 
-    if (storedClienteId) {
-      const cliente =
-        Clientes.find((cliente) => cliente.id === storedClienteId) || null;
-      setClienteAutenticado(cliente);
-    }
+        if (storedClienteId) {
+          const clientes: Cliente[] = await obtenerClientes();
+          const cliente =
+            clientes.find((cliente) => cliente.id === storedClienteId) || null;
+          setClienteAutenticado(cliente);
+        } else {
+          setError("No se encontró el ID del cliente en localStorage.");
+        }
+      } catch (err) {
+        console.error("Error al obtener el cliente autenticado:", err);
+        setError("Error al cargar los datos del cliente.");
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    fetchClienteAutenticado();
   }, []);
-
-  // Si no se encuentra el cliente autenticado, mostramos "Cargando..."
-  if (!clienteAutenticado) {
+  if (cargando) {
     return <div>Cargando...</div>;
+  }
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!clienteAutenticado) {
+    return <div>No se encontró el cliente autenticado.</div>;
   }
 
   return (
