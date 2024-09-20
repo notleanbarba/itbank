@@ -11,7 +11,11 @@ const Clientes: Cliente[] = [
       { numeroCuenta: "342234", tipo: "Corriente", saldo: 5000 },
     ],
     tarjeta: [
-      { numeroTarjeta: "5599 2838 4939 4884", tipo: "Tarjeta de credito" },
+      {
+        numeroTarjeta: "5599 2838 4939 4884",
+        tipo: "Tarjeta de credito",
+        cvv: 123,
+      },
     ],
   },
   {
@@ -24,7 +28,11 @@ const Clientes: Cliente[] = [
       { numeroCuenta: "342223", tipo: "Corriente", saldo: 2000 },
     ],
     tarjeta: [
-      { numeroTarjeta: "5599 2838 4239 4884", tipo: "Tarjeta de credito" },
+      {
+        numeroTarjeta: "5599 2838 4239 4884",
+        tipo: "Tarjeta de credito",
+        cvv: 321,
+      },
     ],
   },
   {
@@ -37,7 +45,11 @@ const Clientes: Cliente[] = [
       { numeroCuenta: "343234", tipo: "Corriente", saldo: 1000 },
     ],
     tarjeta: [
-      { numeroTarjeta: "5599 2838 4349 4854", tipo: "Tarjeta de credito" },
+      {
+        numeroTarjeta: "5599 2838 4349 4854",
+        tipo: "Tarjeta de credito",
+        cvv: 213,
+      },
     ],
   },
 ];

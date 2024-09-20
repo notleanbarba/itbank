@@ -75,6 +75,7 @@ export type Cuenta = {
 export type datoTarjeta = {
   numeroTarjeta: string;
   tipo: string;
+  cvv: number;
 };
 
 export type Cliente = {
