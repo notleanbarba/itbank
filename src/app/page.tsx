@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Clientes from "@/app/data/cliente";
 import Toast from "@components/Toast.tsx";
 import { ToastType } from "@/types";
+import { useCliente } from "@/app/context/ClienteContext";
 
 import bg1 from "../app/assets/images/login/1.webp";
 import bg2 from "../app/assets/images/login/2.webp";
@@ -31,9 +32,9 @@ export default function Login() {
     message: null,
   });
 
+  const { setCliente } = useCliente();
   const router = useRouter();
 
-  // Mostrar notificación
   const showToast = (type: "success" | "error", message: string) => {
     setToast({ open: true, type, message });
     setTimeout(() => {
@@ -41,11 +42,9 @@ export default function Login() {
     }, 3000);
   };
 
-  // Función para manejar el login
   const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Verificar si el correo pertenece a un cliente
     const cliente = Clientes.find(
       (cliente) =>
         cliente.email === loginState.email &&
@@ -56,8 +55,7 @@ export default function Login() {
       setLoginState({ ...loginState, success: true });
       showToast("success", "Inicio de sesión exitoso.");
 
-      localStorage.setItem("clienteId", cliente.id);
-      localStorage.setItem("clienteNombre", cliente.nombre);
+      setCliente(cliente);
 
       return setTimeout(() => {
         router.push(`/homebanking`);
@@ -68,11 +66,10 @@ export default function Login() {
     setLoginState({ ...loginState, success: false });
   };
 
-  // Cambiar el fondo de pantalla cada 10 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBg((currentBg + 1) % backgrounds.length);
-    }, 10000);
+    }, 8000);
     return () => clearInterval(interval);
   }, [currentBg]);
 

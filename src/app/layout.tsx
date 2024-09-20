@@ -3,6 +3,7 @@ import "@app/global.scss";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { ClientProvider } from "@/app/context/ClienteContext";
 
 export const metadata: Metadata = {
   title: "ITBANK homebanking",
@@ -23,7 +24,9 @@ const roboto = Roboto_Mono({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <ClientProvider>{children}</ClientProvider>
+      </body>
     </html>
   );
 }
