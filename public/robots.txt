@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://itbank-git-develop-leandro-barba-s-projects.vercel.app/sitemap.xml
+# Host
+Host: https://itbank-psi.vercel.app/
+
+# Sitemaps
+Sitemap: https://itbank-psi.vercel.app/sitemap.xml
