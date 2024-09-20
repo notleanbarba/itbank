@@ -6,7 +6,7 @@ export default function Home() {
   const { cliente } = useCliente();
 
   if (!cliente) {
-    return <div>Cargando...</div>;
+    return <div>Cargando....</div>;
   }
 
   return (
