@@ -5,7 +5,9 @@ import { Cliente, datoTarjeta } from "@/types"; // Asegúrate de importar los ti
 import { Cartas } from "@components/credito"; // Importar el componente Cartas
 
 export default function Tarjeta() {
-  const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(null);
+  const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(
+    null,
+  );
 
   useEffect(() => {
     const fetchClientes = async () => {
@@ -13,7 +15,8 @@ export default function Tarjeta() {
 
       if (storedClienteId) {
         const clientes = await obtenerClientes(); // Llama a la función asíncrona para obtener clientes
-        const cliente = clientes.find((cliente) => cliente.id === storedClienteId) || null;
+        const cliente =
+          clientes.find((cliente) => cliente.id === storedClienteId) || null;
         setClienteAutenticado(cliente);
       }
     };

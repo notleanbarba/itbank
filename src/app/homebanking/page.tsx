@@ -47,9 +47,8 @@ export default function Home() {
             <Cartas tarjeta={cliente.tarjeta[0]} />
           )}
         </div>
-
-        </section>
-        <section>
+      </section>
+      <section>
         <h2 className="mt-6 mb-4 text-xl">Acceso rápido</h2>
         <div className="flex flex-row flex-wrap gap-4">
           <button

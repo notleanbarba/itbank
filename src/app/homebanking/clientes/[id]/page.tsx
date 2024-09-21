@@ -17,11 +17,7 @@ const ClientePage = async ({ params }: ClientePageProps) => {
     notFound();
   }
 
-  return (
-    <div>
-      
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ClientePage;

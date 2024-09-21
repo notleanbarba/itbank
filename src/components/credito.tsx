@@ -32,32 +32,31 @@ export function Cartas({ tarjeta }: { tarjeta: datoTarjeta }) {
     </div>
   );
 }
- export function Cuentas({ tarjetas }: { tarjetas: Cuenta }) {
- 
- if (tarjetas.tipo === "Ahorros") {
-  return (
-    <div className="flex flex-col bg-white w-80 h-min p-4 rounded-xl shadow-float gap-3">
-      <div>
-        <span>{tarjetas.tipo}</span>
-        <span className="block mt-1 text-sm text-gray-500">
-          {tarjetas.numeroCuenta}
-        </span>
+export function Cuentas({ tarjetas }: { tarjetas: Cuenta }) {
+  if (tarjetas.tipo === "Ahorros") {
+    return (
+      <div className="flex flex-col bg-white w-80 h-min p-4 rounded-xl shadow-float gap-3">
+        <div>
+          <span>{tarjetas.tipo}</span>
+          <span className="block mt-1 text-sm text-gray-500">
+            {tarjetas.numeroCuenta}
+          </span>
+        </div>
+        {tarjetas.saldo.map((balance) => {
+          return (
+            <div key={balance.nombre} className="text-xl font-medium">
+              <span className="mr-1">{balance.unidad}</span>
+              {balance.balance}
+            </div>
+          );
+        })}
+        <Link
+          className={"w-min text-left cursor-pointer text-nowrap"}
+          href={tarjetas.button.url}
+        >
+          {tarjetas.button.text}
+        </Link>
       </div>
-      {tarjetas.saldo.map((balance) => {
-        return (
-          <div key={balance.nombre} className="text-xl font-medium">
-            <span className="mr-1">{balance.unidad}</span>
-            {balance.balance}
-          </div>
-        );
-      })}
-      <Link
-        className={"w-min text-left cursor-pointer text-nowrap"}
-        href={tarjetas.button.url}
-      >
-        {tarjetas.button.text}
-      </Link>
-    </div>
-  );
-}
+    );
+  }
 }
