@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { obtenerClientes } from "@/app/data/cliente";
 import { Cliente } from "@/types";
-import ClienteCard from "@/components/clienteCard";
 
 interface ClientePageProps {
   params: {
@@ -19,9 +18,8 @@ const ClientePage = async ({ params }: ClientePageProps) => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Información del Cliente</h1>
-      <ClienteCard cliente={cliente} />
+    <div>
+      
     </div>
   );
 };
