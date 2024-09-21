@@ -26,20 +26,6 @@ export type TagsDefinition = {
   callback?: () => void;
 }[];
 
-export type AccountCardDefinition = {
-  accountType: string;
-  accountNumber: string;
-  balances: {
-    name: string;
-    unit: "$" | "U$D";
-    balance: number;
-  }[];
-  button: {
-    text: string;
-    url: string;
-  };
-};
-
 export type CreditCardDefinition = {
   cardType: string;
   cardNumber: number;
@@ -69,7 +55,15 @@ export type FacturaType = {
 export type Cuenta = {
   numeroCuenta: string;
   tipo: string;
-  saldo: number;
+  saldo: {
+    nombre: string;
+    unidad: "$" | "U$D";
+    balance: number;
+  }[];
+  button: {
+    text: string;
+    url: string;
+  };
 };
 
 export type datoTarjeta = {
@@ -86,4 +80,18 @@ export type Cliente = {
   cuentas: Cuenta[];
   tarjeta: datoTarjeta[];
   facturas: FacturaType[];
+};
+
+export type AccountCardDefinition = {
+  accountType: string;
+  accountNumber: string;
+  balances: {
+    name: string;
+    unit: "$" | "U$D";
+    balance: number;
+  }[];
+  button: {
+    text: string;
+    url: string;
+  };
 };
