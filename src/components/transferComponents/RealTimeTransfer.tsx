@@ -1,15 +1,27 @@
 "use client";
 import { useState } from "react";
 import { useAccounts } from "@components/transferComponents/AccountProvider";
-import Modal from "../Modal"
+import Modal from "../Modal";
 
-const RealTimeTransfer = ({ account, onClose }) => {
-  const { accounts, handleTransfer } = useAccounts(); // Obtenemos todas las cuentas desde el contexto
-  const [recipientAccount, setRecipientAccount] = useState("");
-  const [amount, setAmount] = useState("");
-  const [transferStatus, setTransferStatus] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false); 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); 
+interface Account {
+  id: number;
+  accountNumber: string;
+  balance: number;
+  accountHolder: string;
+}
+
+interface TransferStatus {
+  success: boolean;
+  message: string;
+}
+
+const RealTimeTransfer: React.FC<{ account: Account; onClose: () => void }> = ({ account, onClose }) => {
+  const { accounts, handleTransfer } = useAccounts(); 
+  const [recipientAccount, setRecipientAccount] = useState<string>("");
+  const [amount, setAmount] = useState<string>("");
+  const [transferStatus, setTransferStatus] = useState<TransferStatus | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); 
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false); 
 
   const handleTransferClick = () => {
     const parsedAmount = parseFloat(amount);
@@ -34,11 +46,9 @@ const RealTimeTransfer = ({ account, onClose }) => {
       return;
     }
   
-    // Simulamos la transferencia
     setIsSubmitting(true);
-    setTransferStatus(null); // Limpiar el estado
+    setTransferStatus(null); 
   
-    // Simulamos el proceso de transferencia
     setTimeout(() => {
       handleTransfer(parsedAmount, recipientAccount, account.accountNumber);
       setShowSuccessMessage(true);
@@ -46,17 +56,16 @@ const RealTimeTransfer = ({ account, onClose }) => {
       setTimeout(() => {
         setIsSubmitting(false);
         setShowSuccessMessage(false);
-        onClose(); // Cerramos el contenedor después del éxito
+        onClose(); 
       }, 1500);
     }, 2000);
   };
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={true} onClose={onClose}>
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mx-auto">
         <h2 className="text-2xl font-semibold text-center mb-6">Realizar Transferencia</h2>
 
-        {/* Dropdown dinámico para seleccionar cuenta de destino */}
         <div className="mb-4">
           <label htmlFor="recipient" className="block text-sm font-medium text-gray-700 mb-1">
             Cuenta de Destino
@@ -69,10 +78,9 @@ const RealTimeTransfer = ({ account, onClose }) => {
             className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
           >
             <option value="">Seleccione una cuenta de destino</option>
-            {/* Excluimos la cuenta desde la que se va a transferir */}
             {accounts
-              .filter((acc) => acc.accountNumber !== account.accountNumber)
-              .map((acc) => (
+              .filter((acc: Account) => acc.accountNumber !== account.accountNumber) // Correctly typed acc
+              .map((acc: Account) => (  // Correctly typed acc
                 <option key={acc.id} value={acc.accountNumber}>
                   {acc.accountHolder} - {acc.accountNumber}
                 </option>

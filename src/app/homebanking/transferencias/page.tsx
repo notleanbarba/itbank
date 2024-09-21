@@ -1,18 +1,24 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from 'next/navigation'; // Usamos useRouter para la redirección
+import { useRouter } from 'next/navigation';
 import WithHeader from "@app/homebanking/WithHeader";
 import TransferAccountList from "@components/transferComponents/TransferAccountList";
 import TransferHistory from "@components/transferComponents/TransferHistory";
 import { useAccounts } from "@/components/transferComponents/AccountProvider";
 
-export default function Transferencias() {
-  const { accounts } = useAccounts(); 
-  const [activeTab, setActiveTab] = useState(0); // Para manejar las tabs
-  const router = useRouter(); // Inicializamos useRouter para redirigir
+interface Account {
+  id: number;
+  accountNumber: string;
+  balance: number;
+  accountHolder: string;
+}
 
-  // Función que redirige a la página dinámica de la cuenta seleccionada
-  const handleAccountSelect = (account) => {
+export default function Transferencias() {
+  const { accounts } = useAccounts();
+  const [activeTab, setActiveTab] = useState(0);
+  const router = useRouter();
+
+  const handleAccountSelect = (account: Account) => {
     router.push(`/homebanking/transferencias/${account.id}`);
   };
 

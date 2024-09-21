@@ -1,9 +1,9 @@
 import Header from "@app/homebanking/Header.tsx";
 import Footer from "@app/homebanking/Footer.tsx";
-
+import { AccountProvider } from "@/components/transferComponents/AccountProvider";
 import type { ReactNode } from "react";
 
-import { AccountProvider } from "@/components/transferComponents/AccountProvider";
+
 export default function HomebankingLayout({
   children,
 }: {
@@ -16,9 +16,8 @@ export default function HomebankingLayout({
         <Header />
       </header>
       <main className="flex-grow">{children}</main>
-      <footer>
-      />
-      </footer>
+      <Footer>
+      </Footer>
     </div>
     </AccountProvider>
   );

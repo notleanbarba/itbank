@@ -1,11 +1,18 @@
-import { useAccounts } from "@components/transferComponents/AccountProvider";
-import jsPDF from "jspdf"; // Importamos la librería para crear PDFs
-import { FaDownload } from "react-icons/fa"; // Icono para descargar el PDF
+import jsPDF from "jspdf";
+import { FaDownload } from "react-icons/fa";
+import { useAccounts } from "@/components/transferComponents/AccountProvider";
+
+interface Transfer {
+  sender: string;
+  recipient: string;
+  amount: number;
+  date: string;
+}
 
 const TransferHistory = () => {
   const { transferHistory } = useAccounts();
 
-  const downloadPDF = (transfer) => {
+  const downloadPDF = (transfer: Transfer) => {
     const doc = new jsPDF();
     doc.text(`Comprobante de Transferencia`, 20, 10);
     doc.text(`Fecha: ${transfer.date}`, 20, 20);
@@ -41,7 +48,7 @@ const TransferHistory = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {transferHistory.map((transfer, index) => (
+              {transferHistory.map((transfer: Transfer, index: number) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transfer.date}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transfer.sender}</td>

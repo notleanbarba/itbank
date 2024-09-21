@@ -1,16 +1,22 @@
+// TransferAccountList.tsx
+
 "use client";
-import { useRouter } from 'next/navigation';
-import { useAccounts } from "@/components/transferComponents/AccountProvider";
-import { useState } from 'react';
+import { useState } from 'react'; // Solo mantener las importaciones que estás usando.
 
-const TransferAccountList = () => {
-  const { accounts } = useAccounts(); 
-  const router = useRouter(); 
+interface Account {
+  id: number;
+  accountNumber: string;
+  balance: number;
+  accountHolder: string;
+}
+
+interface TransferAccountListProps {
+  accounts: Account[];
+  onSelectAccount: (account: Account) => void;
+}
+
+const TransferAccountList: React.FC<TransferAccountListProps> = ({ accounts, onSelectAccount }) => {
   const [searchTerm, setSearchTerm] = useState(""); 
-
-  const handleAccountSelect = (accountId) => {
-    router.push(`/homebanking/transferencias/${accountId}`);
-  };
 
   const filteredAccounts = accounts.filter(
     (account) =>
@@ -20,10 +26,10 @@ const TransferAccountList = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="text-4xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-400">
         Selecciona la cuenta de origen
       </h1>
-      
+
       <input
         type="text"
         placeholder="Buscar por titular o número de cuenta..."
@@ -32,17 +38,21 @@ const TransferAccountList = () => {
         className="w-full p-3 mb-6 text-lg border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
       />
 
-      <ul className="bg-white shadow-md rounded-md overflow-hidden">
+      <ul className="bg-white shadow-xl rounded-lg overflow-hidden">
         {filteredAccounts.length > 0 ? (
           filteredAccounts.map((account) => (
             <li
               key={account.id}
-              className="p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-100"
-              onClick={() => handleAccountSelect(account.id)}
+              className="p-6 border-b border-gray-100 cursor-pointer hover:bg-gradient-to-r from-blue-50 to-blue-100 transform transition duration-300 ease-in-out hover:scale-105"
+              onClick={() => onSelectAccount(account)}
             >
-              <h2 className="text-xl font-semibold">{account.accountHolder}</h2>
-              <p className="text-gray-600">Número de cuenta: {account.accountNumber}</p>
-              <p className="text-gray-600">Saldo: ${account.balance.toLocaleString('es-AR')}</p>
+              <h2 className="text-2xl font-semibold text-blue-800">{account.accountHolder}</h2>
+              <p className="text-gray-700">
+                Número de cuenta: <span className="font-bold">{account.accountNumber}</span>
+              </p>
+              <p className="text-gray-700">
+                Saldo: <span className="text-green-600 font-bold">${account.balance.toLocaleString('es-AR')}</span>
+              </p>
             </li>
           ))
         ) : (
@@ -56,3 +66,4 @@ const TransferAccountList = () => {
 };
 
 export default TransferAccountList;
+
