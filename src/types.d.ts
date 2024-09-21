@@ -50,7 +50,7 @@ export type Cuenta = {
 
 export type datoTarjeta = {
   numeroTarjeta: string;
-  tipo: string;
+  tipo: "Tarjeta de crédito" | "Tarjeta de débito";
   cvv: number;
 };
 
