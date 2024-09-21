@@ -24,7 +24,9 @@ const TransferHistory = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-semibold mb-6">Historial de Transferencias</h2>
+      <h2 className="text-3xl font-semibold mb-6">
+        Historial de Transferencias
+      </h2>
       {transferHistory.length === 0 ? (
         <p>No se han realizado transferencias.</p>
       ) : (
@@ -50,10 +52,18 @@ const TransferHistory = () => {
             <tbody className="divide-y divide-gray-200">
               {transferHistory.map((transfer: Transfer, index: number) => (
                 <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transfer.date}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transfer.sender}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{transfer.recipient}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">${transfer.amount}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {transfer.date}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {transfer.sender}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {transfer.recipient}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                    ${transfer.amount}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button
                       className="text-blue-500 hover:text-blue-700 flex items-center"

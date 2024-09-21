@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import WithHeader from "@app/homebanking/WithHeader";
 import TransferAccountList from "@components/transferComponents/TransferAccountList";
 import TransferHistory from "@components/transferComponents/TransferHistory";
@@ -28,12 +28,15 @@ export default function Transferencias() {
       submenuOptions={[]}
       tags={[
         { text: "Nueva Transferencia", callback: () => setActiveTab(0) },
-        { text: "Historial", callback: () => setActiveTab(1) }
+        { text: "Historial", callback: () => setActiveTab(1) },
       ]}
     >
       {activeTab === 0 ? (
         <main>
-          <TransferAccountList accounts={accounts} onSelectAccount={handleAccountSelect} />
+          <TransferAccountList
+            accounts={accounts}
+            onSelectAccount={handleAccountSelect}
+          />
         </main>
       ) : (
         <TransferHistory />

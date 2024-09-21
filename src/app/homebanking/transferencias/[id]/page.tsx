@@ -1,9 +1,9 @@
 "use client";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
 import WithHeader from "@app/homebanking/WithHeader";
 import { useState } from "react";
 import RealTimeTransfer from "@/components/transferComponents/RealTimeTransfer";
-import  { useAccounts }  from "@/components/transferComponents/AccountProvider";
+import { useAccounts } from "@/components/transferComponents/AccountProvider";
 
 interface Account {
   id: number;
@@ -14,10 +14,12 @@ interface Account {
 
 export default function TransferDetails() {
   const { id } = useParams();
-  const { accounts } = useAccounts() as { accounts: Account[] }; 
+  const { accounts } = useAccounts() as { accounts: Account[] };
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const account = accounts.find((acc: Account) => acc.id === parseInt(id as string, 10));
+  const account = accounts.find(
+    (acc: Account) => acc.id === parseInt(id as string, 10),
+  );
 
   if (!account) {
     return <div>Cargando detalles de la cuenta...</div>;
@@ -32,10 +34,17 @@ export default function TransferDetails() {
   };
 
   return (
-    <WithHeader title={`Detalles de la Cuenta ${account.accountNumber}`} submenuOptions={[]}>
+    <WithHeader
+      title={`Detalles de la Cuenta ${account.accountNumber}`}
+      submenuOptions={[]}
+    >
       <div className="container mx-auto px-4 py-8 bg-gray-100 rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Cuenta: {account.accountNumber}</h1>
-        <p className="text-2xl font-semibold text-green-600 mb-6">Saldo: ${account.balance.toLocaleString()}</p>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          Cuenta: {account.accountNumber}
+        </h1>
+        <p className="text-2xl font-semibold text-green-600 mb-6">
+          Saldo: ${account.balance.toLocaleString()}
+        </p>
 
         <button
           onClick={handleTransferClick}
@@ -47,7 +56,9 @@ export default function TransferDetails() {
         {isModalOpen && (
           <div className="modal-backdrop">
             <div className="modal">
-              <button onClick={closeModal} className="modal-close">X</button>
+              <button onClick={closeModal} className="modal-close">
+                X
+              </button>
               <RealTimeTransfer account={account} onClose={closeModal} />
             </div>
           </div>

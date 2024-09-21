@@ -1,7 +1,7 @@
 // TransferAccountList.tsx
 
 "use client";
-import { useState } from 'react'; // Solo mantener las importaciones que estás usando.
+import { useState } from "react"; // Solo mantener las importaciones que estás usando.
 
 interface Account {
   id: number;
@@ -15,13 +15,16 @@ interface TransferAccountListProps {
   onSelectAccount: (account: Account) => void;
 }
 
-const TransferAccountList: React.FC<TransferAccountListProps> = ({ accounts, onSelectAccount }) => {
-  const [searchTerm, setSearchTerm] = useState(""); 
+const TransferAccountList: React.FC<TransferAccountListProps> = ({
+  accounts,
+  onSelectAccount,
+}) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredAccounts = accounts.filter(
     (account) =>
       account.accountHolder.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      account.accountNumber.includes(searchTerm)
+      account.accountNumber.includes(searchTerm),
   );
 
   return (
@@ -46,12 +49,18 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({ accounts, onS
               className="p-6 border-b border-gray-100 cursor-pointer hover:bg-gradient-to-r from-blue-50 to-blue-100 transform transition duration-300 ease-in-out hover:scale-105"
               onClick={() => onSelectAccount(account)}
             >
-              <h2 className="text-2xl font-semibold text-blue-800">{account.accountHolder}</h2>
+              <h2 className="text-2xl font-semibold text-blue-800">
+                {account.accountHolder}
+              </h2>
               <p className="text-gray-700">
-                Número de cuenta: <span className="font-bold">{account.accountNumber}</span>
+                Número de cuenta:{" "}
+                <span className="font-bold">{account.accountNumber}</span>
               </p>
               <p className="text-gray-700">
-                Saldo: <span className="text-green-600 font-bold">${account.balance.toLocaleString('es-AR')}</span>
+                Saldo:{" "}
+                <span className="text-green-600 font-bold">
+                  ${account.balance.toLocaleString("es-AR")}
+                </span>
               </p>
             </li>
           ))
@@ -66,4 +75,3 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({ accounts, onS
 };
 
 export default TransferAccountList;
-

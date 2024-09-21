@@ -1,7 +1,7 @@
 "use client";
 import { useAccounts } from "@components/transferComponents/AccountProvider";
-import Link from "next/link"; 
-import { FaEye, FaMoneyCheckAlt } from "react-icons/fa"; 
+import Link from "next/link";
+import { FaEye, FaMoneyCheckAlt } from "react-icons/fa";
 
 interface Account {
   id: number;
@@ -33,10 +33,14 @@ const BankAccountList: React.FC = () => {
               {account.accountHolder}
             </h2>
             <p className="text-white text-opacity-80 mb-2">Número de cuenta:</p>
-            <p className="text-xl font-medium text-white mb-4">{account.accountNumber}</p>
+            <p className="text-xl font-medium text-white mb-4">
+              {account.accountNumber}
+            </p>
             <p className="text-white text-opacity-80 mb-2">Saldo disponible:</p>
-            <p className="text-3xl font-bold text-yellow-400 mb-6">${account.balance.toLocaleString("es-ES")}</p>
-            
+            <p className="text-3xl font-bold text-yellow-400 mb-6">
+              ${account.balance.toLocaleString("es-ES")}
+            </p>
+
             <Link href={`/homebanking/cuentas/${account.id}`}>
               <button className="w-full bg-yellow-400 text-blue-900 py-3 px-6 rounded-md shadow-lg hover:bg-yellow-300 hover:text-white transition-all flex items-center justify-center transform group-hover:translate-y-1 duration-300">
                 <FaEye className="mr-2" /> Ver Detalles
