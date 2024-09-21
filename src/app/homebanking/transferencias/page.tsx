@@ -1,46 +1,37 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from 'next/navigation'; // Usamos useRouter para la redirección
 import WithHeader from "@app/homebanking/WithHeader";
-import Table from "@components/Table.tsx";
+import TransferAccountList from "@components/transferComponents/TransferAccountList";
+import TransferHistory from "@components/transferComponents/TransferHistory";
+import { useAccounts } from "@/components/transferComponents/AccountProvider";
 
 export default function Transferencias() {
+  const { accounts } = useAccounts(); 
+  const [activeTab, setActiveTab] = useState(0); // Para manejar las tabs
+  const router = useRouter(); // Inicializamos useRouter para redirigir
+
+  // Función que redirige a la página dinámica de la cuenta seleccionada
+  const handleAccountSelect = (account) => {
+    router.push(`/homebanking/transferencias/${account.id}`);
+  };
+
   return (
-    <>
-      <WithHeader
-        title="Transferencias"
-        submenuOptions={[]}
-        tags={[
-          {
-            text: "Nueva transferencia",
-          },
-          {
-            text: "Transferencias agendadas",
-          },
-          {
-            text: "Mis destinatarios frecuentes",
-          },
-        ]}
-      >
+    <WithHeader
+      title="Transferencias"
+      submenuOptions={[]}
+      tags={[
+        { text: "Nueva Transferencia", callback: () => setActiveTab(0) },
+        { text: "Historial", callback: () => setActiveTab(1) }
+      ]}
+    >
+      {activeTab === 0 ? (
         <main>
-          <Table
-            thead={["Fecha", "Destinatario", "Tipo", "Importe"]}
-            tbody={[
-              [
-                "01/01/2024",
-                "Lionel Messi",
-                "Transferencia automática",
-                "$10000",
-              ],
-              [
-                "02/01/2024",
-                "Jorge Luis Borges",
-                "Transferencia automática",
-                "$100",
-              ],
-              ["04/01/2024", "Juan Pérez", "DEBIN", "$1234"],
-              ["11/08/2024", "María González", "E-Cheq", "$993"],
-            ]}
-          />
+          <TransferAccountList accounts={accounts} onSelectAccount={handleAccountSelect} />
         </main>
-      </WithHeader>
-    </>
+      ) : (
+        <TransferHistory />
+      )}
+    </WithHeader>
   );
 }
