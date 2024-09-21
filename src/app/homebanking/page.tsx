@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Cards from "@components/Cards";
 import { Cartas } from "@components/credito";
 import { Cuentas } from "@components/credito"; // Importamos el componente 'Credito' (antes Cartas)
 import { Cliente } from "@types"; // Asegúrate de importar el tipo Cliente
