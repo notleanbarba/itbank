@@ -30,9 +30,11 @@ export default function Tarjeta() {
 
   return (
     <div className="flex justify-center pt-10 min-h-screen bg-gray-100">
-      {clienteAutenticado.tarjeta.map((tarjeta: datoTarjeta) => (
-        <Cartas key={`tarjeta_${tarjeta.numeroTarjeta}`} tarjeta={tarjeta} />
-      ))}
+      <div className="block">
+        {clienteAutenticado.tarjeta.map((tarjeta: datoTarjeta) => (
+          <Cartas key={`tarjeta_${tarjeta.numeroTarjeta}`} tarjeta={tarjeta} />
+        ))}
+      </div>
     </div>
   );
 }
