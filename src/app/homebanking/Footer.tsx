@@ -3,10 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Modal from "../../components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faNewspaper,
-  faXmarkCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
 
 export default function Footer() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -17,47 +14,39 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="text-white bg-[#222222] py-2 px-8 h-min no-underline sm:text-sm md:text-base">
-        <div className="flex flex-row flex-wrap justify-around [&_li]:my-1 [&_li]:text-nowrap">
-          <div className="flex flex-col gap-1 w-min">
+      <footer className="text-white bg-[#222222] py-2 px-8 min-h-[150px] no-underline sm:text-sm md:text-base">
+        <div className="flex flex-col md:flex-row justify-around items-start gap-4">
+          {/* Sección Nosotros */}
+          <div className="flex flex-col gap-1 w-full md:w-auto">
             <h3 className="text-lg font-bold">Nosotros</h3>
-            <Link href="/about-us">Sobre nosotros</Link>
-            <Link href="/faq">FAQ</Link>
-            <button type="button" className="block md:hidden">
+            <Link href="/about-us" className="hover:text-gray-400">
+              Sobre nosotros
+            </Link>
+            <Link href="/faq" className="hover:text-gray-400">
+              FAQ
+            </Link>
+            <button
+              type="button"
+              className="block md:hidden text-blue-500 hover:text-blue-300"
+              onClick={toggleContactModal}
+            >
               Contacto
             </button>
-            <dialog className="modal">
-              <div className="modal-dialog" role="dialog">
-                <button type="button" className="modal-close" tabIndex={-1}>
-                  <FontAwesomeIcon icon={faXmarkCircle} />
-                </button>
-                <h3 className="text-lg font-bold">Información de contacto</h3>
-                <ul>
-                  <li>
-                    Dirección:<span>Calle falsa 1234</span>
-                  </li>
-                  <li>
-                    Email:<span>itbank@corpo.com</span>
-                  </li>
-                  <li>
-                    Número:<span>+54 9 123456789</span>
-                  </li>
-                </ul>
-              </div>
-            </dialog>
           </div>
-          <div className="hidden md:flex flex-col gap-1 w-min">
+
+          {/* Sección Contacto (visible en dispositivos medianos y superiores) */}
+          <div className="hidden md:flex flex-col gap-1 w-full md:w-auto">
             <h3 className="text-lg font-bold">Contacto</h3>
-            <address>
+            <address className="not-italic">
               <ul>
                 <li>
-                  Dirección: <span>Calle falsa 1234</span>
+                  <strong>Dirección:</strong> Calle falsa 1234
                 </li>
                 <li>
-                  Email: <span>itbank@corpo.com</span>
+                  <strong>Email:</strong> itbank@corpo.com
                 </li>
                 <li>
-                  Número: <span>+54 9 123456789</span>
+                  <strong>Número:</strong> +54 9 123456789
                 </li>
               </ul>
             </address>
@@ -67,19 +56,20 @@ export default function Footer() {
                 e.preventDefault();
                 toggleContactModal();
               }}
+              className="text-sky-400 hover:text-blue-500 cursor-pointer"
             >
-              <span className="text-blue-500 hover:text-blue-300 cursor-pointer">
-                Formulario Contacto
-              </span>
+              Formulario Contacto
             </Link>
           </div>
-          <div className="flex flex-col gap-1 w-min">
+
+          {/* Sección Newsletter */}
+          <div className="flex flex-col gap-1 w-full md:w-auto">
             <h3 className="text-lg font-bold">Newsletter</h3>
             <p>Suscribite para recibir ofertas especiales</p>
-            <form className="flex items-center">
+            <form className="flex flex-col sm:flex-row items-start sm:items-center">
               <input
                 type="email"
-                className="p-1 border-none rounded-md mr-2"
+                className="p-2 border border-gray-300 rounded-md mb-2 sm:mb-0 sm:mr-2 flex-1"
                 name="newsletter_email"
                 placeholder="Tu email"
                 aria-label="Email"
@@ -87,8 +77,8 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="w-12 aspect-square bg-[#9aa7bf] rounded-full flex justify-center items-center cursor-pointer"
-                aria-label="enviar"
+                className="w-full sm:w-12 h-12 bg-[#9aa7bf] rounded-full flex justify-center items-center cursor-pointer hover:bg-[#7a8abf]"
+                aria-label="Enviar"
               >
                 <FontAwesomeIcon icon={faNewspaper} />
               </button>
@@ -96,13 +86,15 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
+      {/* Modal de Contacto */}
       <Modal
         open={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
         title="Formulario de Contacto"
       >
-        <form>
-          <div className="mb-4">
+        <form className="space-y-4">
+          <div>
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
@@ -114,11 +106,11 @@ export default function Footer() {
               id="name"
               name="name"
               required
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
@@ -130,11 +122,11 @@ export default function Footer() {
               id="email"
               name="email"
               required
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="subject"
               className="block text-sm font-medium text-gray-700"
@@ -146,11 +138,11 @@ export default function Footer() {
               id="subject"
               name="subject"
               required
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="contact-reason"
               className="block text-sm font-medium text-gray-700"
@@ -161,7 +153,7 @@ export default function Footer() {
               id="contact-reason"
               name="contact-reason"
               required
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Selecciona una opción</option>
               <option value="support">Soporte Técnico</option>
@@ -171,7 +163,7 @@ export default function Footer() {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="phone"
               className="block text-sm font-medium text-gray-700"
@@ -182,12 +174,12 @@ export default function Footer() {
               type="tel"
               id="phone"
               name="phone"
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="(Código de país) Número"
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label
               htmlFor="message"
               className="block text-sm font-medium text-gray-700"
@@ -198,27 +190,27 @@ export default function Footer() {
               id="message"
               name="message"
               required
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows={4}
             ></textarea>
           </div>
 
-          <div className="mb-4">
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="newsletter"
-                className="form-checkbox"
-              />
-              <span className="ml-2 text-sm text-gray-700">
-                Suscribirme al Newsletter
-              </span>
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="newsletter"
+              name="newsletter"
+              className="form-checkbox h-4 w-4 text-blue-600"
+            />
+            <label htmlFor="newsletter" className="ml-2 text-sm text-gray-700">
+              Suscribirme al Newsletter
             </label>
           </div>
 
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Enviar
             </button>

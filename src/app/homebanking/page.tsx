@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Cartas } from "@components/credito";
-import { Cuentas } from "@components/credito"; // Importamos el componente 'Credito' (antes Cartas)
-import { Cliente } from "@types"; // Asegúrate de importar el tipo Cliente
-import { obtenerClientes } from "@/app/data/cliente"; // Si usas obtenerClientes
+import { Cuentas } from "@components/credito";
+import { Cliente } from "@types";
+import { obtenerClientes } from "@/app/data/cliente";
 
 export default function Home() {
   const [clienteId, setClienteId] = useState<string | null>(null);
