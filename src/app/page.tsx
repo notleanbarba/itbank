@@ -107,7 +107,7 @@ export default function Login() {
           backgroundImage: `url(${backgrounds[currentBg].src || backgrounds[currentBg]})`,
         }}
       >
-        <main className="h-min grid grid-cols-2 w-1/2">
+        <main className="flex justify-center">
           <div className="min-w-40 w-full bg-white rounded-xl z-10">
             <form
               className={`flex flex-col justify-center px-12 py-8 [&>input]:border ${
@@ -118,7 +118,7 @@ export default function Login() {
               }`}
               onSubmit={handleLoginSubmit}
             >
-              <h1 className="text-2xl text-center text-slate-600 mb-5">
+              <h1 className="text-xl text-center text-slate-600 mb-5">
                 Iniciar sesión
               </h1>
               <label className="mt-3 mb-1 text-lg" htmlFor="login-email">

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import WithHeader from "@app/homebanking/WithHeader";
-import Factura from "./factura.tsx";
+import Factura from "./factura";
 import { FacturaType } from "@types";
-import Table from "@components/Table.tsx";
+import Table from "@components/Table";
 
 export default function Pagos() {
   const [selectedFacturaId, setSelectedFacturaId] = useState<string | null>(
@@ -12,29 +12,41 @@ export default function Pagos() {
   );
   const [facturas, setFacturas] = useState<FacturaType[]>([]);
   const [clienteNombre, setClienteNombre] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const tableRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.log("useEffect Pagos iniciado");
     const storedClienteNombre = localStorage.getItem("clienteNombre");
+    console.log("clienteNombre almacenado:", storedClienteNombre);
 
     if (!storedClienteNombre) {
-      console.error("No se encontró el nombre del cliente");
+      setError("No se encontró el nombre del cliente.");
+      setLoading(false);
       return;
     }
 
     setClienteNombre(storedClienteNombre);
 
     async function fetchFacturas() {
-      const res = await fetch("/facturas.json");
-      if (res.ok) {
-        const data = (await res.json()) as FacturaType[];
+      try {
+        const res = await fetch("/facturas.json");
 
-        const facturasFiltradas = data.filter(
-          (factura) => factura.cliente === storedClienteNombre,
-        );
-        setFacturas(facturasFiltradas);
-      } else {
-        console.error("Error cargando las facturas.");
+        if (res.ok) {
+          const data = (await res.json()) as FacturaType[];
+
+          const facturasFiltradas = data.filter(
+            (factura) => factura.cliente === storedClienteNombre,
+          );
+          setFacturas(facturasFiltradas);
+        } else {
+          setError("Error al cargar las facturas.");
+        }
+      } catch (error) {
+        setError("Ocurrió un error al obtener las facturas.");
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -59,41 +71,47 @@ export default function Pagos() {
     };
   }, []);
 
-  const tableData = facturas.map((factura) => [
-    factura.servicio,
-    factura.cliente,
-  ]);
+  const tableData = useMemo(
+    () => facturas.map((factura) => [factura.servicio, factura.cliente]),
+    [facturas],
+  );
 
-  if (!clienteNombre) {
-    return <div>No se encontró el cliente o no ha iniciado sesión.</div>;
+  if (loading) {
+    return <div>Cargando...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500">{error}</div>;
   }
 
   return (
-    <>
-      <WithHeader
-        title="Todos tus pagos"
-        submenuOptions={[]}
-        tags={[
-          {
-            text: "Calendario de pagos",
-          },
-        ]}
-      >
-        <div ref={tableRef}>
-          <h2>Seleccione una factura:</h2>
+    <WithHeader
+      title="Todos tus pagos"
+      submenuOptions={[]}
+      tags={[
+        {
+          text: "Calendario de pagos",
+        },
+      ]}
+    >
+      <div ref={tableRef} className="p-4 bg-white shadow rounded">
+        <h2 className="text-lg font-semibold mb-4">Seleccione una factura:</h2>
+        {facturas.length > 0 ? (
           <Table
             thead={["Servicio", "Cliente"]}
             tbody={tableData}
             onRowClick={handleRowClick}
           />
-        </div>
-
-        {selectedFacturaId && (
-          <div className="mt-4 mb-10">
-            <Factura id={selectedFacturaId} />
-          </div>
+        ) : (
+          <div>No hay facturas disponibles.</div>
         )}
-      </WithHeader>
-    </>
+      </div>
+
+      {selectedFacturaId && (
+        <div className="mt-4 mb-10 p-4 bg-slate-200 rounded shadow">
+          <Factura id={selectedFacturaId} />
+        </div>
+      )}
+    </WithHeader>
   );
 }
