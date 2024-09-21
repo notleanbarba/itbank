@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import type { ToastType } from "@types";
-import Toast from "@components/Toast.tsx";
 import { useRouter } from "next/navigation";
+import { obtenerClientes } from "@/app/data/cliente"; // Importa la función correctamente
+import Toast from "@components/Toast";
+import { ToastType, Cliente } from "@/types";
 
 import bg1 from "../app/assets/images/login/1.webp";
 import bg2 from "../app/assets/images/login/2.webp";
@@ -11,34 +12,16 @@ import bg3 from "../app/assets/images/login/3.webp";
 const backgrounds = [bg1, bg2, bg3];
 
 type LoginForm = {
-  email: string | null;
-  password: string | null;
+  email: string;
+  password: string;
   success: boolean | null;
 };
-
-type RegisterForm = {
-  email: string | null;
-  password: string | null;
-  name: string | null;
-  dni: number | null;
-  success: boolean | null;
-};
-
-const validEmail = "devfive@itbank.com";
-const validPassword = "devfive";
 
 export default function Login() {
   const [currentBg, setCurrentBg] = useState(0);
   const [loginState, setLoginState] = useState<LoginForm>({
-    email: null,
-    password: null,
-    success: null,
-  });
-  const [registerState, setRegisterState] = useState<RegisterForm>({
-    email: null,
-    password: null,
-    name: null,
-    dni: null,
+    email: "",
+    password: "",
     success: null,
   });
 
@@ -48,240 +31,130 @@ export default function Login() {
     message: null,
   });
 
-  const [isLoginVisible, setIsLoginVisible] = useState<boolean>(true);
-
   const router = useRouter();
+  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [cargandoClientes, setCargandoClientes] = useState<boolean>(true);
 
-  const showToast = (
-    type: "success" | "error" | "warning" | "info",
-    message: string,
-  ) => {
-    setToast({ open: true, type: type, message: message });
+  // Mostrar notificación
+  const showToast = (type: "success" | "error", message: string) => {
+    setToast({ open: true, type, message });
     setTimeout(() => {
-      setToast({ ...toast, open: false });
+      setToast((prevToast) => ({ ...prevToast, open: false }));
     }, 3000);
   };
 
+  // Cargar clientes al montar el componente
+  useEffect(() => {
+    const fetchClientes = async () => {
+      try {
+        const datosClientes = await obtenerClientes();
+        setClientes(datosClientes);
+      } catch (error) {
+        console.error("Error al cargar clientes:", error);
+        showToast("error", "Error al cargar datos de clientes.");
+      } finally {
+        setCargandoClientes(false);
+      }
+    };
+
+    fetchClientes();
+  }, []);
+
+  // Función para manejar el login
   const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (
-      loginState.email === validEmail &&
-      loginState.password === validPassword
-    ) {
+
+    // Verificar si el correo pertenece a un cliente
+    const cliente = clientes.find(
+      (cliente) =>
+        cliente.email === loginState.email &&
+        cliente.password === loginState.password,
+    );
+
+    if (cliente) {
       setLoginState({ ...loginState, success: true });
-      showToast("success", " Inicio de sesión exitoso.");
-      return setTimeout(() => {
-        router.push("/homebanking");
-      }, 1000);
+      showToast("success", "Inicio de sesión exitoso.");
+
+      localStorage.setItem("clienteId", cliente.id);
+      localStorage.setItem("clienteNombre", cliente.nombre);
+
+      setTimeout(() => {
+        router.push(`/homebanking`);
+      }, 500);
+    } else {
+      showToast("error", "Correo o contraseña incorrectos.");
+      setLoginState({ ...loginState, success: false });
     }
-
-    showToast("error", "Usuario o contraseña incorrectos.");
-    setLoginState({ ...loginState, success: false });
   };
 
-  const handleRegisterSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setRegisterState({ ...registerState, success: true });
-    showToast("success", "Usuario creado exitosamente.");
-    return setTimeout(() => {
-      router.push("/homebanking");
-    }, 1000);
-  };
-
-  const toggleForms = () => {
-    setIsLoginVisible(!isLoginVisible);
-  };
-
+  // Cambiar el fondo de pantalla cada 10 segundos
   useEffect(() => {
-    setTimeout(() => {
-      setCurrentBg((currentBg + 1) % 3); // Cambiar '3' por cantidad de imagenes a usar
+    const interval = setInterval(() => {
+      setCurrentBg((prevBg) => (prevBg + 1) % backgrounds.length);
     }, 10000);
-  }, [currentBg]);
+    return () => clearInterval(interval);
+  }, []); // Arreglo de dependencias vacío para evitar múltiples intervalos
+
+  if (cargandoClientes) {
+    return <p className="text-center mt-10">Cargando...</p>;
+  }
 
   return (
     <>
       <div
         className="h-screen w-screen flex items-center justify-center bg-cover transition-[background]"
         style={{
-          backgroundImage: `url(${backgrounds[currentBg].src})`,
+          backgroundImage: `url(${backgrounds[currentBg].src || backgrounds[currentBg]})`,
         }}
       >
         <main className="h-min grid grid-cols-2 w-1/2">
-          {isLoginVisible ? (
-            <>
-              <div className="min-w-40 w-full bg-white rounded-xl z-10">
-                <form
-                  className={`flex flex-col justify-center px-12 py-8 [&>input]:border ${
-                    loginState.success !== null &&
-                    (loginState.success
-                      ? "[&>input]:border-[#4caf50]"
-                      : "[&>input]:border-[#f44336]")
-                  }`}
-                  onSubmit={handleLoginSubmit}
-                  onInvalid={() => {
-                    if (!!loginState.email || !!loginState.password)
-                      showToast(
-                        "warning",
-                        "Por favor, completa todos los campos.",
-                      );
-                  }}
-                >
-                  <h1 className="text-2xl text-center text-slate-600 mb-5">
-                    Iniciar sesión
-                  </h1>
-                  <label className="mt-3 mb-1 text-lg" htmlFor="login-email">
-                    Email
-                  </label>
-                  <input
-                    id="login-email"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="email"
-                    value={loginState.email ?? ""}
-                    onChange={(e) =>
-                      setLoginState({ ...loginState, email: e.target.value })
-                    }
-                    required
-                    // biome-ignore lint/a11y/noAutofocus: Self explanatory autofocus. This is a login form
-                    autoFocus
-                  />
-                  <label className="mt-3 mb-1 text-lg" htmlFor="login-password">
-                    Contraseña
-                  </label>
-                  <input
-                    id="login-password"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="password"
-                    value={loginState.password ?? ""}
-                    onChange={(e) =>
-                      setLoginState({ ...loginState, password: e.target.value })
-                    }
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="w-min px-2 py-4 mt-4 border-none text-lg text-white bg-[#444] rounded-md outline-none cursor-pointer hover:bg-[#333] focus:bg-[#333] "
-                  >
-                    Entrar
-                  </button>
-                </form>
-              </div>
-              <div className="min-w-40 w-full bg-black/50 backdrop-blur rounded-xl flex flex-col gap-4 text-white p-10">
-                <h3 className="font-bold text-2xl">
-                  ¿Aún no tienes una cuenta?
-                </h3>
-                <p>Registrate para que puedas iniciar sesión</p>
-                <button
-                  className="px-2 py-4 mt-2 border-2 border-white border-solid w-min text-white outline-none cursor-pointer text-nowrap bg-transparent text-lg font-bold hover:bg-[#333] focus:bg-[#333] "
-                  type="button"
-                  onClick={toggleForms}
-                >
-                  Registrarse
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="min-w-40 w-full bg-black/50 backdrop-blur rounded-xl flex flex-col gap-4 text-white p-10">
-                <h3 className="font-bold text-2xl">¿Ya tienes una cuenta?</h3>
-                <p>Inicia sesión para entrar en la página</p>
-                <button
-                  type="button"
-                  className="px-2 py-4 mt-2 border-2 border-white border-solid w-min text-white outline-none cursor-pointer text-nowrap bg-transparent text-lg font-bold hover:bg-[#333] focus:bg-[#333] "
-                  onClick={toggleForms}
-                >
-                  Iniciar sesión
-                </button>
-              </div>
-              <div className="min-w-40 w-full bg-white rounded-xl z-10 order-2">
-                <form
-                  className={`flex flex-col justify-center px-12 py-8 [&>input]:border ${
-                    registerState.success !== null &&
-                    (registerState.success
-                      ? "[&>input]:border-[#4caf50]"
-                      : "[&>input]:border-[#f44336]")
-                  }`}
-                  onSubmit={handleRegisterSubmit}
-                >
-                  <h1 className="text-2xl text-center text-slate-600 mb-5">
-                    Registrarse
-                  </h1>
-                  <label className="mt-3 mb-1 text-lg" htmlFor="register-name">
-                    Nombre completo
-                  </label>
-                  <input
-                    id="register-name"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="text"
-                    value={registerState.name ?? ""}
-                    onChange={(e) =>
-                      setRegisterState({
-                        ...registerState,
-                        name: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <label className="mt-3 mb-1 text-lg" htmlFor="register-email">
-                    Email
-                  </label>
-                  <input
-                    id="register-email"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="email"
-                    value={registerState.email ?? ""}
-                    onChange={(e) =>
-                      setRegisterState({
-                        ...registerState,
-                        email: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <label className="mt-3 mb-1 text-lg" htmlFor="register-dni">
-                    <abbr title="Documento Nacional de Identidad">DNI</abbr>
-                  </label>
-                  <input
-                    id="register-dni"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="number"
-                    value={registerState.dni ?? ""}
-                    onChange={(e) =>
-                      setRegisterState({
-                        ...registerState,
-                        dni: +e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <label
-                    className="mt-3 mb-1 text-lg"
-                    htmlFor="register-password"
-                  >
-                    Contraseña
-                  </label>
-                  <input
-                    id="register-password"
-                    className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
-                    type="password"
-                    value={registerState.password ?? ""}
-                    onChange={(e) =>
-                      setRegisterState({
-                        ...registerState,
-                        password: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                  <button
-                    className="w-min px-2 py-4 mt-4 border-none text-lg text-white bg-[#444] rounded-md outline-none cursor-pointer hover:bg-[#333] focus:bg-[#333] "
-                    type="submit"
-                  >
-                    Registrarse
-                  </button>
-                </form>
-              </div>
-            </>
-          )}
+          <div className="min-w-40 w-full bg-white rounded-xl z-10">
+            <form
+              className={`flex flex-col justify-center px-12 py-8 [&>input]:border ${
+                loginState.success !== null &&
+                (loginState.success
+                  ? "[&>input]:border-[#4caf50]"
+                  : "[&>input]:border-[#f44336]")
+              }`}
+              onSubmit={handleLoginSubmit}
+            >
+              <h1 className="text-2xl text-center text-slate-600 mb-5">
+                Iniciar sesión
+              </h1>
+              <label className="mt-3 mb-1 text-lg" htmlFor="login-email">
+                Email
+              </label>
+              <input
+                id="login-email"
+                className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
+                type="email"
+                value={loginState.email}
+                onChange={(e) =>
+                  setLoginState({ ...loginState, email: e.target.value })
+                }
+                required
+              />
+              <label className="mt-3 mb-1 text-lg" htmlFor="login-password">
+                Contraseña
+              </label>
+              <input
+                id="login-password"
+                className="w-full bg-[#f2f2f2] p-2 text-lg outline-none rounded-md"
+                type="password"
+                value={loginState.password}
+                onChange={(e) =>
+                  setLoginState({ ...loginState, password: e.target.value })
+                }
+                required
+              />
+              <button
+                type="submit"
+                className="w-min px-2 py-4 mt-4 border-none text-lg text-white bg-[#444] rounded-md outline-none cursor-pointer hover:bg-[#333] focus:bg-[#333]"
+              >
+                Entrar
+              </button>
+            </form>
+          </div>
         </main>
       </div>
       <Toast open={toast.open} type={toast.type} message={toast.message} />
