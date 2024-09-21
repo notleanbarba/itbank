@@ -19,8 +19,46 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
       email: "juan.perez@example.com",
       password: "1234",
       cuentas: [
-        { numeroCuenta: "123456", tipo: "Ahorros", saldo: 20000 },
-        { numeroCuenta: "342234", tipo: "Corriente", saldo: 5000 },
+        {
+          numeroCuenta: "123456/1",
+          tipo: "Ahorros",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 1000000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 10000,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
+        {
+          numeroCuenta: "342234/2",
+          tipo: "Corrientes",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 50000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 1000,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
       ],
       tarjeta: [
         {
@@ -39,8 +77,86 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
       email: "mariagarcia@example.com",
       password: "1234",
       cuentas: [
-        { numeroCuenta: "123453", tipo: "Ahorros", saldo: 30000 },
-        { numeroCuenta: "342223", tipo: "Corriente", saldo: 2000 },
+        {
+          numeroCuenta: "123453/1",
+          tipo: "Ahorros",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 30000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 10000,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
+        {
+          numeroCuenta: "342234/2",
+          tipo: "Corrientes",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 80000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 5000,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
+        {
+          numeroCuenta: "342223/2",
+          tipo: "Corriente",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 2000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 50,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
+        {
+          numeroCuenta: "342234/2",
+          tipo: "Corrientes",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 600,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 10,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
       ],
       tarjeta: [
         {
@@ -59,8 +175,46 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
       email: "robert.martin@example.com",
       password: "1234",
       cuentas: [
-        { numeroCuenta: "234233", tipo: "Ahorros", saldo: 6000000 },
-        { numeroCuenta: "343234", tipo: "Corriente", saldo: 1000 },
+        {
+          numeroCuenta: "234233/1",
+          tipo: "Ahorros",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 6000000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 30000,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
+        {
+          numeroCuenta: "342234/2",
+          tipo: "Corrientes",
+          saldo: [
+            {
+              nombre: "ARS Balance",
+              unidad: "$",
+              balance: 1000,
+            },
+            {
+              nombre: "USD Balance",
+              unidad: "U$D",
+              balance: 200,
+            },
+          ],
+          button: {
+            text: "Ver movimientos",
+            url: "./cuentas",
+          },
+        },
       ],
       tarjeta: [
         {
