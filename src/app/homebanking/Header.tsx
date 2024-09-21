@@ -168,6 +168,9 @@ export default function Header() {
       <Image
         src={logoCompleto}
         alt="Logo de Argentarius"
+        width={200}
+        height={50}
+        priority
         className="w-auto h-full"
       />
       <Usuario />

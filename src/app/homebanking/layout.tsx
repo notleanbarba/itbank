@@ -9,10 +9,14 @@ export default function HomebankingLayout({
   children: ReactNode;
 }) {
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <div className="flex flex-col min-h-screen">
+      <header>
+        <Header />
+      </header>
+      <main className="flex-grow">{children}</main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   );
 }
