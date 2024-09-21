@@ -103,28 +103,28 @@ export default function Factura({ id }: FacturaProps) {
         </h2>
         <div className="mb-2">
           <span className="font-semibold text-gray-700">Servicio:</span>
-          <span className="ml-2 text-gray-600">{factura.servicio}</span>
+          <span className="ml-2 text-gray-600">{factura?.servicio}</span>
         </div>
         <div className="mb-2">
           <span className="font-semibold text-gray-700">Cliente:</span>
-          <span className="ml-2 text-gray-600">{factura.cliente}</span>
+          <span className="ml-2 text-gray-600">{factura?.cliente}</span>
         </div>
         <div className="mb-2">
           <span className="font-semibold text-gray-700">Saldo a Pagar:</span>
           <span className="ml-2 text-gray-600">
-            ${factura.total.toFixed(2)}
+            ${factura?.total.toFixed(2)}
           </span>
         </div>
         <div className="mb-2">
           <span className="font-semibold text-gray-700">Estado:</span>
           <span
             className={`ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-              factura.estado === "Pagado"
+              factura?.estado === "Pagado"
                 ? "bg-green-100 text-green-800"
                 : "bg-yellow-100 text-yellow-800"
             }`}
           >
-            {factura.estado}
+            {factura?.estado}
           </span>
         </div>
       </div>

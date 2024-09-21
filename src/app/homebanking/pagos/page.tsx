@@ -17,10 +17,10 @@ export default function Pagos() {
   const tableRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("useEffect Pagos iniciado");
     const storedClienteNombre = localStorage.getItem("clienteNombre");
-    console.log("clienteNombre almacenado:", storedClienteNombre);
 
+    if (!clienteNombre) {
+    }
     if (!storedClienteNombre) {
       setError("No se encontró el nombre del cliente.");
       setLoading(false);
