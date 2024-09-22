@@ -10,13 +10,14 @@
     background-color: #f8f9fa;
     color: #000000;
     font-family: "roboto mono", monospace, sans-serif;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh; // Asegurar que el body ocupe toda la pantalla
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     width: 100%;
-
     font-size: 16px;
+
     @screen sm {
       font-size: 20px;
     }
