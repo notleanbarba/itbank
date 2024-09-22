@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { obtenerClientes } from "@/app/data/cliente"; // Asegúrate de importar correctamente
-import { Cliente, datoTarjeta } from "@/types"; // Asegúrate de importar los tipos adecuados
-import { Cartas } from "@components/credito"; // Importar el componente Cartas
+import { obtenerClientes } from "@/app/data/cliente";
+import { Cliente, datoTarjeta } from "@/types";
+import { Cartas } from "@components/credito";
 
 export default function Tarjeta() {
   const [clienteAutenticado, setClienteAutenticado] = useState<Cliente | null>(
@@ -14,7 +14,7 @@ export default function Tarjeta() {
       const storedClienteId = localStorage.getItem("clienteId");
 
       if (storedClienteId) {
-        const clientes = await obtenerClientes(); // Llama a la función asíncrona para obtener clientes
+        const clientes = await obtenerClientes();
         const cliente =
           clientes.find((cliente) => cliente.id === storedClienteId) || null;
         setClienteAutenticado(cliente);
@@ -29,7 +29,7 @@ export default function Tarjeta() {
   }
 
   return (
-    <div className="flex justify-center pt-10 min-h-screen bg-gray-100">
+    <div className="flex justify-center pt-10 h-auto bg-gray-100">
       <div className="block">
         {clienteAutenticado.tarjeta.map((tarjeta: datoTarjeta) => (
           <Cartas key={`tarjeta_${tarjeta.numeroTarjeta}`} tarjeta={tarjeta} />
