@@ -10,7 +10,7 @@ export function CartasHome({ tarjeta }: { tarjeta: datoTarjeta }) {
       : "bg-[#7678ED]";
 
   return (
-    <Link href={`./homebanking/transferencias`}>
+    <Link href={`./homebanking/tarjetas`}>
       <div className="m-2 ">
         <div
           className={`flex flex-col ${bgColor} h-min p-4 rounded-xl shadow-float text-white text-nowrap w-80 gap-3 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl`}
