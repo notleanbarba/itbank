@@ -35,7 +35,7 @@ export default function Home() {
         Hola <span className="font-semibold">{clienteNombre}</span>
         <h2 className="mt-1">Estado de tus cuentas</h2>
       </div>
-      <section className="main-section flex gap-4">
+      <section className="main-section flex flex-col gap-8 md:flex-row">
         <div className="w-full md:w-auto">
           {cliente && cliente.cuentas.length > 0 && (
             <Cuentas tarjetas={cliente.cuentas[0]} />
