@@ -1,12 +1,55 @@
 {
+  "name": "itbank",
+  "private": true,
+  "version": "3.1.0",
+  "type": "module",
   "scripts": {
-    "sass": "sass -w src/app/public/sass/:src/app/public/sass/",
-    "live-server": "live-server --port=3010 --mount=/:src/app/",
-    "start": "npm run sass & npm run live-server",
-    "start-windows": "START /B npm run sass & npm run live-server"
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "test_build": "next build -d",
+    "lint": "next lint",
+    "start": "next start",
+    "types": "tsc",
+    "check_format": "prettier . --check",
+    "format": "prettier . --write",
+    "prepare_commit": "npm run lint && npm run types && npm run test_build && npm run format"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "classnames": "^2.5.1",
+    "jspdf": "^2.5.2",
+    "next": "^14.2.11",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-widgets": "^5.8.4",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
-    "live-server": "^1.2.2",
-    "sass": "^1.77.8"
+    "@types/node": "^22.5.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.11",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8.4.41",
+    "prettier": "3.3.3",
+    "sass": "^1.78.0",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.3"
+  },
+  "browserslist": {
+    "development": [
+      ">0.1%",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

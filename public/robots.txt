@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://itbank-psi.vercel.app/
+
+# Sitemaps
+Sitemap: https://itbank-psi.vercel.app/sitemap.xml

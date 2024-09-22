@@ -1,0 +1,93 @@
+[
+  {
+    "id": "1",
+    "servicio": "Edenor",
+    "cliente": "Juan Perez",
+    "total": 1000,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "2",
+    "servicio": "Aysa",
+    "cliente": "Juan Perez",
+    "total": 2000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "3",
+    "servicio": "Edenor",
+    "cliente": "Juan Perez",
+    "total": 3000,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "4",
+    "servicio": "Impuesto municipal",
+    "cliente": "Juan Perez",
+    "total": 500,
+    "estado": "Pagado"
+  },
+  {
+    "id": "5",
+    "servicio": "Aysa",
+    "cliente": "Juan Perez",
+    "total": 5000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "6",
+    "servicio": "Impuesto municipal",
+    "cliente": "Juan Perez",
+    "total": 1000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "7",
+    "servicio": "Impuesto municipal",
+    "cliente": "Juan Perez",
+    "total": 500,
+    "estado": "Pagado"
+  },
+  {
+    "id": "8",
+    "servicio": "Aysa",
+    "cliente": "Maria Garcia",
+    "total": 5000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "9",
+    "servicio": "Impuesto municipal",
+    "cliente": "Maria Garcia",
+    "total": 1000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "10",
+    "servicio": "Impuesto municipal",
+    "cliente": "Maria Garcia",
+    "total": 500,
+    "estado": "Pagado"
+  },
+  {
+    "id": "11",
+    "servicio": "Aysa",
+    "cliente": "Robert C. Martin",
+    "total": 2000,
+    "estado": "Pagado"
+  },
+  {
+    "id": "12",
+    "servicio": "Edenor",
+    "cliente": "Robert C. Martin",
+    "total": 3000,
+    "estado": "Pendiente"
+  },
+  {
+    "id": "13",
+    "servicio": "Impuesto municipal",
+    "cliente": "Robert C. Martin",
+    "total": 500,
+    "estado": "Pagado"
+  }
+]
