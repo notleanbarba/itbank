@@ -52,6 +52,8 @@ export type datoTarjeta = {
   numeroTarjeta: string;
   tipo: "Tarjeta de crédito" | "Tarjeta de débito";
   cvv: number;
+  limiteSolicitado?: boolean;
+  pausada?: boolean;
 };
 
 export type Cliente = {

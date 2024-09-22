@@ -65,11 +65,15 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
           numeroTarjeta: "5599 2838 4939 4884",
           tipo: "Tarjeta de crédito",
           cvv: 123,
+          limiteSolicitado: false,
+          pausada: false,
         },
         {
           numeroTarjeta: "5676 3454 2312 4522",
           tipo: "Tarjeta de débito",
           cvv: 232,
+          limiteSolicitado: false,
+          pausada: false,
         },
       ],
       facturas: facturas.filter(
@@ -168,6 +172,8 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
           numeroTarjeta: "5599 2838 4239 4884",
           tipo: "Tarjeta de crédito",
           cvv: 321,
+          limiteSolicitado: false,
+          pausada: false,
         },
       ],
       facturas: facturas.filter(
@@ -226,11 +232,15 @@ export const obtenerClientes = async (): Promise<Cliente[]> => {
           numeroTarjeta: "5599 2838 4349 4854",
           tipo: "Tarjeta de crédito",
           cvv: 213,
+          limiteSolicitado: false,
+          pausada: false,
         },
         {
           numeroTarjeta: "5676 3454 2312 4522",
           tipo: "Tarjeta de débito",
           cvv: 232,
+          limiteSolicitado: false,
+          pausada: false,
         },
       ],
       facturas: facturas.filter(
