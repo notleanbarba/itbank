@@ -35,19 +35,19 @@ export default function Home() {
         Hola <span className="font-semibold">{clienteNombre}</span>
         <h2 className="mt-1">Estado de tus cuentas</h2>
       </div>
-        <section className="main-section flex flex-col gap-8 md:flex-row">
-          <div className="w-full md:w-auto">
-            {cliente && cliente.cuentas.length > 0 && (
-              <Cuentas tarjetas={cliente.cuentas[0]} />
-            )}
-          </div>
+      <section className="main-section flex flex-col gap-8 md:flex-row">
+        <div className="w-full md:w-auto">
+          {cliente && cliente.cuentas.length > 0 && (
+            <Cuentas tarjetas={cliente.cuentas[0]} />
+          )}
+        </div>
 
-          <div className="w-full md:w-auto">
-            {cliente && cliente.tarjeta.length > 0 && (
-              <Cartas tarjeta={cliente.tarjeta[0]} />
-            )}
-          </div>
-        </section>
+        <div className="w-full md:w-auto">
+          {cliente && cliente.tarjeta.length > 0 && (
+            <Cartas tarjeta={cliente.tarjeta[0]} />
+          )}
+        </div>
+      </section>
       <section>
         <h2 className="mt-6 mb-4 text-xl">Acceso rápido</h2>
         <div className="flex flex-row flex-wrap gap-4">
