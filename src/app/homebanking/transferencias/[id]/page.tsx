@@ -39,16 +39,16 @@ export default function TransferDetails() {
       submenuOptions={[]}
     >
       <div className="container mx-auto px-4 py-8 bg-gray-100 rounded-lg shadow-md">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-2xl font-bold text-gray-800 mb-4">
           Cuenta: {account.accountNumber}
         </h1>
-        <p className="text-2xl font-semibold text-green-600 mb-6">
+        <p className="text-xl font-semibold text-blue-600 mb-6">
           Saldo: ${account.balance.toLocaleString()}
         </p>
 
         <button
           onClick={handleTransferClick}
-          className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-md flex items-center justify-center hover:bg-blue-600 transition-all"
+          className="mt-4 bg-sky-600 text-white px-4 py-2 rounded-md flex items-center justify-center hover:bg-sky-500 transition-all"
         >
           Transferir
         </button>

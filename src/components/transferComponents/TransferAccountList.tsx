@@ -29,7 +29,7 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-400">
+      <h1 className="text-2xl font-extrabold mb-6 text-black bg-clip-text ">
         Selecciona la cuenta de origen
       </h1>
 
@@ -38,7 +38,7 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({
         placeholder="Buscar por titular o número de cuenta..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full p-3 mb-6 text-lg border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+        className="w-2/4 p-3 mb-6 text-lg border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
       />
 
       <ul className="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -46,10 +46,10 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({
           filteredAccounts.map((account) => (
             <li
               key={account.id}
-              className="p-6 border-b border-gray-100 cursor-pointer hover:bg-gradient-to-r from-blue-50 to-blue-100 transform transition duration-300 ease-in-out hover:scale-105"
+              className="p-4 border-b border-gray-100 cursor-pointer hover:bg-gradient-to-r from-blue-100 to-blue-200 transform transition duration-300 ease-in-out"
               onClick={() => onSelectAccount(account)}
             >
-              <h2 className="text-2xl font-semibold text-blue-800">
+              <h2 className="text-xl font-semibold text-gray-800">
                 {account.accountHolder}
               </h2>
               <p className="text-gray-700">
@@ -58,7 +58,7 @@ const TransferAccountList: React.FC<TransferAccountListProps> = ({
               </p>
               <p className="text-gray-700">
                 Saldo:{" "}
-                <span className="text-green-600 font-bold">
+                <span className="text-blue-400 font-bold">
                   ${account.balance.toLocaleString("es-AR")}
                 </span>
               </p>

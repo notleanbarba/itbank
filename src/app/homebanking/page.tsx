@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Cartas } from "@components/credito";
-import { Cuentas } from "@components/credito";
+import { Cuentas } from "@components/Credito";
 import { Cliente } from "@types";
 import { obtenerClientes } from "@/app/data/cliente";
+import { CartasHome } from "@/components/CreditoHome";
 
 export default function Home() {
   const [clienteId, setClienteId] = useState<string | null>(null);
@@ -44,7 +44,7 @@ export default function Home() {
 
         <div className="w-full md:w-auto">
           {cliente && cliente.tarjeta.length > 0 && (
-            <Cartas tarjeta={cliente.tarjeta[0]} />
+            <CartasHome tarjeta={cliente.tarjeta[0]} />
           )}
         </div>
       </section>
